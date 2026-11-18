@@ -217,6 +217,19 @@ footer p { margin: 0; max-width: 80ch; }
   .stack td:first-child { font-weight: 600; }
 }
 @media (max-width: 640px) { #tab-ricos .tbl-wrap table.plain { min-width: 0; } #tab-ricos .tbl-wrap { overflow-x: visible; } }
+
+/* Pestaña 7: barras apiladas y tablas en móvil */
+.sb-row { margin: 18px 0 0; max-width: 680px; }
+.sb-row .cap { margin: 0 0 6px; font: 600 15px/1.3 var(--sans); }
+.stackbar { display: flex; height: 24px; background: var(--hl); }
+.stackbar i { display: block; height: 100%; width: var(--w); }
+.stackbar .s1, .k1 { background: #4a4a46; }
+.stackbar .s2, .k2 { background: var(--accent); }
+.stackbar .s3, .k3 { background: #d8d8d2; }
+.sb-row .vals { display: flex; flex-wrap: wrap; gap: 4px 18px; margin: 7px 0 0; font: 400 14px/1.35 var(--sans); color: var(--muted); }
+.sb-row .vals b { display: inline-block; width: 10px; height: 10px; margin-right: 6px; vertical-align: -1px; }
+.sb-row .tot { margin: 4px 0 0; font: 600 15px/1.35 var(--sans); }
+@media (max-width: 640px) { #tab-aportacion .tbl-wrap table.plain { min-width: 0; } #tab-aportacion .tbl-wrap { overflow-x: visible; } }
 </style>
 </head>
 <body>
@@ -225,7 +238,7 @@ footer p { margin: 0; max-width: 80ch; }
   <div class="wrap">
     <p class="eyebrow">España · datos oficiales · impuestos 2025, declaraciones 2024</p>
     <h1>¿Quién paga los impuestos en España?</h1>
-    <p class="lede">Siete vistas de un mismo sistema fiscal, con cada porción rastreada hasta su fuente. La pregunta de fondo: <strong>si España sube los impuestos a los ricos, ¿acaba pagando la factura la clase media?</strong> Los datos permiten contrastar una parte. Donde no llegan, la página lo dice.</p>
+    <p class="lede">Ocho vistas de un mismo sistema fiscal, con cada porción rastreada hasta su fuente. La pregunta de fondo: <strong>si España sube los impuestos a los ricos, ¿acaba pagando la factura la clase media?</strong> Los datos permiten contrastar una parte. Donde no llegan, la página lo dice.</p>
     <p class="taglegend">Cada cifra lleva su origen entre corchetes:
       <span class="tag t-oficial">oficial</span> publicado por una administración,
       <span class="tag t-prensa">prensa</span> publicado por un medio,
@@ -244,7 +257,8 @@ footer p { margin: 0; max-width: 80ch; }
     <button class="tab" role="tab" id="t-forales" aria-controls="tab-forales" data-tab="forales"><span class="n">4</span>País Vasco y Navarra</button>
     <button class="tab" role="tab" id="t-patrimonio" aria-controls="tab-patrimonio" data-tab="patrimonio"><span class="n">5</span>Impuesto al patrimonio</button>
     <button class="tab" role="tab" id="t-ricos" aria-controls="tab-ricos" data-tab="ricos"><span class="n">6</span>Los más ricos</button>
-    <button class="tab" role="tab" id="t-evidencia" aria-controls="tab-evidencia" data-tab="evidencia"><span class="n">7</span>Evidencia y fuentes</button>
+    <button class="tab" role="tab" id="t-aportacion" aria-controls="tab-aportacion" data-tab="aportacion"><span class="n">7</span>Top 25: aportación</button>
+    <button class="tab" role="tab" id="t-evidencia" aria-controls="tab-evidencia" data-tab="evidencia"><span class="n">8</span>Evidencia y fuentes</button>
   </div>
 </nav>
 
@@ -267,7 +281,7 @@ footer p { margin: 0; max-width: 80ch; }
     <li>La AEAT recauda estos impuestos para el Estado, las comunidades y los ayuntamientos a la vez, antes de repartirlos.</li>
     <li>El IRPF más las cotizaciones a la Seguridad Social suman el 63,6% del total conjunto (cálculo propio con las cifras de arriba).</li>
     <li><strong>Faltan País Vasco y Navarra.</strong> Sus impuestos los recaudan las Haciendas Forales, no la AEAT (que allí solo gestiona aduanas e impuestos a la importación): 20.324,5 M€ y 5.865,7 M€ en 2025. Se explican aparte en la pestaña 4 y no se suman aquí porque ambas cifras incluyen ajustes con el Estado. Las cotizaciones sociales sí se recaudan en toda España.</li>
-    <li>Los derechos de aduana no aparecen como línea propia: no se confirmó ninguna cifra oficial. Ver pestaña 7.</li>
+    <li>Los derechos de aduana no aparecen como línea propia: no se confirmó ninguna cifra oficial. Ver pestaña 8.</li>
   </ul>
   <p class="src">Fuentes: <a href="https://sede.agenciatributaria.gob.es/Sede/estadisticas/recaudacion-tributaria/informe-anual/ejercicio-2025/resumen.html">AEAT, Informe anual de recaudación tributaria 2025</a> <span class="tag t-oficial">oficial</span> (impuestos, 325.356 M€). <a href="https://www.lamoncloa.gob.es/serviciosdeprensa/notasprensa/inclusion/Paginas/2026/310326-seguridad-social-deficit-pib.aspx">Ministerio de Inclusión, cotizaciones de la Seguridad Social</a> <span class="tag t-oficial">oficial</span> (176.918 M€). Los impuestos especiales (23.083 M€) proceden de prensa que cita el informe de la AEAT <span class="tag t-prensa">prensa</span>.</p>
 </section>
@@ -403,7 +417,7 @@ footer p { margin: 0; max-width: 80ch; }
     <div>
       <div class="ctl-row"><label for="erosion">Parte de lo recaudado, según el partido, que nunca llega</label><output id="erosion-out" for="erosion">0%</output></div>
       <input type="range" id="erosion" min="0" max="100" step="5" value="0">
-      <p class="sub">Elusión, cambios de residencia, cambios de valoración. Los estudios de la pestaña 7 muestran que la base reacciona, pero no dan una cifra para esta propuesta: elige tú una.</p>
+      <p class="sub">Elusión, cambios de residencia, cambios de valoración. Los estudios de la pestaña 8 muestran que la base reacciona, pero no dan una cifra para esta propuesta: elige tú una.</p>
       <div class="presets" id="presets" role="group" aria-label="Valores predefinidos">
         <button type="button" data-e="0" aria-pressed="true">Cifra del partido (0%)</button>
         <button type="button" data-e="25" aria-pressed="false">25%</button>
@@ -634,7 +648,7 @@ footer p { margin: 0; max-width: 80ch; }
   </div>
 
   <h3 class="lead">Qué significa para la pregunta de fondo</h3>
-  <p class="prose">Hay evidencia de que el tipo efectivo del IRPF baja en la cúspide y de que existen vías legales de aplazamiento. Pero la cúspide es pequeña: 18.829 declarantes con más de 601.000 € en 2024, el 0,08% de los declarantes <span class="tag t-oficial">oficial</span>. Ningún estudio de los que he encontrado muestra que lo que se escapa por arriba acabe repuesto por la clase media. Esa cadena sigue «sin contrastar» en la pestaña 7.</p>
+  <p class="prose">Hay evidencia de que el tipo efectivo del IRPF baja en la cúspide y de que existen vías legales de aplazamiento. Pero la cúspide es pequeña: 18.829 declarantes con más de 601.000 € en 2024, el 0,08% de los declarantes <span class="tag t-oficial">oficial</span>. Ningún estudio de los que he encontrado muestra que lo que se escapa por arriba acabe repuesto por la clase media. Esa cadena sigue «sin contrastar» en la pestaña 8.</p>
 
   <h3 class="lead">Lo que no sé</h3>
   <ul class="list">
@@ -695,10 +709,232 @@ footer p { margin: 0; max-width: 80ch; }
 </section>
 
 
-<!-- 7. Evidencia ------------------------------------------------------------ -->
+<!-- 7. Top 25: aportación (generada por tab8.py) ----------------------------- -->
+<section class="panel" id="tab-aportacion" role="tabpanel" aria-labelledby="t-aportacion" hidden>
+  <div class="tab-head">
+    <p class="eyebrow">7 · Cuánto aportan los 25 mayores patrimonios</p>
+    <h2>Su IRPF personal es secreto. Lo que sí se mide es lo que pagan sus empresas y cuánto cambia la factura según cobren.</h2>
+    <p class="sub">Hacienda no publica lo que paga cada contribuyente (artículo 95 de la Ley General Tributaria), así que no hay una cifra pública del IRPF de Ortega, Roig o Del Pino. Esta pestaña hace tres cosas: cuenta lo que pagan las empresas que controlan, calcula con las reglas oficiales cuánto tributaría un dividendo según lo cobre una persona o una holding, y sitúa a los más ricos en las estadísticas agregadas de Hacienda. <strong>Ninguna cifra de aquí es el IRPF real de una persona.</strong></p>
+  </div>
+
+  <h3 class="lead">1. Lo que pagan las empresas antes de repartir un euro</h3>
+  <p class="prose">El primer impuesto sobre el beneficio lo paga la empresa. Esto es lo que encontré de tres de los grupos del top 25.</p>
+  <div class="tbl-wrap">
+    <table class="plain stack">
+      <thead><tr><th>Grupo y dueño</th><th>Beneficio antes de impuestos</th><th>Impuesto</th><th>Beneficio neto</th><th>Dividendos</th></tr></thead>
+      <tbody>
+        <tr><td data-l="Grupo y dueño"><strong>Inditex</strong> (Ortega)</td><td data-l="Beneficio antes de impuestos">8.020 M€ <span class="tag t-prensa">prensa</span></td><td data-l="Impuesto">≈1.800 M€, el 22,4% <span class="tag t-inferido">inferido</span></td><td data-l="Beneficio neto">6.220 M€ <span class="tag t-prensa">prensa</span></td><td data-l="Dividendos">5.454 M€; a Amancio Ortega, 3.234 M€ <span class="tag t-prensa">prensa</span></td></tr>
+        <tr><td data-l="Grupo y dueño"><strong>Mercadona</strong> (Roig, Herrero)</td><td data-l="Beneficio antes de impuestos">No consultado</td><td data-l="Impuesto">690 M€ entre impuesto de sociedades y otros impuestos; tipo efectivo del 22,8% <span class="tag t-prensa">prensa</span></td><td data-l="Beneficio neto">1.729 M€ <span class="tag t-prensa">prensa</span></td><td data-l="Dividendos">346 M€, el 20% del beneficio <span class="tag t-prensa">prensa</span></td></tr>
+        <tr><td data-l="Grupo y dueño"><strong>Abanca</strong> (Escotet)</td><td data-l="Beneficio antes de impuestos">500,7 M€ en el primer semestre de 2026 <span class="tag t-prensa">prensa</span></td><td data-l="Impuesto">114,7 M€ en ese semestre, frente a 55,9 M€ un año antes <span class="tag t-prensa">prensa</span></td><td data-l="Beneficio neto">386 M€ en el semestre; 902,4 M€ en 2025 <span class="tag t-prensa">prensa</span></td><td data-l="Dividendos">≈185 M€ a Escotet y su family office, por los resultados de 2024 <span class="tag t-prensa">prensa</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <ul class="notes">
+    <li>Inditex: el impuesto es la diferencia entre el beneficio antes de impuestos y el neto, así que incluye cualquier otro ajuste. Un diario añade que Inditex suma unos 10.000 M€ en impuestos de todo tipo, 2.600 M€ de ellos en España, sin precisar qué cuenta <span class="tag t-prensa">prensa</span>.</li>
+    <li>Mercadona: de los 690 M€, el desglose en España que da otro medio es 469 M€ de impuesto de sociedades y 202 M€ de otros impuestos, que suman 671 M€ <span class="tag t-prensa">prensa</span>. Además, Mercadona estima su aportación total, con impuestos soportados y recaudados, en 3.383 M€ <span class="tag t-prensa">prensa</span>.</li>
+    <li>Abanca: el impuesto sube porque usa menos créditos fiscales de procesos de integración ya concluidos <span class="tag t-prensa">prensa</span>.</li>
+  </ul>
+
+  <h3 class="lead">2. De cada 100 € de beneficio antes de impuestos, ¿cuánto llega a Hacienda?</h3>
+  <p class="prose">Con el tipo de impuesto de sociedades que implica Inditex (22,4%) y las reglas oficiales. Es un ejemplo, no un caso real.</p>
+  <div class="sb-row">
+    <p class="cap">El dueño cobra el dividendo como persona física</p>
+    <div class="stackbar" role="img" aria-label="De 100 euros: 22,4 de impuesto de sociedades, 23,3 de IRPF, 54,3 se queda el dueño"><i class="s1" style="--w:22.4%"></i><i class="s2" style="--w:23.3%"></i><i class="s3" style="--w:54.3%"></i></div>
+    <p class="vals"><span><b class="k1"></b>Impuesto de sociedades 22,4</span><span><b class="k2"></b>IRPF del ahorro 23,3</span><span><b class="k3"></b>Se queda el dueño 54,3</span></p>
+    <p class="tot">Hacienda recibe 45,7 de cada 100 € <span class="tag t-estimado">estimado</span></p>
+  </div>
+  <div class="sb-row">
+    <p class="cap">El dividendo entra en una holding con exención del 95%</p>
+    <div class="stackbar" role="img" aria-label="De 100 euros: 22,4 de impuesto de sociedades, 1,0 de impuesto de la holding, 76,6 queda en la holding"><i class="s1" style="--w:22.4%"></i><i class="s2" style="--w:0.97%"></i><i class="s3" style="--w:76.6%"></i></div>
+    <p class="vals"><span><b class="k1"></b>Impuesto de sociedades 22,4</span><span><b class="k2"></b>Impuesto de la holding 1,0</span><span><b class="k3"></b>Queda en la holding 76,6</span></p>
+    <p class="tot">Hacienda recibe 23,4 de cada 100 € <span class="tag t-estimado">estimado</span></p>
+  </div>
+  <p class="prose">La diferencia no es un agujero sin más: en el segundo caso el dinero sigue dentro de la sociedad y no está a disposición personal. Si el dueño lo reparte, tributa; si lo reinvierte, no. Y si fallece con las acciones, la ganancia acumulada no tributa en su IRPF <span class="tag t-oficial">oficial</span>.</p>
+  <ul class="notes">
+    <li>Impuesto de sociedades de la empresa: el 22,4% que implican las cuentas de Inditex <span class="tag t-inferido">inferido</span>.</li>
+    <li>IRPF del ahorro: 19% hasta 6.000 €, luego 21%, 23%, 27% y 30% por encima de 300.000 €. Para cantidades grandes, el 30% <span class="tag t-oficial">oficial</span>.</li>
+    <li>Holding con al menos un 5% de la participada: el 95% del dividendo queda exento y el resto paga el 25%, un 1,25% efectivo <span class="tag t-oficial">oficial</span>. No comprobé los requisitos holding por holding <span class="tag t-estimado">estimado</span>.</li>
+  </ul>
+
+  <h3 class="lead">3. Los 25 mayores patrimonios y lo que se sabe de cada uno</h3>
+  <p class="prose">Las fortunas son la estimación de mercado de Forbes España 2026 <span class="tag t-prensa">prensa</span>, no un patrimonio fiscal. Los 25 suman 225.050 M€, el 74,9% de los unos 300.500 M€ de la lista de 100. Ortega solo, el 41,7%. Solo de 7 de los 25 hay un dividendo atribuible a la persona; de los otros 18, no.</p>
+  <div class="tbl-wrap">
+    <table class="plain stack">
+      <thead><tr><th>Nombre</th><th>Fortuna (M€)</th><th>Vehículo</th><th>Lo que se sabe</th></tr></thead>
+      <tbody>
+        <tr><td data-l="Nombre">1 · <strong>Amancio Ortega</strong></td><td data-l="Fortuna (M€)">125.200</td><td data-l="Vehículo">Inditex, vía Pontegadea Inversiones (50,01%) y Partler 2006 (9,284%).</td><td data-l="Lo que se sabe">Dividendos de 3.234 M€ en 2026. Pontegadea Inversiones ganó 2.518 M€ en 2025. No tiene cargo ejecutivo remunerado en Inditex. <span class="tag t-prensa">prensa</span></td></tr>
+        <tr><td data-l="Nombre">2 · <strong>Sandra Ortega</strong></td><td data-l="Fortuna (M€)">11.500</td><td data-l="Vehículo">Rosp Corunna.</td><td data-l="Lo que se sabe">Beneficio de 307 M€ en 2025, casi todo de dividendos de Inditex; lo reinvierte todo. <span class="tag t-prensa">prensa</span></td></tr>
+        <tr><td data-l="Nombre">3 · <strong>Juan Roig</strong></td><td data-l="Fortuna (M€)">9.800</td><td data-l="Vehículo">Finop (50,66% de Mercadona).</td><td data-l="Lo que se sabe">Dividendos de Mercadona estimados en 175 M€. Sueldo de 12 M€ brutos en 2024. <span class="tag t-prensa">prensa</span> <span class="tag t-estimado">estimado</span></td></tr>
+        <tr><td data-l="Nombre">4 · <strong>Juan Carlos Escotet</strong></td><td data-l="Fortuna (M€)">8.100</td><td data-l="Vehículo">Abanca y su family office.</td><td data-l="Lo que se sabe">Unos 185 M€ de dividendos con cargo a 2024. En 2026 el banco paga más impuesto porque usa menos créditos fiscales. <span class="tag t-prensa">prensa</span></td></tr>
+        <tr><td data-l="Nombre">5 · <strong>Rafael del Pino</strong></td><td data-l="Fortuna (M€)">7.800</td><td data-l="Vehículo">Rijn Capital SARL (Luxemburgo): 22,3% de Ferrovial.</td><td data-l="Lo que se sabe">Ferrovial prevé 1.000 M€ de dividendos en 2026. Rijn salió de Países Bajos en 2024, tras una inspección neerlandesa. <span class="tag t-prensa">prensa</span></td></tr>
+        <tr><td data-l="Nombre">6 · <strong>Hortensia Herrero</strong></td><td data-l="Fortuna (M€)">5.550</td><td data-l="Vehículo">Mercadona, junto a Roig (juntos, el 80%).</td><td data-l="Lo que se sabe">Sin dato separado de su parte. <span class="tag t-prensa">prensa</span></td></tr>
+        <tr><td data-l="Nombre">7 · <strong>Florentino Pérez</strong></td><td data-l="Fortuna (M€)">4.900</td><td data-l="Vehículo">Rosán Inversiones: 15,015% de ACS.</td><td data-l="Lo que se sabe">Unos 100 M€ de dividendos al 2,4 € por acción. Sueldo de ACS de 9,14 M€ en 2025. <span class="tag t-prensa">prensa</span> <span class="tag t-estimado">estimado</span></td></tr>
+        <tr><td data-l="Nombre">8 · <strong>Tomás Olivo</strong></td><td data-l="Fortuna (M€)">4.900</td><td data-l="Vehículo">—</td><td data-l="Lo que se sabe">Sin dato público consultado.</td></tr>
+        <tr><td data-l="Nombre">9 · <strong>María del Pino</strong></td><td data-l="Fortuna (M€)">4.200</td><td data-l="Vehículo">Familia Del Pino (Ferrovial).</td><td data-l="Lo que se sabe">Vehículo y dividendos sin verificar.</td></tr>
+        <tr><td data-l="Nombre">10 · <strong>Miguel Fluxà</strong></td><td data-l="Fortuna (M€)">4.100</td><td data-l="Vehículo">Sayglo Holding, matriz de Iberostar.</td><td data-l="Lo que se sabe">Iberostar gestionó 5.100 M€ de ingresos en 2025. No encontré beneficio ni impuestos. <span class="tag t-prensa">prensa</span></td></tr>
+        <tr><td data-l="Nombre">11 · <strong>Sol Daurella</strong></td><td data-l="Fortuna (M€)">3.500</td><td data-l="Vehículo">Cobega; Olive Partners.</td><td data-l="Lo que se sabe">Un titular de Forbes habla de 160 M€ de dividendos de Olive Partners a la familia; no verifiqué el año. <span class="tag t-prensa">prensa</span></td></tr>
+        <tr><td data-l="Nombre">12 · <strong>Daniel Maté</strong></td><td data-l="Fortuna (M€)">3.500</td><td data-l="Vehículo">Glencore (en torno al 3%).</td><td data-l="Lo que se sabe">Vive en Suiza según Forbes (vía Wikipedia): su IRPF español probablemente no aplica. <span class="tag t-prensa">prensa</span> <span class="tag t-inferido">inferido</span></td></tr>
+        <tr><td data-l="Nombre">13 · <strong>Carlos March</strong></td><td data-l="Fortuna (M€)">3.300</td><td data-l="Vehículo">Corporación Financiera Alba (retirada de bolsa en 2025) y Banca March.</td><td data-l="Lo que se sabe">Banca March ganó 239,2 M€ en 2024. Sin datos de dividendos al accionista. <span class="tag t-prensa">prensa</span></td></tr>
+        <tr><td data-l="Nombre">14 · <strong>Juan Abelló</strong></td><td data-l="Fortuna (M€)">3.100</td><td data-l="Vehículo">Torreal.</td><td data-l="Lo que se sabe">Sin dato público consultado.</td></tr>
+        <tr><td data-l="Nombre">15 · <strong>Juan March</strong></td><td data-l="Fortuna (M€)">3.100</td><td data-l="Vehículo">Familia March: Alba y Banca March.</td><td data-l="Lo que se sabe">Ver Carlos March. <span class="tag t-prensa">prensa</span></td></tr>
+        <tr><td data-l="Nombre">16 · <strong>Alberto Palatchi</strong></td><td data-l="Fortuna (M€)">2.900</td><td data-l="Vehículo">—</td><td data-l="Lo que se sabe">Sin dato público consultado.</td></tr>
+        <tr><td data-l="Nombre">17 · <strong>José María Serra Farré</strong></td><td data-l="Fortuna (M€)">2.900</td><td data-l="Vehículo">Inocsa y Grupo Catalana Occidente (Occidente).</td><td data-l="Lo que se sabe">Occidente repartió 639 M€ en 2025, 558 M€ de ellos extraordinarios. Inocsa dice que no los reparte entre sus accionistas. <span class="tag t-oficial">oficial</span> <span class="tag t-prensa">prensa</span></td></tr>
+        <tr><td data-l="Nombre">18 · <strong>Leopoldo del Pino</strong></td><td data-l="Fortuna (M€)">2.600</td><td data-l="Vehículo">Familia Del Pino (Ferrovial).</td><td data-l="Lo que se sabe">Vehículo y dividendos sin verificar.</td></tr>
+        <tr><td data-l="Nombre">19 · <strong>Fernando Roig</strong></td><td data-l="Fortuna (M€)">2.400</td><td data-l="Vehículo">Pamesa.</td><td data-l="Lo que se sabe">Sin dato público consultado.</td></tr>
+        <tr><td data-l="Nombre">20 · <strong>Manuel Puig</strong></td><td data-l="Fortuna (M€)">2.100</td><td data-l="Vehículo">Exea, holding de la familia Puig; Puig Brands.</td><td data-l="Lo que se sabe">La familia ingresó más de 178 M€ de dividendos en 2026. <span class="tag t-prensa">prensa</span></td></tr>
+        <tr><td data-l="Nombre">21 · <strong>Familia Luengo (SAMCA)</strong></td><td data-l="Fortuna (M€)">2.100</td><td data-l="Vehículo">SAMCA.</td><td data-l="Lo que se sabe">Sin dato público consultado.</td></tr>
+        <tr><td data-l="Nombre">22 · <strong>Alicia Koplowitz</strong></td><td data-l="Fortuna (M€)">1.900</td><td data-l="Vehículo">Omega Capital.</td><td data-l="Lo que se sabe">Sin dato público consultado.</td></tr>
+        <tr><td data-l="Nombre">23 · <strong>Carmen Daurella</strong></td><td data-l="Fortuna (M€)">1.900</td><td data-l="Vehículo">Cobega.</td><td data-l="Lo que se sabe">Ver Sol Daurella.</td></tr>
+        <tr><td data-l="Nombre">24 · <strong>Manuel Lao</strong></td><td data-l="Fortuna (M€)">1.900</td><td data-l="Vehículo">—</td><td data-l="Lo que se sabe">Sin dato público consultado.</td></tr>
+        <tr><td data-l="Nombre">25 · <strong>Joaquín del Pino</strong></td><td data-l="Fortuna (M€)">1.800</td><td data-l="Vehículo">Familia Del Pino (Ferrovial).</td><td data-l="Lo que se sabe">Vehículo y dividendos sin verificar.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="lead">4. Escenarios por persona: persona física frente a holding</h3>
+  <p class="prose"><strong>No es lo que pagan.</strong> Es lo que saldría de aplicar las reglas oficiales al dividendo conocido, en dos situaciones hipotéticas. En el primer caso la persona cobraría todo; en el segundo, el dividendo se queda en una holding con exención del 95%. Solo están los siete casos con un dividendo atribuible.</p>
+  <div class="tbl-wrap">
+    <table class="plain stack">
+      <thead><tr><th>Persona</th><th>Dividendo bruto al año (M€)</th><th>Como persona física, 30% (M€)</th><th>Vía holding, 1,25% (M€)</th><th>De dónde sale el dividendo</th></tr></thead>
+      <tbody>
+        <tr><td data-l="Persona"><strong>Amancio Ortega</strong></td><td data-l="Dividendo bruto al año (M€)">3.234</td><td data-l="Como persona física, 30% (M€)">970,2 <span class="tag t-estimado">estimado</span></td><td data-l="Vía holding, 1,25% (M€)">40,4 <span class="tag t-estimado">estimado</span></td><td data-l="De dónde sale el dividendo">Inditex 2026, vía Pontegadea Inversiones y Partler 2006 <span class="tag t-prensa">prensa</span></td></tr>
+        <tr><td data-l="Persona"><strong>Sandra Ortega</strong></td><td data-l="Dividendo bruto al año (M€)">275</td><td data-l="Como persona física, 30% (M€)">82,5 <span class="tag t-estimado">estimado</span></td><td data-l="Vía holding, 1,25% (M€)">3,4 <span class="tag t-estimado">estimado</span></td><td data-l="De dónde sale el dividendo">Inditex (5,053%) vía Rosp Corunna, 2026 (más de 275 M€) <span class="tag t-prensa">prensa</span></td></tr>
+        <tr><td data-l="Persona"><strong>Juan Roig</strong></td><td data-l="Dividendo bruto al año (M€)">175</td><td data-l="Como persona física, 30% (M€)">52,6 <span class="tag t-estimado">estimado</span></td><td data-l="Vía holding, 1,25% (M€)">2,2 <span class="tag t-estimado">estimado</span></td><td data-l="De dónde sale el dividendo">50,66% de los 346 M€ que repartió Mercadona por 2025, vía Finop <span class="tag t-prensa">prensa</span> <span class="tag t-estimado">estimado</span></td></tr>
+        <tr><td data-l="Persona"><strong>Juan Carlos Escotet</strong></td><td data-l="Dividendo bruto al año (M€)">185</td><td data-l="Como persona física, 30% (M€)">55,5 <span class="tag t-estimado">estimado</span></td><td data-l="Vía holding, 1,25% (M€)">2,3 <span class="tag t-estimado">estimado</span></td><td data-l="De dónde sale el dividendo">Abanca, dividendos con cargo a los resultados de 2024, junto a su family office <span class="tag t-prensa">prensa</span></td></tr>
+        <tr><td data-l="Persona"><strong>Rafael del Pino</strong></td><td data-l="Dividendo bruto al año (M€)">223</td><td data-l="Como persona física, 30% (M€)">66,9 <span class="tag t-estimado">estimado</span></td><td data-l="Vía holding, 1,25% (M€)">no se modela</td><td data-l="De dónde sale el dividendo">22,3% de los 1.000 M€ que Ferrovial prevé repartir en 2026; parte se cobra en acciones. Holding en Luxemburgo <span class="tag t-prensa">prensa</span> <span class="tag t-estimado">estimado</span></td></tr>
+        <tr><td data-l="Persona"><strong>Florentino Pérez</strong></td><td data-l="Dividendo bruto al año (M€)">99,9</td><td data-l="Como persona física, 30% (M€)">30,0 <span class="tag t-estimado">estimado</span></td><td data-l="Vía holding, 1,25% (M€)">1,2 <span class="tag t-estimado">estimado</span></td><td data-l="De dónde sale el dividendo">41,61 M de acciones de ACS × 2,4 € anunciados por acción; parte se cobra en acciones <span class="tag t-prensa">prensa</span> <span class="tag t-estimado">estimado</span></td></tr>
+        <tr><td data-l="Persona"><strong>Familia Puig</strong></td><td data-l="Dividendo bruto al año (M€)">178</td><td data-l="Como persona física, 30% (M€)">53,4 <span class="tag t-estimado">estimado</span></td><td data-l="Vía holding, 1,25% (M€)">2,2 <span class="tag t-estimado">estimado</span></td><td data-l="De dónde sale el dividendo">Dividendo de 2026 de Puig; incluye miembros de la familia fuera de Exea <span class="tag t-prensa">prensa</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose">Dividendo bruto anual conocido o estimado, en millones de euros:</p>
+  <ul class="bars" aria-label="Dividendos brutos anuales conocidos o estimados, en millones de euros">
+    <li><span>Amancio Ortega</span><span class="bar"><i style="--w:100.0%"></i></span><span class="v">3.234</span></li>
+    <li><span>Sandra Ortega</span><span class="bar"><i style="--w:8.5%"></i></span><span class="v">275</span></li>
+    <li><span>Juan Roig</span><span class="bar"><i style="--w:5.4%"></i></span><span class="v">175</span></li>
+    <li><span>Juan Carlos Escotet</span><span class="bar"><i style="--w:5.7%"></i></span><span class="v">185</span></li>
+    <li><span>Rafael del Pino</span><span class="bar"><i style="--w:6.9%"></i></span><span class="v">223</span></li>
+    <li><span>Florentino Pérez</span><span class="bar"><i style="--w:3.1%"></i></span><span class="v">100</span></li>
+    <li><span>Familia Puig</span><span class="bar"><i style="--w:5.5%"></i></span><span class="v">178</span></li>
+    </ul>
+  <p class="prose">Solo el dividendo de 2026 de Amancio Ortega, de tributar como persona física al 30%, daría unos 970 M€ <span class="tag t-estimado">estimado</span>. Es más que todo el Impuesto de Solidaridad de las Grandes Fortunas de 2023 (623,6 M€) <span class="tag t-oficial">oficial</span> y unas 51 veces el de 2025 (≈19 M€) <span class="tag t-oficial">oficial</span>. Comparan un impuesto sobre la renta hipotético con un impuesto sobre el patrimonio: sirven para ver órdenes de magnitud, no como argumento a favor de ninguno de los dos.</p>
+
+  <h3 class="lead">5. Lo que sí tributa a tipo pleno: los sueldos</h3>
+  <div class="tbl-wrap">
+    <table class="plain stack">
+      <thead><tr><th>Persona</th><th>Retribución</th><th>IRPF aproximado</th><th>Frente al dividendo de su holding</th></tr></thead>
+      <tbody>
+        <tr><td data-l="Persona"><strong>Florentino Pérez</strong></td><td data-l="Retribución">9,14 M€ en ACS, 2025 <span class="tag t-prensa">prensa</span></td><td data-l="IRPF aproximado">≈4,1 M€, al 45% marginal de Madrid, sin deducciones y sin verificar su residencia <span class="tag t-estimado">estimado</span></td><td data-l="Frente al dividendo de su holding">≈100 M€ de dividendos <span class="tag t-estimado">estimado</span></td></tr>
+        <tr><td data-l="Persona"><strong>Juan Roig</strong></td><td data-l="Retribución">12 M€ brutos en 2024 <span class="tag t-prensa">prensa</span></td><td data-l="IRPF aproximado">≈6,5 M€: pagó el 54% de su retribución, según la prensa <span class="tag t-prensa">prensa</span> <span class="tag t-estimado">estimado</span></td><td data-l="Frente al dividendo de su holding">≈175 M€ de dividendos <span class="tag t-estimado">estimado</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose">El tipo marginal máximo del IRPF general va del 45% en Madrid al 54% en la Comunitat Valenciana <span class="tag t-oficial">oficial</span>. Es la parte de su renta de la que hay indicios de tributación plena; el resto depende de si reparten dividendos.</p>
+
+  <h3 class="lead">6. Los más ricos dentro de las estadísticas de Hacienda</h3>
+  <p class="prose">Recaudación del Impuesto de Solidaridad de las Grandes Fortunas, en millones de euros <span class="tag t-oficial">oficial</span>:</p>
+  <ul class="bars" aria-label="Recaudación del Impuesto de Solidaridad de las Grandes Fortunas en millones de euros">
+    <li><span>2023</span><span class="bar"><i style="--w:100.0%"></i></span><span class="v">623,6</span></li>
+    <li><span>2024</span><span class="bar"><i style="--w:5.9%"></i></span><span class="v">≈37</span></li>
+    <li class="hi"><span>2025</span><span class="bar"><i style="--w:3.0%"></i></span><span class="v">≈19</span></li>
+    </ul>
+  <p class="prose">En 2023 lo pagaron 12.010 declarantes con una cuota media de 52.000 €, y Madrid aportó 555 de los 623,6 M€ <span class="tag t-oficial">oficial</span>. Sumado al Impuesto sobre el Patrimonio, 2023 dejó 1.868 M€ <span class="tag t-oficial">oficial</span>. No he encontrado la explicación oficial de la caída de 2024 y 2025, y no la doy.</p>
+  <p class="prose">Declarantes del Impuesto sobre el Patrimonio con más de 30 M€ <span class="tag t-prensa">prensa</span>:</p>
+  <ul class="bars" aria-label="Declarantes del Impuesto sobre el Patrimonio con más de 30 millones de euros">
+    <li><span>2013</span><span class="bar"><i style="--w:46.0%"></i></span><span class="v">471</span></li>
+    <li><span>2023</span><span class="bar"><i style="--w:84.6%"></i></span><span class="v">865</span></li>
+    <li class="hi"><span>2024</span><span class="bar"><i style="--w:100.0%"></i></span><span class="v">1.023</span></li>
+    </ul>
+  <p class="prose">En 2024 hubo 227.424 declarantes de Patrimonio, 185.031 de ellos con cuota <span class="tag t-prensa">prensa</span>.</p>
+  <p class="prose">Declarantes del IRPF con más de 601.000 € <span class="tag t-prensa">prensa</span>:</p>
+  <ul class="bars" aria-label="Declarantes del IRPF con más de 601.000 euros">
+    <li><span>2007</span><span class="bar"><i style="--w:56.2%"></i></span><span class="v">10.580</span></li>
+    <li><span>2023</span><span class="bar"><i style="--w:78.3%"></i></span><span class="v">14.738</span></li>
+    <li class="hi"><span>2024</span><span class="bar"><i style="--w:100.0%"></i></span><span class="v">18.829</span></li>
+    </ul>
+  <p class="prose">Son el 0,08% de las 24.628.279 declaraciones de 2024 <span class="tag t-prensa">prensa</span>.</p>
+  <h3 class="lead">Qué ve la estadística y qué no</h3>
+  <ul class="notes">
+    <li>El IRPF solo ve lo que llega a la persona. Lo que una holding retiene no aparece en la declaración del dueño <span class="tag t-inferido">inferido</span>.</li>
+    <li>Los 100 de Forbes serían como mucho una décima parte de los 1.023 declarantes de Patrimonio con más de 30 M€ <span class="tag t-inferido">inferido</span>. Es un máximo: Maté vive en Suiza, y no confirmé si la estadística incluye País Vasco y Navarra.</li>
+    <li>Forbes valora a precio de mercado; el Patrimonio usa valores fiscales y tiene exenciones, como la de la empresa familiar <span class="tag t-oficial">oficial</span>. Por eso ni las fortunas de Forbes ni la base del impuesto son comparables.</li>
+  </ul>
+
+  <h3 class="lead">Veredicto</h3>
+  <div class="tbl-wrap">
+    <table class="plain verdict">
+      <thead><tr><th>Lo que se dice</th><th>Veredicto</th><th>Qué hay detrás</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>«Los más ricos no contribuyen»</td>
+          <td><strong>Depende de qué se cuente. De su IRPF personal no hay datos; de lo que pagan sus empresas, sí.</strong></td>
+          <td>Inditex paga unos 1.800 M€ de impuesto sobre beneficios <span class="tag t-inferido">inferido</span> y Mercadona estima 3.383 M€ de aportación total <span class="tag t-prensa">prensa</span>. Sus sueldos tributan a tipo pleno <span class="tag t-estimado">estimado</span>. En el otro lado, el Impuesto de Solidaridad de las Grandes Fortunas dejó unos 19 M€ en 2025 <span class="tag t-oficial">oficial</span> y, si un dueño deja el dividendo en una holding, por cada 100 € de beneficio Hacienda recibe unos 23 en lugar de unos 46 <span class="tag t-estimado">estimado</span>.</td>
+        </tr>
+        <tr>
+          <td>«Sus empresas ya pagan mucho»</td>
+          <td><strong>Cierto, pero es otra pregunta: el impuesto de sociedades no es el IRPF del dueño.</strong></td>
+          <td>Lo paga la empresa tenga un dueño rico o accionistas dispersos. Cómo se reparte su carga entre accionistas, trabajadores y clientes es un debate abierto entre economistas, y esta página no tiene datos para zanjarlo.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="lead">Qué significa para la pregunta de fondo</h3>
+  <p class="prose">Esta pestaña no contrasta si subir impuestos a los ricos lo paga la clase media. Aporta dos hechos: el impuesto específico sobre grandes fortunas recauda hoy poco, y buena parte del beneficio de los mayores grupos ya tributa en la empresa antes de llegar al dueño. También da un ejemplo de que las estructuras se mueven: Rijn Capital pasó de Países Bajos a Luxemburgo en 2024, después de que Hacienda neerlandesa abriera una inspección <span class="tag t-prensa">prensa</span>. Eso no prueba que se mueva por impuestos, y no dice nada de qué pasaría con la clase media.</p>
+
+  <h3 class="lead">Lo que no sé</h3>
+  <ul class="list">
+    <li>El IRPF real de cualquiera de ellos. Es secreto y no figura en ninguna fuente.</li>
+    <li>Cuánto de los dividendos de cada holding llega a la persona. Ortega, Sandra Ortega, Florentino Pérez y los Serra reinvierten o retienen según la prensa, pero no sé cuánto sale en sueldos o préstamos.</li>
+    <li>De 18 de los 25 no encontré un dividendo atribuible a la persona: Herrero, Olivo, Maté, los March, Abelló, Palatchi, los Serra, los Daurella, Fernando Roig, Luengo, Koplowitz, Lao, los Fluxà y los Del Pino distintos de Rafael.</li>
+    <li>Fuentes que no cuadran: el desglose de impuestos de Mercadona (690 frente a 671 M€) y los resultados del grupo de Ortega, que ya señalé en la pestaña 6.</li>
+    <li>Año del dividendo de 160 M€ de los Daurella; residencia fiscal de Pérez y de los Del Pino; y si el 30% de IRPF del ahorro aplica a cada uno según su comunidad.</li>
+    <li>El dividendo de Escotet es de resultados de 2024; los de 2025 serían menores, porque Abanca ganó menos.</li>
+    <li>Los dividendos de Ferrovial y ACS pueden cobrarse en acciones, lo que aplaza el IRPF. No sé qué eligió cada uno.</li>
+  </ul>
+
+  <h3 class="lead">Fuentes de esta pestaña</h3>
+  <ul class="src-cols">
+    <li><a href="https://sede.agenciatributaria.gob.es/Sede/estadisticas/recaudacion-tributaria/informe-anual/ejercicio-2025/6-otros-impuestos.html">AEAT, informe anual de recaudación 2025: otros impuestos</a> <span class="tag t-oficial">oficial</span></li>
+    <li><a href="https://www.hacienda.gob.es/GabineteMinistro/notas%20prensa/2023/s.e.hacienda/20-09-23-np-impuesto-grandes-fortunas.pdf">Hacienda, nota sobre el ITSGF de 2023</a> <span class="tag t-oficial">oficial</span></li>
+    <li><a href="https://valenciaplaza.com/impuesto-solidaridad-grandes-fortunas-recauda-200000-euros-comunitat">Valencia Plaza sobre el ITSGF de 2023, con el dato de Madrid</a> <span class="tag t-prensa">prensa</span></li>
+    <li><a href="https://www.bankinter.com/blog/economia/distribucion-impuesto-patrimonio">Bankinter sobre la estadística de Patrimonio de 2024</a> <span class="tag t-prensa">prensa</span></li>
+    <li><a href="https://www.xataka.com/empresas-y-economia/hacienda-ha-detectado-fenomeno-inedito-2013-se-ha-duplicado-numero-espanoles-30-millones-euros">Xataka sobre los contribuyentes de más de 30 M€</a> <span class="tag t-prensa">prensa</span></li>
+    <li><a href="https://www.bolsamania.com/noticias_amp/economia/economia--los-contribuyentes-ricos-con-patrimonio-superior-a-30-millones-se-multiplican-casi-por-dos-en-una-decada--20818296.html">Europa Press (Bolsamanía): 865 declarantes en 2023</a> <span class="tag t-prensa">prensa</span></li>
+    <li><a href="https://forbes.es/?p=969876">Forbes España sobre los 18.829 declarantes de más de 601.000 €</a> <span class="tag t-prensa">prensa</span></li>
+    <li><a href="https://forbes.es/?p=753425">Forbes España (Europa Press): 14.738 en 2023</a> <span class="tag t-prensa">prensa</span></li>
+    <li><a href="https://www.estrategiasdeinversion.com/actualidad/noticias/bolsa-espana/inditex-beneficio-record-de-6220-millones-y-eleva-n-897733">Estrategias de Inversión: resultados de Inditex de 2025</a> <span class="tag t-prensa">prensa</span></li>
+    <li><a href="https://www.elespanol.com/quincemil/economia/empresas/20260311/amancio-ortega-recibira-millones-dividendos-inditex-elevar-retribucion/1003744164811_0.html">El Español: dividendos de Inditex a Ortega</a> <span class="tag t-prensa">prensa</span></li>
+    <li><a href="https://www.eldiario.es/economia/inditex-logra-beneficio-record-gana-6-220-millones-ingresos-rozan-40-000_1_13056951.html">elDiario.es sobre los impuestos de Inditex</a> <span class="tag t-prensa">prensa</span></li>
+    <li><a href="https://forbes.es/?p=986792">Forbes España sobre Rosp Corunna</a> <span class="tag t-prensa">prensa</span></li>
+    <li><a href="https://www.merca2.es/2026/07/24/holding-sandra-ortega-beneficio-307-millones-2423050/">Merca2 sobre el holding de Sandra Ortega</a> <span class="tag t-prensa">prensa</span></li>
+    <li><a href="https://www.eldiario.es/comunitat-valenciana/economia/mercadona-gano-1-729-millones-euros-2025-alcanzo-28-5-cuota-mercado-alcanzar-41-500-milloones_1_13054918.html">elDiario.es sobre los resultados de Mercadona</a> <span class="tag t-prensa">prensa</span></li>
+    <li><a href="https://www.merca2.es/2026/03/20/juan-roig-presume-mercadona-2360812/">Merca2 sobre la aportación fiscal de Mercadona</a> <span class="tag t-prensa">prensa</span></li>
+    <li><a href="https://forbes.es/?p=676176">Forbes España sobre el sueldo de Roig y su 50,66% de Mercadona</a> <span class="tag t-prensa">prensa</span></li>
+    <li><a href="https://roams.es/actualidad/finanzas/abanca-record-negocio-pese-ganar-menos/">Roams sobre Abanca en el primer semestre de 2026</a> <span class="tag t-prensa">prensa</span></li>
+    <li><a href="https://theobjective.com/economia/banca/2026-01-28/abanca-beneficios-2025-clientes/">The Objective sobre el beneficio de Abanca en 2025</a> <span class="tag t-prensa">prensa</span></li>
+    <li><a href="https://metropolitano.gal/enfoque/escotet-y-su-family-office-cobran-185-millones-en-dividendos-de-abanca-de-los-resultados-de-2024">Metropolitano sobre los dividendos de Escotet</a> <span class="tag t-prensa">prensa</span></li>
+    <li><a href="https://blarkad.com/ticker/FER/ownership">Declaración SEC 13G/A de Rijn Capital sobre Ferrovial</a> <span class="tag t-oficial">oficial</span></li>
+    <li><a href="https://forbes.es/?p=903256">Forbes España: Ferrovial prevé 1.000 M€ de dividendos en 2026</a> <span class="tag t-prensa">prensa</span></li>
+    <li><a href="https://www.merca2.es/2026/06/15/ferrovial-dividendo-flexible-400-millones-2397553/">Merca2 sobre el dividendo flexible de Ferrovial</a> <span class="tag t-prensa">prensa</span></li>
+    <li><a href="https://www.eldiario.es/economia/rafael-pino-saca-ahora-paises-bajos-patrimonial-controla-21-ferrovial_1_11346476.html">elDiario.es sobre Rijn Capital y Luxemburgo</a> <span class="tag t-prensa">prensa</span></li>
+    <li><a href="https://www.finect.com/usuario/eduardogarcia/articulos/el-dividendo-de-acs-crece-un-20-florentino-perez-anuncia-el-pago-de-24-euros-por-accion">Finect sobre el dividendo de ACS de 2,4 € por acción</a> <span class="tag t-prensa">prensa</span></li>
+    <li><a href="https://finantresnoticias.com/empresas/florentino-perez-sube-15-por-ciento-en-acs-debe-vigilar-pequeno-inversor/">Finanzas Noticias: Florentino Pérez al 15,015% de ACS</a> <span class="tag t-prensa">prensa</span></li>
+    <li><a href="https://fashionunited.es/noticias/empresas/los-puig-ingresan-mas-de-178-millones-de-euros-en-dividendos-del-grupo/2026061549675">FashionUnited sobre el dividendo de los Puig</a> <span class="tag t-prensa">prensa</span></li>
+    <li><a href="https://thecorner.eu/?p=123334">The Corner sobre el dividendo de Occidente e Inocsa</a> <span class="tag t-prensa">prensa</span></li>
+    <li><a href="https://www.gco.com/doc/cat/gco/-2025-informe-situacio-financera-i-solvencia---gco/2025_sfcr_gco.pdf">Grupo Catalana Occidente, informe de solvencia 2025</a> <span class="tag t-oficial">oficial</span></li>
+    <li><a href="https://forbes.es/etiqueta/coca-cola-europacific-partners/">Forbes España, etiqueta de Coca-Cola Europacific (titular sobre Olive Partners)</a> <span class="tag t-prensa">prensa</span></li>
+    <li><a href="https://en.wikipedia.org/wiki/Daniel_Mat%C3%A9">Wikipedia sobre Daniel Maté, citando a Forbes</a> <span class="tag t-prensa">prensa</span></li>
+    <li><a href="https://www.paxnews.com/news/hotel/iberostar-group-reports-14-cent-revenue-growth-plans-1b-investment-through-2028">PaxNews sobre los resultados de Iberostar de 2025</a> <span class="tag t-prensa">prensa</span></li>
+    <li><a href="https://forbes.es/nombramientos/805744/carlos-march-deja-la-presidencia-de-alba-y-es-sustituido-por-juan-march-de-la-lastra/">Forbes España sobre Alba y los March</a> <span class="tag t-prensa">prensa</span></li>
+  </ul>
+</section>
+
+
+<!-- 8. Evidencia ------------------------------------------------------------ -->
 <section class="panel" id="tab-evidencia" role="tabpanel" aria-labelledby="t-evidencia" hidden>
   <div class="tab-head">
-    <p class="eyebrow">7 · Evidencia, lagunas y fuentes</p>
+    <p class="eyebrow">8 · Evidencia, lagunas y fuentes</p>
     <h2>Qué respalda la evidencia y qué no.</h2>
     <p class="sub">La hipótesis tiene tres pasos: un impuesto más alto a los ricos encoge la base que puede alcanzar; el hueco se repone con impuestos más amplios; y la clase media acaba pagando. Las fuentes revisadas hablan del paso 1. Ninguna contrasta los pasos 2 y 3.</p>
   </div>
@@ -1502,7 +1738,7 @@ footer p { margin: 0; max-width: 80ch; }
   });
 
   /* ---------- pestañas, con ruta en el #hash ---------- */
-  var TABS = ['ingresos', 'tramos', 'comunidades', 'forales', 'patrimonio', 'ricos', 'evidencia'];
+  var TABS = ['ingresos', 'tramos', 'comunidades', 'forales', 'patrimonio', 'ricos', 'aportacion', 'evidencia'];
   function showTab(name, focus) {
     if (TABS.indexOf(name) < 0) name = 'ingresos';
     TABS.forEach(function (t) {

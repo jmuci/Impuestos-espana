@@ -2,7 +2,7 @@
   <div class="wrap">
     <p class="eyebrow">España · datos oficiales · impuestos 2025, declaraciones 2024</p>
     <h1>¿Quién paga los impuestos en España?</h1>
-    <p class="lede">Siete vistas de un mismo sistema fiscal, con cada porción rastreada hasta su fuente. La pregunta de fondo: <strong>si España sube los impuestos a los ricos, ¿acaba pagando la factura la clase media?</strong> Los datos permiten contrastar una parte. Donde no llegan, la página lo dice.</p>
+    <p class="lede">Ocho vistas de un mismo sistema fiscal, con cada porción rastreada hasta su fuente. La pregunta de fondo: <strong>si España sube los impuestos a los ricos, ¿acaba pagando la factura la clase media?</strong> Los datos permiten contrastar una parte. Donde no llegan, la página lo dice.</p>
     <p class="taglegend">Cada cifra lleva su origen entre corchetes:
       <span class="tag t-oficial">oficial</span> publicado por una administración,
       <span class="tag t-prensa">prensa</span> publicado por un medio,
@@ -21,7 +21,8 @@
     <button class="tab" role="tab" id="t-forales" aria-controls="tab-forales" data-tab="forales"><span class="n">4</span>País Vasco y Navarra</button>
     <button class="tab" role="tab" id="t-patrimonio" aria-controls="tab-patrimonio" data-tab="patrimonio"><span class="n">5</span>Impuesto al patrimonio</button>
     <button class="tab" role="tab" id="t-ricos" aria-controls="tab-ricos" data-tab="ricos"><span class="n">6</span>Los más ricos</button>
-    <button class="tab" role="tab" id="t-evidencia" aria-controls="tab-evidencia" data-tab="evidencia"><span class="n">7</span>Evidencia y fuentes</button>
+    <button class="tab" role="tab" id="t-aportacion" aria-controls="tab-aportacion" data-tab="aportacion"><span class="n">7</span>Top 25: aportación</button>
+    <button class="tab" role="tab" id="t-evidencia" aria-controls="tab-evidencia" data-tab="evidencia"><span class="n">8</span>Evidencia y fuentes</button>
   </div>
 </nav>
 
@@ -44,7 +45,7 @@
     <li>La AEAT recauda estos impuestos para el Estado, las comunidades y los ayuntamientos a la vez, antes de repartirlos.</li>
     <li>El IRPF más las cotizaciones a la Seguridad Social suman el 63,6% del total conjunto (cálculo propio con las cifras de arriba).</li>
     <li><strong>Faltan País Vasco y Navarra.</strong> Sus impuestos los recaudan las Haciendas Forales, no la AEAT (que allí solo gestiona aduanas e impuestos a la importación): 20.324,5 M€ y 5.865,7 M€ en 2025. Se explican aparte en la pestaña 4 y no se suman aquí porque ambas cifras incluyen ajustes con el Estado. Las cotizaciones sociales sí se recaudan en toda España.</li>
-    <li>Los derechos de aduana no aparecen como línea propia: no se confirmó ninguna cifra oficial. Ver pestaña 7.</li>
+    <li>Los derechos de aduana no aparecen como línea propia: no se confirmó ninguna cifra oficial. Ver pestaña 8.</li>
   </ul>
   <p class="src">Fuentes: <a href="https://sede.agenciatributaria.gob.es/Sede/estadisticas/recaudacion-tributaria/informe-anual/ejercicio-2025/resumen.html">AEAT, Informe anual de recaudación tributaria 2025</a> <span class="tag t-oficial">oficial</span> (impuestos, 325.356 M€). <a href="https://www.lamoncloa.gob.es/serviciosdeprensa/notasprensa/inclusion/Paginas/2026/310326-seguridad-social-deficit-pib.aspx">Ministerio de Inclusión, cotizaciones de la Seguridad Social</a> <span class="tag t-oficial">oficial</span> (176.918 M€). Los impuestos especiales (23.083 M€) proceden de prensa que cita el informe de la AEAT <span class="tag t-prensa">prensa</span>.</p>
 </section>
@@ -180,7 +181,7 @@
     <div>
       <div class="ctl-row"><label for="erosion">Parte de lo recaudado, según el partido, que nunca llega</label><output id="erosion-out" for="erosion">0%</output></div>
       <input type="range" id="erosion" min="0" max="100" step="5" value="0">
-      <p class="sub">Elusión, cambios de residencia, cambios de valoración. Los estudios de la pestaña 7 muestran que la base reacciona, pero no dan una cifra para esta propuesta: elige tú una.</p>
+      <p class="sub">Elusión, cambios de residencia, cambios de valoración. Los estudios de la pestaña 8 muestran que la base reacciona, pero no dan una cifra para esta propuesta: elige tú una.</p>
       <div class="presets" id="presets" role="group" aria-label="Valores predefinidos">
         <button type="button" data-e="0" aria-pressed="true">Cifra del partido (0%)</button>
         <button type="button" data-e="25" aria-pressed="false">25%</button>
@@ -411,7 +412,7 @@
   </div>
 
   <h3 class="lead">Qué significa para la pregunta de fondo</h3>
-  <p class="prose">Hay evidencia de que el tipo efectivo del IRPF baja en la cúspide y de que existen vías legales de aplazamiento. Pero la cúspide es pequeña: 18.829 declarantes con más de 601.000 € en 2024, el 0,08% de los declarantes <span class="tag t-oficial">oficial</span>. Ningún estudio de los que he encontrado muestra que lo que se escapa por arriba acabe repuesto por la clase media. Esa cadena sigue «sin contrastar» en la pestaña 7.</p>
+  <p class="prose">Hay evidencia de que el tipo efectivo del IRPF baja en la cúspide y de que existen vías legales de aplazamiento. Pero la cúspide es pequeña: 18.829 declarantes con más de 601.000 € en 2024, el 0,08% de los declarantes <span class="tag t-oficial">oficial</span>. Ningún estudio de los que he encontrado muestra que lo que se escapa por arriba acabe repuesto por la clase media. Esa cadena sigue «sin contrastar» en la pestaña 8.</p>
 
   <h3 class="lead">Lo que no sé</h3>
   <ul class="list">
@@ -472,10 +473,13 @@
 </section>
 
 
-<!-- 7. Evidencia ------------------------------------------------------------ -->
+<!-- 7. Top 25: aportación (generada por tab8.py) ----------------------------- -->
+{{TAB8}}
+
+<!-- 8. Evidencia ------------------------------------------------------------ -->
 <section class="panel" id="tab-evidencia" role="tabpanel" aria-labelledby="t-evidencia" hidden>
   <div class="tab-head">
-    <p class="eyebrow">7 · Evidencia, lagunas y fuentes</p>
+    <p class="eyebrow">8 · Evidencia, lagunas y fuentes</p>
     <h2>Qué respalda la evidencia y qué no.</h2>
     <p class="sub">La hipótesis tiene tres pasos: un impuesto más alto a los ricos encoge la base que puede alcanzar; el hueco se repone con impuestos más amplios; y la clase media acaba pagando. Las fuentes revisadas hablan del paso 1. Ninguna contrasta los pasos 2 y 3.</p>
   </div>

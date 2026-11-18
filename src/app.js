@@ -694,7 +694,7 @@
   });
 
   /* ---------- pestañas, con ruta en el #hash ---------- */
-  var TABS = ['ingresos', 'tramos', 'comunidades', 'forales', 'patrimonio', 'ricos', 'evidencia'];
+  var TABS = ['ingresos', 'tramos', 'comunidades', 'forales', 'patrimonio', 'ricos', 'aportacion', 'evidencia'];
   function showTab(name, focus) {
     if (TABS.indexOf(name) < 0) name = 'ingresos';
     TABS.forEach(function (t) {
