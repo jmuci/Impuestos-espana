@@ -2,7 +2,7 @@
 
 ¿A dónde van tus impuestos? ¿Quién paga más? ¿Pagan los ricos? Este tipo de preguntas buscamos responder.
 
-Página en español con gráficos de quién paga los impuestos en España: recaudación por fuente, IRPF por tramos, comunidades autónomas, País Vasco y Navarra, un impuesto al patrimonio, una pestaña sobre los más ricos y otra con la aportación de los 25 mayores patrimonios (impuestos de sus empresas, escenarios de IRPF y estadísticas de Hacienda). Cada cifra lleva su origen entre corchetes: oficial, prensa, académica, estimado o inferido.
+Página en español con gráficos de quién paga los impuestos en España: recaudación por fuente, IRPF por tramos, comunidades autónomas, País Vasco y Navarra, un impuesto al patrimonio, una pestaña sobre los más ricos y otra con la aportación de los 25 mayores patrimonios (impuestos de sus empresas, escenarios de IRPF, estadísticas de Hacienda y las mayores SICAV). Cada cifra lleva su origen entre corchetes: oficial, prensa, académica, estimado o inferido.
 
 Es una sola página estática, sin dependencias salvo las fuentes de Google Fonts.
 
