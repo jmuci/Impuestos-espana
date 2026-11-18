@@ -1,0 +1,1537 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>¿Quién paga los impuestos en España?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..500&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Diseño editorial sobre fondo blanco: texto en serif, tablas en sans, líneas finas en lugar de tarjetas. */
+:root {
+  --ink: #1c1c1c;
+  --paper: #ffffff;
+  --surface: #ffffff;
+  --line: #dcdcd8;
+  --muted: #5e5e5a;
+  --accent: #8c2f1d;
+  --accent-ink: #ffffff;
+  --hl: #f5f3ee;
+  --c-ss: #46709a;
+  --c-irpf: #9c3b2e;
+  --c-iva: #c49a2c;
+  --c-is: #4d8a7c;
+  --c-ied: #7a6a8e;
+  --c-oth: #9b9b94;
+  --c-prop: #b4531a;
+  --c-pv: #6b8e23;
+  --c-nav: #8d6e63;
+  --g1: #b6b6b0;
+  --g2: #d0d0ca;
+  --g3: #9a9a94;
+  --s0: #e6eef6; --s1: #d1dfee; --s2: #b8cde4; --s3: #9db9d9; --s4: #82a4cc;
+  --s5: #678ebd; --s6: #4f78ab; --s7: #3a6396; --s8: #284e80; --s9: #183869;
+  --serif: "Newsreader", Georgia, "Times New Roman", serif;
+  --sans: "Source Sans 3", "Helvetica Neue", Arial, sans-serif;
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; background: #fff; }
+body { margin: 0; background: #fff; color: var(--ink); font: 400 18px/1.6 var(--serif); font-optical-sizing: auto; }
+a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 3px; text-decoration-color: #9a9a94; }
+a:hover { color: var(--accent); text-decoration-color: var(--accent); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.wrap { max-width: 980px; margin: 0 auto; padding: 0 22px; }
+strong { font-weight: 600; }
+
+.hero { padding: 40px 0 24px; border-bottom: 1px solid var(--ink); }
+.eyebrow { margin: 0; font: italic 400 16px/1.4 var(--serif); color: var(--muted); }
+h1 { margin: 8px 0 14px; font: 500 clamp(34px, 6.2vw, 60px)/1.04 var(--serif); letter-spacing: -.02em; text-wrap: balance; }
+.lede { max-width: 62ch; margin: 0; font-size: 19px; }
+.lede strong { font-weight: 600; }
+.taglegend { margin: 14px 0 0; font: 400 14px/1.9 var(--sans); color: var(--muted); max-width: 90ch; }
+.taglegend .tag { margin-left: 8px; }
+.taglegend .tag:first-of-type { margin-left: 2px; }
+
+.rail { position: sticky; top: 0; z-index: 10; background: #fff; border-bottom: 1px solid var(--line); }
+.tablist { display: flex; gap: 0; overflow-x: auto; scrollbar-width: none; padding: 0 22px; max-width: 980px; margin: 0 auto; }
+.tablist::-webkit-scrollbar { display: none; }
+.tab { flex: 0 0 auto; appearance: none; background: none; border: 0; border-bottom: 2px solid transparent; margin-right: 15px; padding: 13px 0 9px; color: var(--muted); font: 500 14px/1.2 var(--sans); cursor: pointer; white-space: nowrap; }
+.tab .n { font: italic 400 14px var(--serif); margin-right: 5px; color: var(--muted); }
+.tab:hover { color: var(--ink); }
+.tab[aria-selected="true"] { color: var(--ink); font-weight: 600; border-bottom-color: var(--ink); }
+
+main.wrap { padding-top: 34px; padding-bottom: 56px; }
+.panel[hidden] { display: none; }
+.tab-head { margin: 0 0 22px; }
+.tab-head h2 { margin: 6px 0 0; font: 500 clamp(26px, 4.4vw, 40px)/1.12 var(--serif); letter-spacing: -.012em; max-width: 26ch; text-wrap: balance; }
+.sub { margin: 10px 0 0; color: var(--muted); max-width: 64ch; font-size: 17px; }
+
+.controls { display: flex; flex-wrap: wrap; gap: 8px 22px; align-items: center; margin: 0 0 16px; }
+.seg { display: inline-flex; flex-wrap: wrap; gap: 4px 20px; border: 0; background: none; }
+.seg button { appearance: none; border: 0; border-bottom: 1px solid transparent; background: none; padding: 3px 0; font: 500 15px/1.3 var(--sans); color: var(--muted); cursor: pointer; text-align: left; }
+.seg button:hover { color: var(--ink); }
+.seg button + button { border-left: 0; }
+.seg button[aria-pressed="true"] { color: var(--ink); font-weight: 600; border-bottom-color: var(--ink); background: none; }
+
+.card { background: none; border: 0; border-top: 1px solid var(--ink); border-radius: 0; padding: 16px 0 6px; }
+.card + .card { margin-top: 30px; }
+.card h3, h3.h { margin: 0; font: 600 21px/1.25 var(--serif); letter-spacing: -.005em; }
+.card .sub { margin-top: 4px; font-size: 16px; }
+.split { display: grid; grid-template-columns: minmax(0, 340px) minmax(0, 1fr); gap: 30px; align-items: start; }
+.pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px; }
+.pair .card + .card { margin-top: 0; }
+@media (max-width: 780px) { .split, .pair { grid-template-columns: minmax(0, 1fr); gap: 20px; } }
+
+.pie { display: grid; gap: 8px; justify-items: center; margin-top: 12px; }
+.pie svg { width: 100%; max-width: 330px; height: auto; display: block; overflow: visible; }
+.readout { width: 100%; min-height: 58px; text-align: center; font-family: var(--sans); }
+.r-main { font: 500 24px/1.15 var(--serif); font-variant-numeric: tabular-nums; }
+.r-sub { margin-top: 2px; color: var(--muted); font-size: 14px; font-variant-numeric: tabular-nums; }
+.r-sw { display: inline-block; width: 10px; height: 10px; margin-right: 6px; vertical-align: baseline; }
+.sg { transition: transform .16s ease, opacity .16s ease; }
+.sg path { stroke: #fff; stroke-width: 1.5; cursor: pointer; }
+.sg path:focus-visible { outline: none; stroke: var(--ink); stroke-width: 3; }
+.sg.on { transform: translate(var(--dx), var(--dy)); }
+.has-active .sg:not(.on) { opacity: .35; }
+.slice-label { font: 600 12px/1 var(--sans); font-variant-numeric: tabular-nums; pointer-events: none; }
+
+.tbl-wrap { overflow-x: auto; }
+table.legend, table.plain { width: 100%; border-collapse: collapse; font: 400 15px/1.45 var(--sans); font-variant-numeric: tabular-nums; }
+.legend th, .plain th { text-align: left; font-weight: 600; font-size: 13px; color: var(--muted); padding: 6px 10px 6px 0; border-bottom: 1px solid var(--ink); white-space: nowrap; }
+.legend td, .plain td { padding: 8px 10px 8px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+.legend .num { text-align: right; white-space: nowrap; padding-right: 0; padding-left: 10px; }
+.legend th.num { text-align: right; padding-left: 10px; }
+.legend tr[data-key] { cursor: pointer; }
+.legend tr.on td { background: var(--hl); }
+.legend tfoot td { font-weight: 600; border-bottom: 0; }
+.sw { display: inline-block; width: 10px; height: 10px; margin-right: 8px; vertical-align: -1px; }
+.sw.none { background: none !important; border: 1px dashed var(--muted); }
+.na { color: var(--muted); font-style: italic; }
+.tbl-wrap table.plain { min-width: 560px; }
+.plain td strong { font-weight: 600; }
+
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 0 22px; margin: 0 0 18px; padding: 0; }
+.stat { margin: 0; padding: 9px 0 10px; border: 0; border-top: 1px solid var(--line); border-radius: 0; background: none; }
+.stat dt { font: 400 13px/1.3 var(--sans); color: var(--muted); }
+.stat dd { margin: 2px 0 0; font: 500 26px/1.15 var(--serif); font-variant-numeric: tabular-nums; }
+.stat dd small { display: block; margin-top: 2px; font: 400 13px/1.3 var(--sans); color: var(--muted); }
+
+.notes { margin: 22px 0 0; padding: 0; list-style: none; display: grid; gap: 9px; max-width: 70ch; }
+.notes li { padding-left: 20px; position: relative; font-size: 17px; }
+.notes li::before { content: "–"; position: absolute; left: 2px; top: 0; color: var(--muted); }
+.src { margin: 18px 0 0; font: 400 14px/1.55 var(--sans); color: var(--muted); max-width: 90ch; }
+.tag { display: inline; padding: 0; border: 0; border-radius: 0; font: 500 .74em/1 var(--sans); letter-spacing: 0; color: var(--muted); white-space: nowrap; vertical-align: .1em; background: none; }
+.tag::before { content: "["; }
+.tag::after { content: "]"; }
+.tag.t-oficial { color: var(--ink); }
+.tag.t-estimado, .tag.t-inferido, .tag.t-partido, .tag.claim { color: var(--accent); font-style: italic; }
+.legend td .tag, .plain td .tag { margin-left: 5px; margin-right: 0; }
+.legend td + td, .legend th + th, .plain td + td, .plain th + th { padding-left: 12px; }
+
+.scn-controls { display: grid; gap: 16px; font-family: var(--sans); }
+.ctl-row { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.ctl-row label, fieldset legend { font-weight: 600; font-size: 15px; }
+output { font: 500 24px/1 var(--serif); font-variant-numeric: tabular-nums; }
+input[type="range"] { width: 100%; accent-color: var(--accent); margin: 8px 0 0; }
+.presets { display: flex; flex-wrap: wrap; gap: 6px 18px; }
+.presets button { appearance: none; border: 0; border-bottom: 1px dotted var(--muted); background: none; color: var(--muted); padding: 2px 0; font: 500 14px/1.3 var(--sans); cursor: pointer; }
+.presets button:hover { color: var(--ink); }
+.presets button[aria-pressed="true"] { color: var(--ink); border-bottom: 1px solid var(--ink); font-weight: 600; }
+fieldset { margin: 0; padding: 0; border: 0; display: grid; gap: 8px; }
+fieldset legend { padding: 0; margin-bottom: 6px; }
+.opt { display: flex; gap: 10px; align-items: flex-start; font-size: 15px; cursor: pointer; }
+.opt input { margin-top: 4px; accent-color: var(--accent); }
+.opt small { display: block; color: var(--muted); font-size: 13px; }
+.summary { margin: 0; padding: 12px 0; border: 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: none; font-style: italic; font-size: 17px; max-width: 70ch; }
+.empty { display: grid; place-items: center; min-height: 200px; padding: 16px; text-align: center; color: var(--muted); font: 400 15px/1.4 var(--sans); border: 1px dashed var(--line); }
+
+.cols2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px; }
+.cols2 .card + .card { margin-top: 0; }
+@media (max-width: 780px) { .cols2 { grid-template-columns: minmax(0, 1fr); gap: 24px; } }
+.cols2 h3 { margin-bottom: 8px; }
+.list { margin: 0; padding-left: 18px; display: grid; gap: 8px; font-size: 17px; }
+.src-list { margin: 0; padding-left: 18px; display: grid; gap: 6px; font: 400 15px/1.5 var(--sans); }
+
+/* pestaña de los más ricos */
+.verdict td:nth-child(2) { font-family: var(--serif); font-size: 16.5px; min-width: 180px; }
+.verdict td:first-child { font-family: var(--serif); font-size: 16.5px; font-style: italic; min-width: 150px; }
+.lead { margin: 26px 0 0; font: 600 22px/1.25 var(--serif); }
+.lead:first-of-type { margin-top: 0; }
+.prose { max-width: 66ch; margin: 8px 0 0; }
+.prose + .prose { margin-top: 10px; }
+.bars { display: grid; gap: 10px; margin: 14px 0 0; padding: 0; list-style: none; font: 400 15px/1.3 var(--sans); max-width: 680px; }
+.bars li { display: grid; grid-template-columns: minmax(130px, 210px) 1fr 58px; gap: 14px; align-items: center; }
+.bars .bar { height: 12px; background: var(--hl); }
+.bars .bar i { display: block; height: 100%; width: var(--w); background: #7b7b76; }
+.bars li.hi .bar i { background: var(--accent); }
+.bars .v { text-align: right; font-weight: 600; font-variant-numeric: tabular-nums; }
+.bars li.hi .v { color: var(--accent); }
+@media (max-width: 560px) {
+  .bars li { grid-template-columns: 1fr auto; row-gap: 5px; }
+  .bars .bar { grid-column: 1 / -1; order: 3; }
+}
+.fig-note { margin: 10px 0 0; font: 400 14px/1.5 var(--sans); color: var(--muted); max-width: 70ch; }
+.twocol-text { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px; margin-top: 6px; }
+@media (max-width: 780px) { .twocol-text { grid-template-columns: minmax(0, 1fr); gap: 18px; } }
+.twocol-text h4 { margin: 0 0 6px; font: 600 18px/1.3 var(--serif); }
+.twocol-text ul { margin: 0; padding-left: 18px; display: grid; gap: 8px; font-size: 16.5px; }
+
+footer { padding: 18px 0 44px; color: var(--muted); font: 400 14px/1.55 var(--sans); border-top: 1px solid var(--line); }
+footer p { margin: 0; max-width: 80ch; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
+
+.src-cols { columns: 2; column-gap: 30px; margin: 10px 0 0; padding: 0; list-style: none; font: 400 14px/1.5 var(--sans); color: var(--muted); }
+.src-cols li { break-inside: avoid; margin: 0 0 6px; padding-left: 0; }
+.src-cols a { color: var(--ink); }
+.src-head { margin: 22px 0 0; font: 600 13px/1.3 var(--sans); color: var(--muted); }
+@media (max-width: 780px) { .src-cols { columns: 1; } }
+
+@media (max-width: 640px) {
+  .tbl-wrap table.plain.verdict { min-width: 0; }
+  .verdict thead { display: none; }
+  .verdict, .verdict tbody, .verdict tr, .verdict td { display: block; width: 100%; }
+  .verdict tr { padding: 14px 0 12px; border-bottom: 1px solid var(--line); }
+  .verdict td, .verdict td + td { padding: 0 0 6px; border: 0; min-width: 0 !important; }
+  .verdict td:last-child { font-size: 15px; color: var(--ink); }
+}
+
+.profile { margin: 22px 0 6px; max-width: 880px; }
+.profile h4 { margin: 0 0 6px; font: 600 19px/1.25 var(--serif); }
+.profile .who { margin-left: 8px; font: 400 14px var(--sans); color: var(--muted); }
+.tbl-wrap + .profile table, .profile table.plain { min-width: 0; width: 100%; }
+.profile td:first-child { width: 28%; color: var(--muted); font-size: 14px; padding-right: 14px; }
+@media (max-width: 640px) { .profile td:first-child { width: 34%; } .profile .who { display: block; margin: 2px 0 0; } }
+
+@media (max-width: 640px) {
+  .tbl-wrap table.plain.stack { min-width: 0; }
+  .stack thead { display: none; }
+  .stack, .stack tbody, .stack tr, .stack td { display: block; width: 100%; }
+  .stack tr { padding: 12px 0 8px; border-bottom: 1px solid var(--line); }
+  .stack td, .stack td + td { padding: 0 0 7px; border: 0; }
+  .stack td::before { content: attr(data-l); display: block; font: 600 12px/1.3 var(--sans); color: var(--muted); margin-bottom: 1px; }
+  .stack td:first-child::before { display: none; }
+  .stack td:first-child { font-weight: 600; }
+}
+@media (max-width: 640px) { #tab-ricos .tbl-wrap table.plain { min-width: 0; } #tab-ricos .tbl-wrap { overflow-x: visible; } }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">España · datos oficiales · impuestos 2025, declaraciones 2024</p>
+    <h1>¿Quién paga los impuestos en España?</h1>
+    <p class="lede">Siete vistas de un mismo sistema fiscal, con cada porción rastreada hasta su fuente. La pregunta de fondo: <strong>si España sube los impuestos a los ricos, ¿acaba pagando la factura la clase media?</strong> Los datos permiten contrastar una parte. Donde no llegan, la página lo dice.</p>
+    <p class="taglegend">Cada cifra lleva su origen entre corchetes:
+      <span class="tag t-oficial">oficial</span> publicado por una administración,
+      <span class="tag t-prensa">prensa</span> publicado por un medio,
+      <span class="tag t-academica">académica</span> estudio o documento de trabajo,
+      <span class="tag t-estimado">estimado</span> cálculo propio con supuestos explicados,
+      <span class="tag t-inferido">inferido</span> deducido por diferencia.
+    </p>
+  </div>
+</header>
+
+<nav class="rail" aria-label="Vistas">
+  <div class="tablist" role="tablist">
+    <button class="tab" role="tab" id="t-ingresos" aria-controls="tab-ingresos" data-tab="ingresos"><span class="n">1</span>Ingresos</button>
+    <button class="tab" role="tab" id="t-tramos" aria-controls="tab-tramos" data-tab="tramos"><span class="n">2</span>Tramos de renta</button>
+    <button class="tab" role="tab" id="t-comunidades" aria-controls="tab-comunidades" data-tab="comunidades"><span class="n">3</span>Comunidades</button>
+    <button class="tab" role="tab" id="t-forales" aria-controls="tab-forales" data-tab="forales"><span class="n">4</span>País Vasco y Navarra</button>
+    <button class="tab" role="tab" id="t-patrimonio" aria-controls="tab-patrimonio" data-tab="patrimonio"><span class="n">5</span>Impuesto al patrimonio</button>
+    <button class="tab" role="tab" id="t-ricos" aria-controls="tab-ricos" data-tab="ricos"><span class="n">6</span>Los más ricos</button>
+    <button class="tab" role="tab" id="t-evidencia" aria-controls="tab-evidencia" data-tab="evidencia"><span class="n">7</span>Evidencia y fuentes</button>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<!-- 1. Ingresos ------------------------------------------------------------ -->
+<section class="panel" id="tab-ingresos" role="tabpanel" aria-labelledby="t-ingresos" hidden>
+  <div class="tab-head">
+    <p class="eyebrow">1 · Ingresos por fuente, 2025</p>
+    <h2 id="rev-finding"></h2>
+  </div>
+  <div class="controls">
+    <div class="seg" role="group" aria-label="Alcance">
+      <button type="button" id="rev-all" aria-pressed="true">Impuestos y Seguridad Social</button>
+      <button type="button" id="rev-tax" aria-pressed="false">Solo impuestos</button>
+    </div>
+  </div>
+  <div class="card"><div class="split" id="rev-card"></div></div>
+  <ul class="notes">
+    <li>La AEAT recauda estos impuestos para el Estado, las comunidades y los ayuntamientos a la vez, antes de repartirlos.</li>
+    <li>El IRPF más las cotizaciones a la Seguridad Social suman el 63,6% del total conjunto (cálculo propio con las cifras de arriba).</li>
+    <li><strong>Faltan País Vasco y Navarra.</strong> Sus impuestos los recaudan las Haciendas Forales, no la AEAT (que allí solo gestiona aduanas e impuestos a la importación): 20.324,5 M€ y 5.865,7 M€ en 2025. Se explican aparte en la pestaña 4 y no se suman aquí porque ambas cifras incluyen ajustes con el Estado. Las cotizaciones sociales sí se recaudan en toda España.</li>
+    <li>Los derechos de aduana no aparecen como línea propia: no se confirmó ninguna cifra oficial. Ver pestaña 7.</li>
+  </ul>
+  <p class="src">Fuentes: <a href="https://sede.agenciatributaria.gob.es/Sede/estadisticas/recaudacion-tributaria/informe-anual/ejercicio-2025/resumen.html">AEAT, Informe anual de recaudación tributaria 2025</a> <span class="tag t-oficial">oficial</span> (impuestos, 325.356 M€). <a href="https://www.lamoncloa.gob.es/serviciosdeprensa/notasprensa/inclusion/Paginas/2026/310326-seguridad-social-deficit-pib.aspx">Ministerio de Inclusión, cotizaciones de la Seguridad Social</a> <span class="tag t-oficial">oficial</span> (176.918 M€). Los impuestos especiales (23.083 M€) proceden de prensa que cita el informe de la AEAT <span class="tag t-prensa">prensa</span>.</p>
+</section>
+
+<!-- 2. Tramos -------------------------------------------------------------- -->
+<section class="panel" id="tab-tramos" role="tabpanel" aria-labelledby="t-tramos" hidden>
+  <div class="tab-head">
+    <p class="eyebrow">2 · IRPF por tramos de renta</p>
+    <h2>El IRPF está concentrado: el 10% de mayor renta paga el 54%.</h2>
+    <p class="sub">Los tramos son la renta anual total. No se pudo obtener la tabla nacional de cuota pagada por tramo, así que el segundo gráfico muestra la base liquidable a nivel nacional, o la cuota realmente pagada en Madrid, la mayor comunidad.</p>
+  </div>
+  <div class="controls">
+    <div class="seg" role="group" aria-label="Territorio">
+      <button type="button" id="br-nat" aria-pressed="true">España: declarantes y base liquidable</button>
+      <button type="button" id="br-mad" aria-pressed="false">Madrid: declarantes y cuota pagada</button>
+    </div>
+  </div>
+  <dl class="stats" id="br-stats"></dl>
+  <div class="pair" id="br-pies"></div>
+  <div class="card"><div class="tbl-wrap" id="br-table"></div></div>
+  <div class="card"><div class="split" id="ief-card"></div></div>
+  <ul class="notes">
+    <li>«Declarantes» son las personas que presentan declaración del IRPF, no toda la población. La estadística cubre solo el territorio de régimen común; País Vasco y Navarra tienen su propio sistema (para Navarra hay una tabla por tramos en la pestaña 4; para el País Vasco no hay tabla consolidada).</li>
+    <li>La tabla de Madrid oculta dos celdas (menos de 6.000 € y más de 601.000 €) por secreto estadístico. La porción gris es lo que falta hasta el 100% tras los tramos publicados, así que contiene ambas.</li>
+    <li>Los declarantes de Madrid con más de 60.000 € son el 11,5% del total y pagan al menos el 44,7% de su IRPF, sin contar el tramo superior, que no se publica.</li>
+    <li>La cifra del decil superior es el titular de un documento de trabajo del Instituto de Estudios Fiscales (Ministerio de Hacienda). No se revisó la tabla completa por deciles.</li>
+  </ul>
+  <p class="src">Fuentes: AEAT, <a href="https://sede.agenciatributaria.gob.es/AEAT/Contenidos_Comunes/La_Agencia_Tributaria/Estadisticas/Publicaciones/sites/irpf/2024/home_parcialf77cdc736ae2c95d72190138820307f5f5534ac93.html">Estadística de los declarantes del IRPF 2024</a> (<a href="https://sede.agenciatributaria.gob.es/AEAT/Contenidos_Comunes/La_Agencia_Tributaria/Estadisticas/Publicaciones/sites/irpf/2024/jrubik976b95950462ac596e081ab2bd5e7fd64eed0a8.html">declarantes y base liquidable</a>, <a href="https://sede.agenciatributaria.gob.es/AEAT/Contenidos_Comunes/La_Agencia_Tributaria/Estadisticas/Publicaciones/sites/irpf/2024/jrubikf634b3ce594c865246ba8623a578b54879c075207.html">cuota pagada en Madrid</a>, <a href="https://sede.agenciatributaria.gob.es/AEAT/Contenidos_Comunes/La_Agencia_Tributaria/Estadisticas/Publicaciones/sites/irpf/2024/jrubik82396464ffcba89379d747339c6232341146c10.html">totales nacionales</a>) <span class="tag t-oficial">oficial</span>. <a href="https://www.ief.es/docs/destacados/publicaciones/documentos_trabajo/2026_02.pdf">Instituto de Estudios Fiscales, documento de trabajo 2026/02</a> <span class="tag t-oficial">oficial</span>.</p>
+</section>
+
+<!-- 3. Comunidades --------------------------------------------------------- -->
+<section class="panel" id="tab-comunidades" role="tabpanel" aria-labelledby="t-comunidades" hidden>
+  <div class="tab-head">
+    <p class="eyebrow">3 · Comunidades autónomas, 2024</p>
+    <h2 id="rg-finding"></h2>
+    <p class="sub">Dos gráficos con los mismos datos. Izquierda: qué parte del impuesto recauda cada comunidad. Derecha: los mismos números divididos por habitantes, así que cada porción son euros por persona. Toca una porción o una fila para compararlas.</p>
+  </div>
+  <div class="controls">
+    <div class="seg" role="group" aria-label="Vista">
+      <button type="button" id="rg-off" aria-pressed="true">Oficial: 15 comunidades de régimen común</button>
+      <button type="button" id="rg-est" aria-pressed="false">Con País Vasco y Navarra (estimado)</button>
+    </div>
+  </div>
+  <div class="pair" id="rg-pies"></div>
+  <div class="card"><div class="tbl-wrap" id="rg-table"></div></div>
+  <ul class="notes">
+    <li>La medida es la «capacidad tributaria» de cada comunidad en la liquidación de 2024 del sistema de financiación: lo que rendiría su parte de los impuestos cedidos con reglas comunes. No es el total de impuestos pagados.</li>
+    <li>El gráfico por habitante no tiene un total con sentido, porque suma ratios. Compara porción con porción o lee el índice de la tabla.</li>
+    <li>La vista oficial deja fuera País Vasco y Navarra (sistema fiscal propio, 2,93 M de habitantes), Ceuta y Melilla; en conjunto son el 6,3% de la población de España. La vista con estimación añade País Vasco y Navarra con un cálculo propio, cuyo método está en la pestaña 4, y que lleva un margen de ±10%. El índice usa siempre como base la media de las 15 comunidades oficiales.</li>
+    <li>Canarias aparece, pero su impuesto indirecto propio y su régimen especial dificultan la comparación.</li>
+    <li>¿Por qué no la recaudación de la AEAT por comunidad? La AEAT atribuye lo recaudado al domicilio fiscal del contribuyente, lo que infla a Madrid, donde tienen sede muchas grandes empresas. La prensa sitúa a Madrid en torno al 44% de lo recaudado por la AEAT (2023: 44,34%): un efecto del domicilio, no una medida de actividad.</li>
+    <li>Los ingresos son de 2024 y la población es del 1 de enero de 2025, un año posterior.</li>
+  </ul>
+  <p class="src">Fuentes: liquidación de 2024 del Ministerio de Hacienda, tabulada en <a href="https://documentos.fedea.net/pubs/eee/2026/eee2026-24.pdf">Fedea, eee2026-24, tabla 1</a> <span class="tag t-oficial">oficial</span>. Población: <a href="https://www.ine.es/prodyser/espa_cifras/21_ANEXO.pdf">INE, España en cifras</a>. Efecto del domicilio: <a href="https://sede.agenciatributaria.gob.es/static_files/AEAT/Estudios/Estadisticas/Informes_Estadisticos/Informes_mensuales_recaudacion_tributaria/2025/IMR_25_12_va_es.pdf">AEAT, informe mensual de diciembre de 2025</a>. Estimaciones de País Vasco y Navarra: cálculo propio a partir de las cifras de la pestaña 4 <span class="tag t-estimado">estimado</span>.</p>
+</section>
+
+<!-- 4. Territorios forales ------------------------------------------------- -->
+<section class="panel" id="tab-forales" role="tabpanel" aria-labelledby="t-forales" hidden>
+  <div class="tab-head">
+    <p class="eyebrow">4 · País Vasco y Navarra, 2025</p>
+    <h2>Sí contribuyen, pero por otra vía. Cuánto, es lo que se discute.</h2>
+    <p class="sub">No salen en las pestañas 1 a 3 porque sus impuestos no los recauda la AEAT ni entran en el sistema de financiación de régimen común: los recaudan las tres Diputaciones Forales vascas y la Hacienda Foral de Navarra. Después pagan al Estado un <strong>cupo</strong> (País Vasco) o una <strong>aportación</strong> (Navarra) por las competencias que el Estado conserva, como Defensa, Exteriores o la deuda estatal. La AEAT solo gestiona allí aduanas e impuestos a la importación.</p>
+  </div>
+  <div class="controls">
+    <div class="seg" role="group" aria-label="Territorio foral">
+      <button type="button" id="fo-pv" aria-pressed="true">País Vasco</button>
+      <button type="button" id="fo-nav" aria-pressed="false">Navarra</button>
+    </div>
+  </div>
+  <dl class="stats" id="fo-stats"></dl>
+  <div class="pair" id="fo-pies"></div>
+  <div class="card" id="fo-series" style="margin-top:16px"></div>
+  <div id="fo-brackets" style="margin-top:16px"></div>
+
+  <h3 style="margin:26px 0 10px;font:700 20px/1.2 var(--font-display)">¿Cuánto aportan, comparado con el régimen común?</h3>
+  <div class="card"><div class="tbl-wrap" id="fo-compare"></div></div>
+  <ul class="notes" id="fo-method"></ul>
+
+  <div class="cols2" style="margin-top:16px">
+    <div class="card">
+      <h3>Lo que dicen los críticos</h3>
+      <ul class="list" style="margin-top:8px">
+        <li>Ángel de la Fuente (Fedea) calcula que la base del cupo, las cargas del Estado que el territorio no ha asumido, está infravalorada en torno a un 30% (unos 32.000 M€, año 2017), y que las comunidades forales casi no contribuyen a la solidaridad entre territorios. <span class="tag t-academica">académica</span></li>
+        <li>Miguel Ángel García Díaz (URJC y Fedea) sostiene que, por cómo se negocia la aportación, País Vasco y Navarra quedan muy por encima de la media de financiación por habitante ajustado. <span class="tag t-academica">académica</span></li>
+        <li>El Ivie (Valencia y Zaragoza) estima que, descontadas las competencias distintas, queda un exceso de recursos sin justificar de en torno al 30% por habitante. <span class="tag t-academica">académica</span></li>
+        <li>Ignacio Zubiri (UPV/EHU), que no se opone al Concierto, señala que el País Vasco aporta a las demás comunidades menos que otras de renta parecida. <span class="tag t-prensa">prensa</span></li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Lo que dicen los defensores</h3>
+      <ul class="list" style="margin-top:8px">
+        <li>El Gobierno Vasco afirma que el Concierto es solidario y que el País Vasco contribuye a los gastos comunes en proporción a su riqueza, también al Fondo de Compensación Interterritorial.</li>
+        <li>Lo describen como un régimen de «riesgo unilateral»: el cupo se paga con independencia de cómo vayan las finanzas propias, sin garantía de ingresos.</li>
+        <li>Un argumento numérico: el índice de imputación vasco (6,24%) supera su peso de población (≈4,6%); el navarro (1,60%) también supera el suyo (≈1,4%). Los críticos responden que el problema no es el índice, sino la base a la que se aplica y la falta de contribución a la nivelación.</li>
+        <li>El PNV defiende que el Concierto y el Cupo no son privilegios, sino derechos históricos.</li>
+      </ul>
+    </div>
+  </div>
+  <p class="src" style="margin-top:10px">Ninguna de las dos partes dispone de un cálculo oficial del cupo «correcto»: la Ley del Cupo publica solo un anexo resumido que De la Fuente y García Díaz consideran insuficiente para replicarlo. Las estimaciones de infravaloración proceden de autores críticos con el sistema; las posiciones de los defensores, de las instituciones que lo gestionan.</p>
+
+  <div class="card" style="margin-top:16px">
+    <h3>Qué aportan los territorios forales a la hipótesis</h3>
+    <ul class="list" style="margin-top:8px">
+      <li>Navarra tiene el segundo tipo marginal máximo agregado de España (52%, solo por detrás de la Comunitat Valenciana, con 54%); en los territorios vascos es del 49%. <span class="tag t-prensa">prensa</span> (Consejo General de Economistas)</li>
+      <li>Aun así, el mismo informe sitúa a Navarra como la comunidad donde más IRPF pagan las rentas de 20.000 €, la novena de 19 para rentas de 45.000 € y la cuarta para rentas de 70.000 €. <span class="tag t-prensa">prensa</span> (Noticias de Navarra, 25-4-2026)</li>
+      <li>El IVA y los Impuestos Especiales, que soporta todo el mundo, suponen el 46% de la recaudación foral vasca y el 44% de la navarra (cálculo propio con las cifras de arriba).</li>
+    </ul>
+    <ul class="notes" style="margin-top:12px">
+      <li><strong>Lectura A (apoya la hipótesis):</strong> tipos máximos muy altos conviven con una presión notable sobre las rentas medias.</li>
+      <li><strong>Lectura B (la cuestiona):</strong> las rentas de más de 60.000 € (≈9% de los declarantes navarros) ya aportan cerca de la mitad del IRPF, y la carga sobre las rentas medias responde a decisiones de gasto, no a un traslado desde los ricos.</li>
+      <li>Los datos forales no permiten establecer causalidad en ninguna de las dos direcciones. Son un caso útil, no una prueba.</li>
+    </ul>
+  </div>
+
+  <ul class="notes" style="margin-top:16px">
+    <li>La recaudación foral bruta no es comparable con los 3.335 € por habitante de régimen común, porque incluye la parte que en el resto de España pertenece al Estado. Por eso se calcula una capacidad «equivalente» estimada.</li>
+    <li>La cifra de la AEAT incluye el IVA a la importación cobrado en puertos y aduanas forales, y la recaudación foral incluye ajustes de IVA e Impuestos Especiales con el Estado. Por eso no se suman en un único gráfico.</li>
+    <li>Las cifras de 2024 de ambos territorios están distorsionadas por devoluciones extraordinarias a mutualistas (unos 800 M€ en el País Vasco). Las partes pueden no sumar el total por redondeo.</li>
+    <li>¿Cómo se calcula el cupo? Se parte del gasto del Estado en competencias que el territorio no ha asumido, se descuenta el déficit, se multiplica por el índice de imputación (6,24% País Vasco, 1,60% Navarra, fijados básicamente según la renta), se restan compensaciones y se aplican ajustes de IVA e Impuestos Especiales (Ley 10/2023).</li>
+  </ul>
+  <p class="src">Fuentes: <a href="https://www.irekia.euskadi.eus/es/news/108064-consejo-vasco-finanzas-publicas">Gobierno Vasco, Consejo Vasco de Finanzas Públicas, cierre 2025 (12-2-2026)</a> <span class="tag t-oficial">oficial</span>. <a href="https://www.navarra.es/es/-/nota-prensa/hacienda-finalizo-2025-con-una-recaudacion-de-5-865-millones-de-euros">Gobierno de Navarra, recaudación de 2025 (11-2-2026)</a> <span class="tag t-oficial">oficial</span>. <a href="https://www.euskadi.eus/contenidos/informacion/comision_mixta/es_14815/adjuntos/Acta_CMCE__01_2024.pdf">Acta de la Comisión Mixta del Concierto Económico 1/2024</a>; <a href="https://www.boe.es/diario_boe/txt.php?id=BOE-A-2023-8456">Ley 10/2023 (BOE)</a>; <a href="https://www.navarra.es/en/web/memoria-2024/5.1.-convenio-economico">Memoria 2024 de la Hacienda Foral de Navarra</a>; <a href="https://www.airef.es/wp-content/uploads/2026/07/Informes-ejecuci%C3%B3n-2026/Informe_PEF26-27_Cierre26_NAV_55_26.pdf">AIReF, informe sobre Navarra, julio de 2026</a> <span class="tag t-oficial">oficial</span>. <a href="https://documentos.fedea.net/pubs/ap/2024/ap2024-27.pdf">García Díaz, Fedea Apuntes 2024/27</a>; <a href="https://conciertoeconomico.org/wp-content/uploads/2022/10/HPE-2022-DE-LA-FUENTE-A_Sobre-el-Sistema-de-Financiacion-Foral-vasco-y-navarro-notas-para-un-debate-necesario.pdf">De la Fuente, Hacienda Pública Española 242 (2022)</a> <span class="tag t-academica">académica</span>. Prensa: <a href="https://www.noticiasdenavarra.com/economia/2022/04/17/9-contribuyentes-ganan-aporta-mitad-2084191.html">Noticias de Navarra (IRPF por tramos)</a>, <a href="https://orain.eus/es/actualidad/economia/2025/10/30/el-cupo-vasco-al-estado-previsto-2026-sera-1532-millones-un-29-mas/">orain.eus</a>, <a href="https://bilbaohiria.com/euskal-herria/comision-concierto-deficit-gobierno-vasco-cupo/">Bilbao Hiria</a> <span class="tag t-prensa">prensa</span>.</p>
+</section>
+
+<!-- 5. Impuesto al patrimonio ---------------------------------------------- -->
+<section class="panel" id="tab-patrimonio" role="tabpanel" aria-labelledby="t-patrimonio" hidden>
+  <div class="tab-head">
+    <p class="eyebrow">5 · Medida redistributiva: un impuesto al patrimonio</p>
+    <h2>Qué añade al total un impuesto del 2% al patrimonio, y qué cambia si la base se encoge.</h2>
+    <p class="sub">Ada Colau y el Frente Amplio proponen un 2% sobre el patrimonio neto por encima de 1 M€ y un 3% por encima de 50 M€. El partido calcula 10.000 M€ al año de 231.000 contribuyentes. <span class="tag t-partido">cifra del partido</span> No se encontró ninguna valoración de AIReF ni de Hacienda. Todo lo que sigue es aritmética sobre supuestos declarados, no una previsión.</p>
+  </div>
+
+  <div class="card scn-controls">
+    <div>
+      <div class="ctl-row"><label for="erosion">Parte de lo recaudado, según el partido, que nunca llega</label><output id="erosion-out" for="erosion">0%</output></div>
+      <input type="range" id="erosion" min="0" max="100" step="5" value="0">
+      <p class="sub">Elusión, cambios de residencia, cambios de valoración. Los estudios de la pestaña 7 muestran que la base reacciona, pero no dan una cifra para esta propuesta: elige tú una.</p>
+      <div class="presets" id="presets" role="group" aria-label="Valores predefinidos">
+        <button type="button" data-e="0" aria-pressed="true">Cifra del partido (0%)</button>
+        <button type="button" data-e="25" aria-pressed="false">25%</button>
+        <button type="button" data-e="50" aria-pressed="false">50%</button>
+        <button type="button" data-e="75" aria-pressed="false">75%</button>
+      </div>
+    </div>
+    <fieldset>
+      <legend>¿Quién cubre el hueco?</legend>
+      <label class="opt" for="rule-none"><input type="radio" name="rule" id="rule-none" value="none" checked><span>Nadie<small>Se recorta gasto o crece el déficit. Nada más cambia.</small></span></label>
+      <label class="opt" for="rule-prop"><input type="radio" name="rule" id="rule-prop" value="prop"><span>IRPF, en proporción a lo que se paga hoy<small>La factura de IRPF de todos sube el mismo porcentaje. El decil superior paga el 53,96% del IRPF.</small></span></label>
+      <label class="opt" for="rule-flat"><input type="radio" name="rule" id="rule-flat" value="flat"><span>IRPF, los mismos euros por declarante<small>Un cargo fijo por declaración, de modo que cada decil de declarantes asume el 10%.</small></span></label>
+    </fieldset>
+  </div>
+
+  <p class="summary" id="scn-summary" style="margin-top:16px"></p>
+  <dl class="stats" id="scn-stats" style="margin-top:16px"></dl>
+
+  <div class="pair" id="scn-pies"></div>
+  <div class="card"><div class="split" id="scn-bear"></div></div>
+
+  <h3 style="margin:26px 0 10px;font:700 20px/1.2 var(--font-display)">Referencias con las que compararlo</h3>
+  <dl class="stats">
+    <div class="stat"><dt>Impuesto de patrimonio hoy (2024)</dt><dd>2.150 M€<small>+11,8% sobre 2023; 227.424 declarantes, 185.031 con cuota a ingresar</small></dd></div>
+    <div class="stat"><dt>La cifra del partido, en múltiplos</dt><dd>4,6×<small>de la cuota actual del Patrimonio; 3,1% de la recaudación de la AEAT de 2025</small></dd></div>
+    <div class="stat"><dt>Tramo superior hoy</dt><dd>1.023<small>declarantes con más de 30,05 M€ acumulan el 14,31% de la base</small></dd></div>
+    <div class="stat"><dt>Umbrales vigentes</dt><dd>700.000 € / 3 M€<small>mínimo exento del Patrimonio; ITSGF estatal por encima de 3 M€</small></dd></div>
+  </dl>
+  <div class="card"><div class="split" id="wealth-card"></div></div>
+  <ul class="notes">
+    <li>Las reglas de compensación son ilustraciones. Ninguna fuente usada aquí mide quién soporta en último término el IVA o la Seguridad Social, así que ninguna regla los modela.</li>
+    <li>«Por declarante» divide entre los 24,6 M de declarantes del IRPF de 2024 (régimen común) y el «%» entre los 142.466 M€ de IRPF de la AEAT de 2025. Los años y los territorios difieren: léelo como un orden de magnitud, no como una factura.</li>
+    <li>El ITSGF estatal recaudó 623 M€ en 2023, el 89% desde Madrid. En 2024 se hundió cuando Madrid y Andalucía reactivaron el Patrimonio autonómico, que se deduce de aquel. La cuota del Patrimonio subió un 11,8% ese mismo año; las dos cifras vienen de publicaciones distintas, así que compáralas con cautela.</li>
+    <li>Reparto de la riqueza de los hogares según el Banco de España, 3T 2025: el 10% superior tiene el 53% y el 50% inferior el 9%. El 40% intermedio es el resto.</li>
+    <li>Esta pestaña no incluye País Vasco ni Navarra, donde el Patrimonio es un impuesto foral. En Navarra (campaña de 2023) hubo 7.180 declarantes y 41,6 M€ <span class="tag t-prensa">prensa</span> que cita a la Hacienda Foral. En el País Vasco, Patrimonio y Sucesiones no se publican por separado: una estimación propia los sitúa en 250–400 M€ (1,2–2,0% de la recaudación foral) <span class="tag t-estimado">estimado</span>, extrapolando que en Gipuzkoa ambos suman menos del 2%.</li>
+  </ul>
+  <p class="src">Fuentes: términos y cifras de la propuesta, de prensa (<a href="https://es.ara.cat/politica/nuevo-impuesto-propone-ada-colau-alto-pagan-ricos_1_5903002.html">Ara</a>, <a href="https://www.eldiario.es/1_d0204f">elDiario.es</a>, <a href="https://www.moncloa.com/2026/11/06/tasa-ritz-colau-3462221/">Moncloa.com</a>, un medio digital) <span class="tag t-prensa">prensa</span>. <a href="https://sede.agenciatributaria.gob.es/Sede/estadisticas/sites/patrimonio/2024/jrubik51212750ec835e99533949433231abd3637d68ee.html">AEAT, Estadística del Patrimonio 2024</a>. <a href="https://www.lamoncloa.gob.es/serviciosdeprensa/notasprensa/hacienda/paginas/2023/200923-impuesto-solidaridad-grandes-fortunas.aspx">Hacienda, nota sobre el ITSGF 2023</a>. <a href="https://www.bde.es/wbe/es/noticias-eventos/podcast/como-se-distribuye-la-riqueza-entre-los-hogares.html">Banco de España</a>; <a href="https://repositorio.bde.es/bitstream/123456789/36572/1/do2413.pdf">Documento Ocasional 2413</a> para 2022.</p>
+</section>
+
+<!-- 6. Los más ricos ------------------------------------------------------- -->
+<section class="panel" id="tab-ricos" role="tabpanel" aria-labelledby="t-ricos" hidden>
+  <div class="tab-head">
+    <p class="eyebrow">6 · Los más ricos y el IRPF</p>
+    <h2>Los más ricos no pagan «casi nada» de IRPF, pero pagan menos que quienes están justo debajo.</h2>
+    <p class="sub">Tres sospechas habituales: que piden préstamos en vez de vender, que usan sociedades y entidades en el extranjero, que usan SICAV. Aquí van las cifras que he encontrado, rumor por rumor, y a partir de qué cantidad empiezan a servir esas vías. De los más ricos de verdad (el 0,01% superior) hay muy pocos datos publicados en España; donde faltan, la pestaña lo dice.</p>
+  </div>
+
+  <h3 class="lead">Veredicto</h3>
+  <div class="tbl-wrap">
+    <table class="plain verdict">
+      <thead><tr><th>Lo que se dice</th><th>Veredicto</th><th>Qué hay detrás</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>«Los ultrarricos no pagan prácticamente IRPF»</td>
+          <td><strong>Falso tal como se dice. Es cierto que el tipo efectivo cae en la cúspide.</strong></td>
+          <td>Según Fedea, con datos de 2022 el IRPF efectivo sube hasta el 16% en los centiles 91–99 de renta y baja al 10% en el 1% con más renta <span class="tag t-prensa">prensa</span>. Con datos de 2023 repite que el tipo cae casi 5 puntos en el centil superior <span class="tag t-academica">académica</span>. Es una caída, no un cero. Pero ese 1% no es el 0,01%: la encuesta de la que parte no capta bien a los más ricos.</td>
+        </tr>
+        <tr>
+          <td>«Piden préstamos en vez de vender»</td>
+          <td><strong>Posible y legal. No hay datos de cuánto se usa en España.</strong></td>
+          <td>El IRPF grava la ganancia cuando se vende <span class="tag t-oficial">oficial</span>; un préstamo con garantía de las acciones no es una venta, así que no genera ganancia <span class="tag t-inferido">inferido</span>. Si el titular fallece, la plusvalía acumulada no tributa en su IRPF <span class="tag t-oficial">oficial</span>. Contrapeso: el Patrimonio y el ITSGF gravan lo que se tiene, no solo lo que se vende.</td>
+        </tr>
+        <tr>
+          <td>«Sociedades, trusts y entidades en el extranjero»</td>
+          <td><strong>Sociedades españolas: cierto y legal. Estructuras en el extranjero: más cerrado. Trusts: sin datos.</strong></td>
+          <td>Una sociedad española paga el 25% de impuesto de sociedades y, si posee al menos un 5% de otra empresa, los dividendos y plusvalías de esa participada quedan exentos en un 95%; el socio no tributa en el IRPF hasta que reparte <span class="tag t-oficial">oficial</span>. La AEAT vigila las sociedades instrumentales: su plan de control de 2026 las cita <span class="tag t-oficial">oficial</span>. Fuera de España, quien tiene más de 50.000 € en cuentas, valores o inmuebles debe declararlos (modelo 720), y quien se va con más de 4 M€ en acciones paga una «exit tax» <span class="tag t-oficial">oficial</span>.</td>
+        </tr>
+        <tr>
+          <td>«SICAV»</td>
+          <td><strong>Era cierto. Desde 2022 está casi cerrado.</strong></td>
+          <td>La Ley 11/2021 exigió al menos 100 accionistas con 2.500 € cada uno para seguir pagando el 1% de impuesto de sociedades <span class="tag t-oficial">oficial</span>. De 2.280 SICAV en 2021 se pasó a 446 en febrero de 2024 <span class="tag t-prensa">prensa</span>. Las que sobreviven son las de mayor patrimonio <span class="tag t-prensa">prensa</span>.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="lead">Cuánto IRPF paga cada tramo de renta</h3>
+  <p class="prose">Tipo efectivo del IRPF sobre la renta bruta de los hogares, con datos de 2022. Fedea cuenta como renta los beneficios que las empresas no reparten.</p>
+  <ul class="bars" aria-label="Tipo efectivo del IRPF por tramo de renta de los hogares, Fedea 2022">
+    <li><span>Quintil 1 (el 20% con menos renta)</span><span class="bar"><i style="--w:10%"></i></span><span class="v">2%</span></li>
+    <li><span>Quintil 2</span><span class="bar"><i style="--w:25%"></i></span><span class="v">5%</span></li>
+    <li><span>Quintil 3</span><span class="bar"><i style="--w:39.5%"></i></span><span class="v">7,9%</span></li>
+    <li><span>Quintil 4</span><span class="bar"><i style="--w:48.5%"></i></span><span class="v">9,7%</span></li>
+    <li><span>Centiles 91–99</span><span class="bar"><i style="--w:80%"></i></span><span class="v">16%</span></li>
+    <li class="hi"><span>Centil 100 (el 1% con más renta)</span><span class="bar"><i style="--w:50%"></i></span><span class="v">10%</span></li>
+  </ul>
+  <p class="fig-note">Fuente: The Objective, que cita el noveno informe del Observatorio de Fedea <span class="tag t-prensa">prensa</span>. El décimo informe (renta de 2023) mantiene el patrón: el tipo cae casi 5 puntos en el centil superior, y el IRPF agregado es el 10,4% <span class="tag t-academica">académica</span>. Las barras llegan hasta 20% de escala.</p>
+
+  <p class="prose"><strong>Por qué cae, según Fedea.</strong> En el 1% superior pesan mucho los beneficios de las empresas. Los que la empresa no reparte no tributan en el IRPF, y los que reparte como dividendos tributan a un tipo reducido <span class="tag t-academica">académica</span>. Fedea reconoce además que no imputa el impuesto de sociedades pagado en el extranjero: si fuera equivalente al español, el tipo efectivo del 1% subiría unos 7 puntos (nota 10, p. 34) <span class="tag t-academica">académica</span>.</p>
+  <p class="prose"><strong>Dos límites de la cifra.</strong> La renta más alta que recoge la encuesta de la que parte Fedea es de 1.140.580 € (p. 49): no ve a los muy ricos. Al corregir esa ausencia con datos de 2018 (Carranza y Nolan, 2024), el efecto redistributivo del sistema baja del 38,06% al 33,94% (tabla 3, p. 49) <span class="tag t-academica">académica</span>. Es decir, el sistema redistribuye menos de lo que sugiere la encuesta sin corregir. El informe no da el tipo del 1% tras esa corrección.</p>
+
+  <h3 class="lead">Cómo se compara con otros países</h3>
+  <p class="prose">Estas cifras no son comparables entre sí: cada estudio mide impuestos distintos sobre una definición de renta distinta. Sirven para ver el patrón, no para ordenar países.</p>
+  <div class="tbl-wrap">
+    <table class="plain stack">
+      <thead><tr><th>Estudio</th><th>Qué mide</th><th>Resultado</th><th>Cautela</th></tr></thead>
+      <tbody>
+        <tr><td data-l="Estudio">España, Fedea (2022)</td><td data-l="Qué mide">IRPF sobre renta bruta ampliada de los hogares</td><td data-l="Resultado">10% en el 1% superior; 16% en los centiles 91–99 <span class="tag t-prensa">prensa</span></td><td data-l="Cautela">Encuesta; no incluye impuesto de sociedades.</td></tr>
+        <tr><td data-l="Estudio">Francia, IPP (datos de 2016)</td><td data-l="Qué mide">Todos los impuestos directos sobre la renta económica, incluidos beneficios retenidos</td><td data-l="Resultado">46% en el 0,1% superior; 26% en el 0,0002% (75 hogares) <span class="tag t-academica">académica</span></td><td data-l="Cautela">El IFRAP, un think tank liberal, calcula el 55,8% para el 1% superior con otra definición <span class="tag t-academica">académica</span>.</td></tr>
+        <tr><td data-l="Estudio">EE. UU., Casa Blanca (CEA y OMB, 2010–2018)</td><td data-l="Qué mide">IRPF federal de las 400 familias más ricas, contando plusvalías no vendidas</td><td data-l="Resultado">8,2% (entre 6% y 12% según supuestos) <span class="tag t-oficial">oficial</span></td><td data-l="Cautela">La Tax Foundation critica que deja fuera el impuesto de sociedades <span class="tag t-academica">académica</span>. El Tax Policy Center da 23,5% para el 1% superior en 2018 <span class="tag t-prensa">prensa</span>.</td></tr>
+        <tr><td data-l="Estudio">Mundo, EU Tax Observatory (2024)</td><td data-l="Qué mide">Impuestos personales de los multimillonarios, como parte de su patrimonio</td><td data-l="Resultado">Entre el 0% y el 0,5% del patrimonio <span class="tag t-academica">académica</span></td><td data-l="Cautela">Mide sobre patrimonio, no sobre renta, y no desglosa España.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="lead">Las vías, una a una</h3>
+  <div class="tbl-wrap">
+    <table class="plain stack">
+      <thead><tr><th>Vía</th><th>Cómo funciona</th><th>¿Sigue abierta en España?</th></tr></thead>
+      <tbody>
+        <tr><td data-l="Vía"><strong>SICAV</strong></td><td data-l="Cómo funciona">Sociedad de inversión que pagaba el 1% de impuesto de sociedades; el socio no tributaba hasta rescatar.</td><td data-l="¿Sigue abierta en España?">Casi cerrada desde 2022. Ver el gráfico de abajo. <span class="tag t-oficial">oficial</span> <span class="tag t-prensa">prensa</span></td></tr>
+        <tr><td data-l="Vía"><strong>Sociedad patrimonial o holding</strong></td><td data-l="Cómo funciona">El patrimonio se aporta a una sociedad. Tributa al 25% y, con participaciones de al menos el 5%, dividendos y plusvalías de la participada quedan exentos al 95% (art. 21 de la Ley del Impuesto sobre Sociedades). El socio paga IRPF solo al repartir.</td><td data-l="¿Sigue abierta en España?">Abierta y legal. Sirve sobre todo a quien tiene empresas propias y no necesita el dinero a título personal <span class="tag t-inferido">inferido</span>. La AEAT apunta a las sociedades usadas para pagar gastos personales o encubrir dividendos <span class="tag t-oficial">oficial</span>.</td></tr>
+        <tr><td data-l="Vía"><strong>Préstamo con garantía de los activos</strong></td><td data-l="Cómo funciona">Se pide dinero al banco con las acciones como garantía en lugar de venderlas. La plusvalía queda latente.</td><td data-l="¿Sigue abierta en España?">Sin límite legal que haya encontrado. No hay estadística pública de su uso. <span class="tag t-inferido">inferido</span></td></tr>
+        <tr><td data-l="Vía"><strong>Fallecimiento y herencia</strong></td><td data-l="Cómo funciona">La plusvalía latente del fallecido no tributa en el IRPF (la «plusvalía del muerto»). Los herederos reciben los bienes con el valor que se declara en Sucesiones <span class="tag t-prensa">prensa</span>. Madrid bonifica el 99% de ese impuesto a cónyuge, hijos y padres.</td><td data-l="¿Sigue abierta en España?">Abierta. Sucesiones tiene bonificaciones del 99% en Madrid <span class="tag t-oficial">oficial</span>, y también en Andalucía, la Comunidad Valenciana y La Rioja <span class="tag t-prensa">prensa</span>.</td></tr>
+        <tr><td data-l="Vía"><strong>Empresa familiar</strong></td><td data-l="Cómo funciona">Las participaciones quedan exentas del Impuesto sobre el Patrimonio y tienen una reducción del 95% en Sucesiones.</td><td data-l="¿Sigue abierta en España?">Abierta, con condiciones: al menos 5% individual (20% con la familia), y que quien dirige cobre por ello más del 50% de sus ingresos del trabajo y de actividades <span class="tag t-oficial">oficial</span>.</td></tr>
+        <tr><td data-l="Vía"><strong>Traspasos entre fondos</strong></td><td data-l="Cómo funciona">Se pasa el dinero de un fondo a otro sin tributar por la ganancia (art. 94 de la Ley del IRPF).</td><td data-l="¿Sigue abierta en España?">Abierta para todos y sin mínimo. Es un diferimiento, no una exención: la ganancia aflora al reembolsar <span class="tag t-oficial">oficial</span>. No vale para ETF cotizados.</td></tr>
+        <tr><td data-l="Vía"><strong>Estructuras en el extranjero</strong></td><td data-l="Cómo funciona">Sociedades o trusts fuera de España.</td><td data-l="¿Sigue abierta en España?">Más cerradas: el modelo 720 obliga a declarar bienes fuera desde 50.000 € por bloque <span class="tag t-oficial">oficial</span>, y las normas de transparencia fiscal internacional (art. 91 de la Ley del IRPF) pueden atribuir al residente la renta de entidades extranjeras de baja tributación <span class="tag t-oficial">oficial</span>. No hay cifras de cuántos residentes las usan.</td></tr>
+        <tr><td data-l="Vía"><strong>Cambio de residencia</strong></td><td data-l="Cómo funciona">Irse a un país con menos impuestos.</td><td data-l="¿Sigue abierta en España?">Frenado por la «exit tax» (ver el cuadro de importes). En 2025 la AEAT detectó a 145 personas con residencia ficticia en el extranjero y liquidó 68 M€ <span class="tag t-oficial">oficial</span>.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="lead">Número de SICAV registradas</h3>
+  <ul class="bars" aria-label="Número de SICAV registradas en la CNMV">
+    <li><span>2021</span><span class="bar"><i style="--w:100%"></i></span><span class="v">2.280</span></li>
+    <li><span>Cierre de 2022</span><span class="bar"><i style="--w:47.8%"></i></span><span class="v">1.091</span></li>
+    <li class="hi"><span>Febrero de 2024</span><span class="bar"><i style="--w:19.6%"></i></span><span class="v">446</span></li>
+  </ul>
+  <p class="fig-note">Fuente: CNMV, a través de Europa Press y AlicantePlaza <span class="tag t-prensa">prensa</span>. El patrimonio de las SICAV pasó de más de 28.000 M€ a unos 12.700–14.300 M€ según la prensa que cita a la CNMV <span class="tag t-prensa">prensa</span>. Las que quedan son las mayores, así que la reforma no impidió que los más ricos mantengan alguna.</p>
+
+  <h3 class="lead">¿Desde qué cantidad?</h3>
+  <p class="prose"><strong>No hay una cantidad mágica.</strong> Las vías más potentes no dependen de cuánto se tiene sino de qué se tiene: acciones de una empresa propia, fondos de inversión, un patrimonio que se hereda. Lo que sí tiene cifras es el punto en el que la ley empieza a mirar. Son estos:</p>
+  <div class="tbl-wrap">
+    <table class="plain">
+      <thead><tr><th>Importe</th><th>Qué ocurre</th></tr></thead>
+      <tbody>
+        <tr><td>100 accionistas con 2.500 € cada uno</td><td>Condición para que una SICAV siga pagando el 1%. <span class="tag t-oficial">oficial</span></td></tr>
+        <tr><td>6.000 · 50.000 · 200.000 · 300.000 €</td><td>Tramos de la base del ahorro (dividendos, intereses, plusvalías): 19%, 21%, 23%, 27% y, por encima de 300.000 €, 30% <span class="tag t-oficial">oficial</span>. El tipo máximo de la base general va del 45% (Madrid) al 54% (Comunitat Valenciana) sumando el tramo estatal y el autonómico <span class="tag t-prensa">prensa</span>. Esa diferencia es el incentivo: cuanto más de la renta es capital y menos salario, menor el tipo.</td></tr>
+        <tr><td>50.000 €</td><td>Desde aquí hay que declarar los bienes en el extranjero (modelo 720), por bloque: cuentas, valores e inmuebles. No reduce impuestos: quita opacidad. <span class="tag t-oficial">oficial</span></td></tr>
+        <tr><td>700.000 €</td><td>Mínimo exento general del Impuesto sobre el Patrimonio; la vivienda habitual cuenta hasta 300.000 € más <span class="tag t-oficial">oficial</span>. Madrid y Andalucía aplicaban una bonificación del 100% que reformaron al crearse el ITSGF <span class="tag t-prensa">prensa</span>.</td></tr>
+        <tr><td>1 M€ (con más del 25% de una empresa) o 4 M€ en acciones</td><td>Quien deja de ser residente tributa ya por las ganancias latentes de esas acciones (exit tax) <span class="tag t-oficial">oficial</span>. Según las guías fiscales, solo si ha sido residente al menos 10 de los últimos 15 años <span class="tag t-prensa">prensa</span>.</td></tr>
+        <tr><td>3 M€</td><td>Empieza el Impuesto de Solidaridad de las Grandes Fortunas. En la práctica se paga con unos 4 M€ de patrimonio, por el mínimo exento y la vivienda <span class="tag t-prensa">prensa</span>.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose">Y estas vías no tienen mínimo de importe, pero sí condiciones:</p>
+  <div class="tbl-wrap">
+    <table class="plain">
+      <thead><tr><th>Vía</th><th>Condición</th></tr></thead>
+      <tbody>
+        <tr><td>Traspasos entre fondos</td><td>Que sean fondos de inversión, no ETF cotizados ni acciones sueltas. <span class="tag t-oficial">oficial</span></td></tr>
+        <tr><td>Holding con exención del 95%</td><td>Participación de al menos el 5% en la participada y un periodo mínimo de tenencia <span class="tag t-oficial">oficial</span>. Interponer una sociedad no ayuda si el socio necesita el dinero enseguida: añade una capa de impuesto <span class="tag t-prensa">prensa</span>.</td></tr>
+        <tr><td>Empresa familiar</td><td>5% individual o 20% con la familia, y dirección efectiva remunerada. <span class="tag t-oficial">oficial</span></td></tr>
+        <tr><td>Herencia</td><td>Residir en una comunidad con bonificación; en Andalucía, la herencia queda libre hasta 1 M€ <span class="tag t-prensa">prensa</span>.</td></tr>
+        <tr><td>Préstamo con garantía</td><td>Tener activos con plusvalías latentes que un banco acepte como garantía. <span class="tag t-inferido">inferido</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose"><strong>Mi lectura</strong> <span class="tag t-inferido">inferido</span>: la ventaja se concentra en quien tiene una empresa propia o rentas de capital que no necesita gastar. Quien vive de un salario, aunque sea alto, tiene poco margen: tributa por la escala general, con retención en origen. No he encontrado ninguna fuente que diga a partir de qué patrimonio compensa montar una sociedad; depende de los costes de asesoría y de cada caso, y no es un dato público.</p>
+
+  <h3 class="lead">Tres perfiles públicos: Ortega, Pérez y Botín</h3>
+  <p class="prose">Lo que no se puede saber es cuánto IRPF paga una persona concreta: su declaración es un dato reservado por el artículo 95 de la Ley General Tributaria y la AEAT no publica casos individuales <span class="tag t-oficial">oficial</span>. Lo que sí es público: los porcentajes que figuran en la CNMV, las cuentas de sus sociedades en el Registro Mercantil y las retribuciones de los consejeros de las cotizadas. Con eso se ve dónde está el dinero y por qué vía llega a su dueño, no cuánto paga cada uno.</p>
+
+  <div class="profile">
+    <h4>Amancio Ortega <span class="who">Inditex · Pontegadea</span></h4>
+    <table class="plain">
+      <tbody>
+        <tr><td>Participación</td><td>59,294% de Inditex, a través de Pontegadea Inversiones (50,01%) y Partler 2006 (9,284%) <span class="tag t-prensa">prensa</span></td></tr>
+        <tr><td>Dividendos de Inditex en 2025</td><td>3.104 M€, que cobran sus sociedades <span class="tag t-prensa">prensa</span></td></tr>
+        <tr><td>Pontegadea Inversiones</td><td>Beneficio de 2.518 M€ en 2025 sobre una cifra de negocios de 2.667 M€ <span class="tag t-prensa">prensa</span></td></tr>
+        <tr><td>Sueldo</td><td>Sin cargo ejecutivo retribuido en Inditex, según la prensa <span class="tag t-prensa">prensa</span></td></tr>
+        <tr><td>Qué hace con el dinero</td><td>Lo reinvierte en el plazo de un año para no tributar por el impuesto sobre el patrimonio, según Bloomberg <span class="tag t-prensa">prensa</span></td></tr>
+        <tr><td>Lectura</td><td>Los dividendos los cobra una sociedad, no la persona. Si esa sociedad aplica la exención del 95% de los dividendos de participadas, la carga efectiva sería de alrededor del 1,25% (5% × 25%) <span class="tag t-inferido">inferido</span>. No he encontrado en las cuentas ninguna nota que diga que la aplique. Lo que la holding reparta a su dueño tributaría como renta del ahorro, entre el 19% y el 30% <span class="tag t-oficial">oficial</span>.</td></tr>
+      </tbody>
+    </table>
+    <p class="fig-note">Los medios no coinciden en el beneficio conjunto de las tres sociedades en 2025: 3.909 M€ según Cinco Días y más de 10.000 M€ según Europa Press <span class="tag t-prensa">prensa</span>. No he podido reconciliarlos y no uso ninguno de los dos.</p>
+  </div>
+
+  <div class="profile">
+    <h4>Florentino Pérez <span class="who">ACS · Rosán Inversiones</span></h4>
+    <table class="plain">
+      <tbody>
+        <tr><td>Participación</td><td>15,015% de ACS a través de Rosán Inversiones, unos 4.540 M€ a precios de agosto de 2026 <span class="tag t-prensa">prensa</span></td></tr>
+        <tr><td>Retribución en ACS, 2025</td><td>9,14 M€: 2,51 M€ fijos y 6,19 M€ de variable a corto plazo <span class="tag t-prensa">prensa</span></td></tr>
+        <tr><td>Dividendos de ACS a Rosán, 2024</td><td>70,97 M€, destinados íntegramente a reservas dentro de la sociedad <span class="tag t-prensa">prensa</span></td></tr>
+        <tr><td>Lectura</td><td>La retribución tributa como rendimiento del trabajo, con un tipo marginal de entre el 45% y el 54% según la comunidad <span class="tag t-oficial">oficial</span>. Los dividendos se quedan en la sociedad, y la revalorización de las acciones no tributa mientras no se vendan <span class="tag t-oficial">oficial</span>.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="profile">
+    <h4>Ana Botín <span class="who">Banco Santander</span></h4>
+    <table class="plain">
+      <tbody>
+        <tr><td>Retribución, 2025</td><td>11,98 M€ según el informe del banco, o 18,54 M€ según el modelo de la CNMV que cita Reuters <span class="tag t-prensa">prensa</span>. Ambas cifras aparecen en la prensa y no he podido reconciliarlas.</td></tr>
+        <tr><td>Participación</td><td>La familia Botín y su Fundación suman el 1,246% del banco, 188,8 millones de acciones <span class="tag t-prensa">prensa</span></td></tr>
+        <tr><td>Dividendo en efectivo, 2025</td><td>0,24 € por acción <span class="tag t-oficial">oficial</span></td></tr>
+        <tr><td>Dividendos de esa participación</td><td>Unos 45 M€ brutos (188,8 millones × 0,24 €) para el conjunto de familia y Fundación <span class="tag t-estimado">estimado</span>. No sé qué parte es de la Fundación, que tiene otro régimen fiscal.</td></tr>
+        <tr><td>Lectura</td><td>La retribución tributa como trabajo. Los dividendos que cobren las personas, no la Fundación, tributarían como renta del ahorro, entre el 19% y el 30% <span class="tag t-oficial">oficial</span>.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="prose"><strong>Qué sale de aquí</strong> <span class="tag t-inferido">inferido</span>. En ninguno de los tres se puede comprobar el IRPF personal. Lo que sí se ve es que los sueldos de Pérez y Botín (de 9 a 18 M€) caen en la escala general, al tipo marginal más alto; que la riqueza grande está en acciones de su propia empresa, cuya revalorización no tributa hasta la venta; y que en Ortega y Pérez los dividendos los cobra una sociedad que paga impuesto de sociedades, no la persona. Cuánto paga esa sociedad en la práctica depende de las notas de sus cuentas, que no he podido leer. Nada de lo que he encontrado indica vías ilegales: describe las vías legales de arriba.</p>
+
+  <h3 class="lead">Lo que dice cada bando</h3>
+  <div class="twocol-text">
+    <div>
+      <h4>Quienes ven un problema</h4>
+      <ul>
+        <li>Fedea: el tipo del IRPF cae casi 5 puntos en el 1% superior porque los beneficios no repartidos no tributan en el IRPF. <span class="tag t-academica">académica</span></li>
+        <li>EU Tax Observatory: los multimillonarios del mundo pagan entre el 0% y el 0,5% de su patrimonio, por el uso de sociedades personales. <span class="tag t-academica">académica</span></li>
+        <li>IPP: en Francia el tipo baja del 46% al 26% al pasar del 0,1% al 0,0002% superior. <span class="tag t-academica">académica</span></li>
+        <li>Casa Blanca: 8,2% para las 400 familias más ricas de EE. UU. <span class="tag t-oficial">oficial</span></li>
+        <li>Carranza y Nolan: al contar a los más ricos, el sistema español redistribuye menos. <span class="tag t-academica">académica</span></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Quienes lo relativizan</h4>
+      <ul>
+        <li>Esos beneficios sí pagan impuesto de sociedades, y los estudios que solo miran el IRPF lo dejan fuera. La Tax Foundation lo critica en el caso de EE. UU.; Fedea estima unos 7 puntos más en España si se contara el impuesto extranjero. <span class="tag t-academica">académica</span></li>
+        <li>De los 865 declarantes con más de 30 M€ en 2023, 853 pagaron Patrimonio. <span class="tag t-prensa">prensa</span></li>
+        <li>La AEAT liquidó 547 M€ en 1.329 inspecciones de grandes patrimonios en 2025, unos 412.000 € por inspección <span class="tag t-oficial">oficial</span> <span class="tag t-estimado">estimado</span>.</li>
+        <li>Las SICAV se han reducido en un 80%. <span class="tag t-prensa">prensa</span></li>
+        <li>Con otra definición, el IFRAP calcula en Francia un 55,8% para el 1% superior. <span class="tag t-academica">académica</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="lead">Qué significa para la pregunta de fondo</h3>
+  <p class="prose">Hay evidencia de que el tipo efectivo del IRPF baja en la cúspide y de que existen vías legales de aplazamiento. Pero la cúspide es pequeña: 18.829 declarantes con más de 601.000 € en 2024, el 0,08% de los declarantes <span class="tag t-oficial">oficial</span>. Ningún estudio de los que he encontrado muestra que lo que se escapa por arriba acabe repuesto por la clase media. Esa cadena sigue «sin contrastar» en la pestaña 7.</p>
+
+  <h3 class="lead">Lo que no sé</h3>
+  <ul class="list">
+    <li>El tipo efectivo del IRPF del tramo de más de 601.000 € y de los percentiles por encima del 99%. La AEAT los dibuja en un gráfico de 2020 (hasta el percentil 99,992) sin dar las cifras en el texto, y su web no respondió al intentar leer la tabla de cuotas por tramos.</li>
+    <li>No he encontrado un estudio español equivalente al del IPP francés o al de la Casa Blanca para los mayores patrimonios españoles. Una pieza de elDiario.es de 2022 sostiene que el IRPF deja de ser progresivo en el 0,01% superior, pero no pude leer el artículo completo y no uso sus cifras.</li>
+    <li>La cifra de Fedea para 2022 (10% frente a 16%) procede de la prensa que cita el informe; no la comprobé en el PDF del noveno informe. El décimo informe no da el tipo del 1% superior: solo dice que cae casi 5 puntos.</li>
+    <li>Cuánto se usan en España los préstamos con garantía y los trusts: no hay datos.</li>
+    <li>El IRPF personal de cualquier persona concreta, por el secreto tributario, y el impuesto de sociedades efectivo de Pontegadea y de Rosán: no he leído las notas de sus cuentas.</li>
+    <li>El 1% de Fedea incluye mucho más que a los ultrarricos: empezaba en hogares de entre 130.000 y 200.000 € de renta según el informe, y la encuesta no recoge a los de rentas mayores.</li>
+    <li>Los plazos y requisitos de cada vía (por ejemplo, el periodo de tenencia del 95%) están resumidos; para aplicarlos a un caso concreto hace falta leer la norma.</li>
+  </ul>
+
+  <p class="src-head">Fuentes de esta pestaña</p>
+<ul class="src-cols">
+  <li><a href="https://documentos.fedea.net/pubs/eee/2026/eee2026-13.pdf">Fedea, décimo informe del Observatorio (eee2026-13)</a> <span class="tag t-academica">académica</span></li>
+  <li><a href="https://theobjective.com/economia/2025-03-04/pagan-los-ricos-menos-impuestos/">The Objective sobre el noveno informe</a> <span class="tag t-prensa">prensa</span></li>
+  <li><a href="https://sede.agenciatributaria.gob.es/static_files/AEAT/Estudios/Estadisticas/Informes_Estadisticos/Informes_Anuales_de_Recaudacion_Tributaria/Ejercicio_2020/Nota3.pdf">AEAT, nota 3 del informe de recaudación 2020</a></li>
+  <li><a href="https://sede.agenciatributaria.gob.es/Sede/ayuda/manuales-videos-folletos/manuales-practicos/irpf-2024/c11-ganancias-perdidas-patrimoniales/concepto/delimitacion-negativa/transmisiones-lucrativas-causa-muerte-contribuyente.html">AEAT, manual de la renta: ganancias por causa de muerte</a></li>
+  <li><a href="https://sede.agenciatributaria.gob.es/Sede/ayuda/manuales-videos-folletos/manuales-practicos/irpf-2023/c11-ganancias-perdidas-patrimoniales/regimen-especial-ganancias-patrimoniales-cambio-residencia/introduccion-ambito-aplicacion.html">AEAT, manual de la renta: exit tax</a></li>
+  <li><a href="https://boe.es/buscar/pdf/2026/BOE-A-2026-5843-consolidado.pdf">BOE, directrices del Plan de Control de 2026</a></li>
+  <li><a href="https://sede.agenciatributaria.gob.es/static_files/Sede/Actualidad/Notas_prensa/2026/NP_AEAT_Resultados_Control_2025.pdf">AEAT, resultados del control de 2025</a></li>
+  <li><a href="https://www.fiscal-impuestos.com/sites/fiscal-impuestos.com/files/V1559-2025.pdf">consulta de la DGT sobre el modelo 720 (V1559-2025)</a></li>
+  <li><a href="https://www.cnmv.es/DocPortal/Publicaciones/Fichas/TraspasosEntreFondosDeInversion.pdf">CNMV, traspasos entre fondos</a></li>
+  <li><a href="https://www.comunidad.madrid/docs/2026-02/cte-14-25-s.pdf">Comunidad de Madrid, bonificación de Sucesiones</a></li>
+  <li><a href="https://bbva.es/content/dam/public-web/bbvaes/documents/productos/banca-privada/Nota-novedades-fiscales-25.pdf">BBVA, novedades fiscales 2025 (escala del ahorro)</a></li>
+  <li><a href="https://www.bbvamijubilacion.es/blog/escalas-de-gravamen-y-tipos-impositivos-del-irpf-en-pais-vasco-navarra-y-en-el-resto-de-espana/">BBVA Mi Jubilación, escalas del IRPF</a></li>
+  <li><a href="https://www.ocu.org/dinero/renta-impuestos/informe/impuesto-grandes-fortunas">OCU, grandes fortunas</a></li>
+  <li><a href="https://www.xataka.com/empresas-y-economia/grandes-fortunas-espana-habian-esquivado-impuesto-patrimonio-durante-decadas-2023-99-ha-optado-pagarlo/amp">Xataka, declarantes con más de 30 M€</a></li>
+  <li><a href="https://www.cuatrecasas.com/es/global/fiscalidad/art/is-doble-imposicion-doctrina-administrativa">Cuatrecasas sobre el artículo 21 de la Ley del IS</a></li>
+  <li><a href="https://www.dig.es/exencion-articulo-21-lis-dividendos/">DIG, holdings</a></li>
+  <li><a href="https://guiafiscal.es/glosario/empresa-familiar-patrimonio/">Guía Fiscal, empresa familiar</a></li>
+  <li><a href="https://www.rankia.com/blog/gestion-patrimonial-asset-allocation/7424101-plusvalia-muerto-que-cuando-no-conviene-vender-vida">Rankia sobre la plusvalía del muerto</a> <span class="tag t-prensa">prensa</span></li>
+  <li><a href="https://www.bolsamania.com/noticias_print/mercados/economiafinanzas--la-cnmv-apunta-que-la-contratacion-en-la-bolsa-cayo-en-2023-a-630500-millones-en-niveles-de-2004--17032812.html">Europa Press sobre las SICAV (2024)</a></li>
+  <li><a href="https://alicanteplaza.es/alicanteplaza/elnumerodesicavsehareducidoenun804desde2022ysoloquedanregistradas446">AlicantePlaza sobre las SICAV</a></li>
+  <li><a href="https://es.ara.cat/economia/77-sicavs-desaparecen-importantes-sobreviven_1_4327210.html">Ara sobre las SICAV</a></li>
+  <li><a href="https://www.cronista.com/espana/economia-finanzas/dile-adios-al-impuesto-a-las-sucesiones-y-donaciones-estas-son-todas-las-personas-que-no-lo-van-a-pagar-en-2026">El Cronista sobre Sucesiones</a></li>
+  <li><a href="https://www.ipp.eu/wp-content/uploads/2023/09/Note_IPP_92-OLD.pdf">IPP, nota 92</a></li>
+  <li><a href="https://www.ifrap.org/la-revue/fiscalite-des-riches-le-mirage-des-milliards-eu-de-recettes">IFRAP</a></li>
+  <li><a href="https://taxobservatory.eu/?p=247">EU Tax Observatory, Global Tax Evasion Report 2024</a></li>
+  <li><a href="https://bidenwhitehouse.archives.gov/cea/blog/2021/09/23/what-is-the-average-federal-individual-income-tax-rate-on-the-wealthiest-americans">CEA, tipo federal de las 400 familias más ricas</a></li>
+  <li><a href="https://taxfoundation.org/blog/white-house-average-tax-rates-wealthy/">Tax Foundation</a></li>
+  <li><a href="https://www.bloombergquint.com/amp/politics/white-house-decries-low-taxes-for-rich-as-congress-works-on-plan">Bloomberg sobre el Tax Policy Center</a></li>
+  <li><a href="https://contratos.gobierto.es/normativa/ley-general-tributaria/95">Ley General Tributaria, artículo 95</a> <span class="tag t-oficial">oficial</span></li>
+  <li><a href="https://www.congreso.es/l14p/e12/e_0123036_n_000.pdf">Respuesta del Gobierno sobre el carácter reservado de datos tributarios</a> <span class="tag t-oficial">oficial</span></li>
+  <li><a href="https://www.diarioestrategia.cl/texto-diario/mostrar/5986712/pontegadea-holding-amancio-ortega-gana-78-2025-hasta-superar-10000-millones">Europa Press, Pontegadea 2025</a> <span class="tag t-prensa">prensa</span></li>
+  <li><a href="https://lexpress-franchise.com/es/ultimas-noticias/cuanto-dinero-gana-amancio-ortega-en-un-ano-empresas/">Cinco Días, vía L’Express, Pontegadea 2025</a> <span class="tag t-prensa">prensa</span></li>
+  <li><a href="https://www.vozpopuli.com/economia/distribucion/amancio-ortega-cobrara-otros-1552-millones-del-segundo-dividendo-de-inditex-este-lunes.html">Vozpópuli, participación de Ortega en Inditex</a> <span class="tag t-prensa">prensa</span></li>
+  <li><a href="https://theobjective.com/gente/2025-08-13/sueldo-amancio-ortega-inditex-holdings/">The Objective, sueldo y dividendos de Ortega</a> <span class="tag t-prensa">prensa</span></li>
+  <li><a href="https://gestion.pe/mundo/espana/dueno-de-zara-tiene-un-problema-con-su-fortuna-no-deja-de-crecer-mundo-espana-empresas-zara-impuestos-noticia/">Bloomberg, vía Gestión, reinversión de dividendos</a> <span class="tag t-prensa">prensa</span></li>
+  <li><a href="https://finantresnoticias.com/empresas/florentino-perez-sube-15-por-ciento-en-acs-debe-vigilar-pequeno-inversor/">Europa Press, vía Finanzas, participación de Pérez en ACS</a> <span class="tag t-prensa">prensa</span></li>
+  <li><a href="https://forbes.es/economia/896279/florentino-perez-gano-914-millones-y-juan-santamaria-1073-en-2025-como-presidente-y-ceo-de-acs/">Forbes, retribución de Pérez en 2025</a> <span class="tag t-prensa">prensa</span></li>
+  <li><a href="https://www.vozpopuli.com/economia/empresas/florentino-perez-amplia-su-colchon-financiero-personal-hasta-los-718-millones-en-reservas-voluntarias.html">Vozpópuli, cuentas de Rosán Inversiones</a> <span class="tag t-prensa">prensa</span></li>
+  <li><a href="https://www.lanacion.com.ar/agencias/la-remuneracion-total-de-botin-presidenta-del-santander-aumenta-un-346-en-2025-nid26022026">Reuters, vía La Nación, retribución de Botín</a> <span class="tag t-prensa">prensa</span></li>
+  <li><a href="https://forbes.es/economia/880204/ana-botin-percibio-1198-millones-como-presidenta-de-banco-santander-en-2025-un-12-menos/">Forbes, retribución de Botín según el informe del banco</a> <span class="tag t-prensa">prensa</span></li>
+  <li><a href="https://theobjective.com/economia/banca/2025-03-13/familia-botin-santander-capital-acciones/">The Objective, participación de la familia Botín</a> <span class="tag t-prensa">prensa</span></li>
+  <li><a href="https://www.santander.com/es/stories/creacion-de-valor-y-transparencia-el-compromiso-con-nuestros-accionistas">Santander, dividendo en efectivo de 2025</a> <span class="tag t-oficial">oficial</span></li>
+</ul>
+</section>
+
+
+<!-- 7. Evidencia ------------------------------------------------------------ -->
+<section class="panel" id="tab-evidencia" role="tabpanel" aria-labelledby="t-evidencia" hidden>
+  <div class="tab-head">
+    <p class="eyebrow">7 · Evidencia, lagunas y fuentes</p>
+    <h2>Qué respalda la evidencia y qué no.</h2>
+    <p class="sub">La hipótesis tiene tres pasos: un impuesto más alto a los ricos encoge la base que puede alcanzar; el hueco se repone con impuestos más amplios; y la clase media acaba pagando. Las fuentes revisadas hablan del paso 1. Ninguna contrasta los pasos 2 y 3.</p>
+  </div>
+
+  <div class="cols2">
+    <div class="card">
+      <h3>Apuntan a favor de la hipótesis</h3>
+      <ul class="list">
+        <li>La riqueza declarada reacciona con fuerza a los tipos del impuesto sobre el patrimonio. En los cantones suizos, bajar un punto el tipo aumentó la riqueza declarada al menos un 43% tras seis años. Alrededor del 24% se explica por mudanzas y el 20% por la capitalización del precio de la vivienda; los autores interpretan buena parte del resto como evasión. <a href="https://people.unil.ch/mariusbrulhart/2022/10/behavioral-responses-to-wealth-taxes-evidence-from-switzerland/">Brülhart et al., 2022</a></li>
+        <li>En España, después de 2011 todas las comunidades gravaron el patrimonio salvo Madrid. Resultados publicados: el IRPF perdido por los traslados es unas seis veces el impuesto de patrimonio perdido directamente. El documento de trabajo estima que el número de personas ricas en Madrid subió en torno a un 10% respecto a otras comunidades y que cerca del 5% de la recaudación del impuesto de patrimonio se perdió por movilidad. <a href="https://www.aeaweb.org/doi/10.1257/app.20220615">Agrawal, Foremny y Martínez-Toledano, 2025</a></li>
+        <li>La Agencia Tributaria detectó a 145 personas con grandes patrimonios situadas artificialmente en el extranjero y regularizó 68 M€ en 2025. <a href="https://www.hacienda.gob.es/es-ES/Prensa/Noticias/Paginas/2026/20260702-NP-AEAT-RESULTADOS-CONTROL-2025.aspx">Hacienda, julio de 2026</a></li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Apuntan en contra, o lo limitan</h3>
+      <ul class="list">
+        <li>El decil superior ya paga el 53,96% del IRPF (pestaña 2). La incidencia final del IVA y de la Seguridad Social, las vías más probables para cubrir un hueco, no está medida en ninguna fuente usada aquí.</li>
+        <li>Los declarantes con base superior a 30,05 M€ pasaron de 471 en 2013 a 1.023 en 2024, y la cuota del Patrimonio de 2024 subió un 11,8%. Eso no muestra fuga en agregado, pero tampoco es una prueba causal, porque la subida del valor de los activos empuja a más gente a ese tramo.</li>
+        <li>Ambos estudios comparan territorios de un mismo país, con los tipos vigentes. Ninguno estima salidas de España ni la respuesta a un 2% sobre 1 M€ aplicado a todo el país.</li>
+        <li>La inspección recupera dinero de las grandes fortunas: 547 M€ regularizados en 1.329 actuaciones en 2025. El control del fraude recuperó en total 22.743 M€, cerca del 7,0% de la recaudación de la AEAT en todos los impuestos, que no es una estimación de la brecha fiscal.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Afirmación por afirmación</h3>
+    <div class="tbl-wrap" style="margin-top:8px">
+      <table class="plain">
+        <thead><tr><th>Afirmación</th><th>Evidencia encontrada</th><th>Qué solidez tiene</th></tr></thead>
+        <tbody>
+          <tr><td>La parte alta ya soporta la mayor parte del IRPF</td><td>El decil superior paga el 53,96% de la cuota real del IRPF</td><td>Instituto de Estudios Fiscales (oficial), 2026</td></tr>
+          <tr><td>Los impuestos al patrimonio reducen la base declarada</td><td>Cantones suizos y comunidades españolas</td><td>Revisado por pares, dentro de un mismo país, no a los tipos propuestos</td></tr>
+          <tr><td>Los ricos se mudan u ocultan activos dentro de España</td><td>Personas ricas en Madrid, +10%; ≈5% de la recaudación perdida por movilidad</td><td>Cifras de un documento de trabajo</td></tr>
+          <tr><td>Los más ricos pagan casi nada de IRPF</td><td>Falso como cifra general: el tipo efectivo del 1% superior ronda el 10%, frente al 16% del tramo anterior. Cierto que cae en la cúspide. Detalle en la pestaña 6</td><td>Fedea (académica) y prensa que la cita; encuesta que no capta bien a los más ricos</td></tr>
+          <tr><td>La recaudación perdida la repone la clase media</td><td>No se encontró nada</td><td>Sin contrastar</td></tr>
+          <tr><td>País Vasco y Navarra resuelven la cuestión</td><td>Navarra combina tipos máximos altos con una carga notable sobre rentas medias; no se puede establecer causalidad</td><td>Prensa que cita al Consejo General de Economistas; no concluyente</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Lagunas</h3>
+    <ul class="list" style="margin-top:8px">
+      <li>No se obtuvo el IRPF por tramos de renta a nivel nacional (AEAT, cuadro 587). La pestaña 2 usa la base liquidable, la cuota pagada en Madrid y la parte del decil superior según el IEF.</li>
+      <li>La recaudación de la AEAT por comunidad es una hoja de cálculo que no se pudo leer, así que la pestaña 3 usa la capacidad tributaria cedida.</li>
+      <li>No se verificó ninguna línea propia de aduanas o aranceles. No se cubren los ingresos no tributarios distintos de la Seguridad Social.</li>
+      <li>No se encontró ninguna valoración de AIReF ni de Hacienda de la propuesta. La cifra de 38 M€ del ITSGF de 2024 es prensa que cita contabilidad nacional; el informe de la AEAT dice solo que la recaudación fue escasa.</li>
+      <li>Perfiles de Ortega, Pérez y Botín (pestaña 6): su IRPF personal es secreto y no figura en ninguna fuente. Solo se usan cuentas de sus sociedades, la CNMV y las retribuciones publicadas, casi todo a través de la prensa.</li>
+      <li>Sobre los más ricos (pestaña 6): no se obtuvo el tipo efectivo del IRPF del tramo de más de 601.000 € ni el de los percentiles por encima del 99%, y la cifra de Fedea para 2022 llega por la prensa. No hay datos del uso de préstamos con garantía ni de trusts.</li>
+      <li>Los años difieren: ingresos de 2025, IRPF y patrimonio declarados de 2024, capacidad regional de 2024, población a 1 de enero de 2025 y datos de riqueza de encuesta de 2022.</li>
+      <li>Las tablas de la AEAT se leyeron con una herramienta que resume páginas, no se descargaron. Las sumas se comprobaron (el desglose de 2025 suma exactamente 325.356 M€), pero conviene contrastar las celdas antes de fiarse de ellas.</li>
+      <li><strong>País Vasco y Navarra:</strong> no hay tabla consolidada del IRPF por tramos para el País Vasco (Bizkaia la publica en Open Data, pero no se pudo descargar). Patrimonio y Sucesiones vascos no se publican por separado. El cupo definitivo de 2025 y las aportaciones navarras definitivas de 2024 y 2025 están sin publicar, y el acuerdo del quinquenio 2025-2029 sigue pendiente según la AIReF (julio de 2026). Tampoco se publica cuánto recauda la AEAT en estos territorios.</li>
+      <li>La prensa da dos previsiones incompatibles para la liquidación del cupo vasco de 2025 (≈1.700 y ≈1.407 M€). Se usa el provisional oficial (1.464,7 M€) hasta que se apruebe el definitivo.</li>
+      <li>La capacidad equivalente y la «contribución que faltaría» de los territorios forales son estimaciones propias con márgenes de entre ±10% y ±40% según el caso. Las balanzas fiscales oficiales son de 2014.</li>
+    </ul>
+  </div>
+
+  <div class="cols2" style="margin-top:16px">
+    <div class="card">
+      <h3>Fuentes oficiales</h3>
+      <ul class="src-list" style="margin-top:8px">
+        <li><a href="https://sede.agenciatributaria.gob.es/Sede/estadisticas/recaudacion-tributaria/informe-anual/ejercicio-2025/resumen.html">AEAT, Informe anual de recaudación tributaria 2025</a></li>
+        <li><a href="https://sede.agenciatributaria.gob.es/static_files/AEAT/Estudios/Estadisticas/Informes_Estadisticos/Informes_mensuales_recaudacion_tributaria/2025/IMR_25_12_va_es.pdf">AEAT, informe mensual de diciembre de 2025</a></li>
+        <li><a href="https://sede.agenciatributaria.gob.es/Sede/eu_es/estadisticas/recaudacion-tributaria/informe-anual/ejercicio-2024/6-otros-impuestos.html">AEAT, informe anual 2024, otros impuestos</a></li>
+        <li><a href="https://sede.agenciatributaria.gob.es/Sede/estadisticas/sites/patrimonio/2024/jrubik51212750ec835e99533949433231abd3637d68ee.html">AEAT, estadística del Patrimonio 2024</a></li>
+        <li><a href="https://sede.agenciatributaria.gob.es/AEAT/Contenidos_Comunes/La_Agencia_Tributaria/Estadisticas/Publicaciones/sites/irpf/2024/home_parcialf77cdc736ae2c95d72190138820307f5f5534ac93.html">AEAT, estadística de declarantes del IRPF 2024</a></li>
+        <li><a href="https://sede.agenciatributaria.gob.es/static_files/Sede/Actualidad/Notas_prensa/2026/NP_AEAT_Resultados_Control_2025.pdf">AEAT, resultados del control 2025 (nota de prensa)</a></li>
+        <li><a href="https://www.agenciatributaria.es/AEAT.fisterritorial/Inicio/_menu_/Fiscalidad_Autonomica/Regimen_Foral/Presentacion/Presentacion.html">AEAT, régimen foral</a></li>
+        <li><a href="https://www.lamoncloa.gob.es/serviciosdeprensa/notasprensa/hacienda/paginas/2023/200923-impuesto-solidaridad-grandes-fortunas.aspx">Hacienda, nota sobre el ITSGF 2023</a></li>
+        <li><a href="https://www.lamoncloa.gob.es/serviciosdeprensa/notasprensa/inclusion/Paginas/2026/310326-seguridad-social-deficit-pib.aspx">Ministerio de Inclusión, Seguridad Social</a></li>
+        <li><a href="https://www.ine.es/prodyser/espa_cifras/21_ANEXO.pdf">INE, España en cifras</a>; <a href="https://ine.es/dyngs/Prensa/ADRH2023.pdf">INE, Atlas de distribución de renta de los hogares 2023</a></li>
+        <li><a href="https://www.bde.es/wbe/es/noticias-eventos/podcast/como-se-distribuye-la-riqueza-entre-los-hogares.html">Banco de España, distribución de la riqueza</a> y <a href="https://repositorio.bde.es/bitstream/123456789/36572/1/do2413.pdf">Documento Ocasional 2413</a></li>
+        <li><a href="https://www.ief.es/docs/destacados/publicaciones/documentos_trabajo/2026_02.pdf">Instituto de Estudios Fiscales, documento de trabajo 2026/02</a></li>
+        <li>Fuentes de la pestaña 6 (los más ricos): lista al final de esa pestaña.</li>
+        <li><a href="https://www.irekia.euskadi.eus/es/news/108064-consejo-vasco-finanzas-publicas">Gobierno Vasco, Consejo Vasco de Finanzas Públicas (cierre 2025)</a></li>
+        <li><a href="https://www.navarra.es/es/-/nota-prensa/hacienda-finalizo-2025-con-una-recaudacion-de-5-865-millones-de-euros">Gobierno de Navarra, recaudación de 2025</a>; <a href="https://www.navarra.es/en/web/memoria-2024/5.1.-convenio-economico">Memoria 2024, Convenio Económico</a></li>
+        <li><a href="https://www.euskadi.eus/contenidos/informacion/comision_mixta/es_14815/adjuntos/Acta_CMCE__01_2024.pdf">Acta de la Comisión Mixta del Concierto Económico 1/2024</a>; <a href="https://www.boe.es/diario_boe/txt.php?id=BOE-A-2023-8456">Ley 10/2023 (BOE)</a></li>
+        <li><a href="https://www.airef.es/wp-content/uploads/2026/07/Informes-ejecuci%C3%B3n-2026/Informe_PEF26-27_Cierre26_NAV_55_26.pdf">AIReF, informe sobre Navarra, julio de 2026</a></li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Fuentes académicas, de think tanks y de prensa</h3>
+      <ul class="src-list" style="margin-top:8px">
+        <li><a href="https://documentos.fedea.net/pubs/eee/2026/eee2026-24.pdf">Fedea, eee2026-24</a> (usa datos de la liquidación del Ministerio de Hacienda)</li>
+        <li><a href="https://www.aeaweb.org/doi/10.1257/pol.20200258">Brülhart et al., AEJ: Economic Policy, 2022</a></li>
+        <li><a href="https://www.aeaweb.org/doi/10.1257/app.20220615">Agrawal, Foremny y Martínez-Toledano, AEJ: Applied Economics, 2025</a> y su <a href="https://wid.world/news-article/wealth-taxation-and-mobility/">resumen del documento de trabajo</a></li>
+        <li><a href="https://documentos.fedea.net/pubs/ap/2024/ap2024-27.pdf">García Díaz, Fedea Apuntes 2024/27</a></li>
+        <li><a href="https://conciertoeconomico.org/wp-content/uploads/2022/10/HPE-2022-DE-LA-FUENTE-A_Sobre-el-Sistema-de-Financiacion-Foral-vasco-y-navarro-notas-para-un-debate-necesario.pdf">De la Fuente, Hacienda Pública Española 242 (2022)</a></li>
+        <li>Ivie, documento de trabajo WP-EC 2014-02 (Universidad de Valencia y Universidad de Zaragoza)</li>
+        <li><a href="https://www.funcas.es/descargar/227234/">Funcas sobre deflactación</a> (una pista, no comprobada)</li>
+        <li>Defensores del Concierto: <a href="https://conciertoeconomico.org/el-concierto/que-es-y-para-que-sirve/en-pocas-palabras/">Concierto Económico, «en pocas palabras»</a>; <a href="https://abb.eaj-pnv.eus/es/adjuntos-documentos/17985/pdf/el-concierto-economico-privilegio-insolidario">PNV</a>. Matiz de Zubiri: <a href="https://ctxt.es/es/20161102/Politica/9290/cupo-vasco-pnv-pp-upv-ignacio-zubiri-concierto-vasco-ciudadanos.htm">CTXT</a></li>
+        <li>Prensa de Navarra: <a href="https://noticiasdenavarra.com/economia/2021/04/19/pagas-irpf-ano-ganas/1138697.html">IRPF por tramos (2021)</a>, <a href="https://www.noticiasdenavarra.com/economia/2022/04/17/9-contribuyentes-ganan-aporta-mitad-2084191.html">IRPF por tramos (2022)</a>, <a href="https://www.noticiasdenavarra.com/economia/2026/04/25/porcentaje-minoritario-contribuyentes-paga-mayoria-10984498.html">Economistas y rentas por tramos (2026)</a>, <a href="https://www.noticiasdenavarra.com/politica/2024/11/17/aportacion-navarra-crecido-50-ultima-8944326.html">aportación navarra (2024)</a></li>
+        <li>Prensa vasca: <a href="https://orain.eus/es/actualidad/economia/2025/10/30/el-cupo-vasco-al-estado-previsto-2026-sera-1532-millones-un-29-mas/">orain.eus</a>, <a href="https://bilbaohiria.com/euskal-herria/comision-concierto-deficit-gobierno-vasco-cupo/">Bilbao Hiria</a></li>
+        <li>Prensa usada para encontrar pistas: <a href="https://finantresnoticias.com/tu-dinero/espana-supera-por-primera-vez-1000-contribuyentes-con-patrimonios-mas-30-millones/">Finantres</a>, <a href="https://www.esdiario.com/economia/260903/196820/buena-noticia-ricos-espana-han-multiplicado-dos-ano-2013.html">ESdiario</a>, <a href="https://forbes.es/?p=506728">Forbes/Europa Press</a>, <a href="https://www.infobae.com/espana/2026/08/06/madrid-cataluna-y-baleares-financian-el-46-del-reparto-autonomico-pero-no-son-las-comunidades-peor-tratadas-por-el-sistema/">Infobae</a>, <a href="https://www.vozpopuli.com/espana/politica/gobierno-ayuso-impuestos-estado.html">Vozpópuli</a>, <a href="https://www.eldebate.com/economia/20240514/1-hogares-rico-atesoraba-2022-20-riqueza-total-neta_196882.html">El Debate</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap"><p>Datos recopilados entre el 17 y el 18 de noviembre de 2026. Cifras en euros; M€ son millones de euros. Los datos de partidos, de prensa, las estimaciones y los cálculos propios llevan su etiqueta donde aparecen. Es una exploración de datos, no asesoramiento fiscal ni de inversión.</p></div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ---------- formato: es-ES, con punto de millares también en 4 cifras ---------- */
+  function group(s) { return s.replace(/\B(?=(\d{3})+(?!\d))/g, '.'); }
+  function fmtInt(n) { var r = Math.round(n); return (r < 0 ? '−' : '') + group(String(Math.abs(r))); }
+  function fmtD(n, d) { var p = Math.abs(n).toFixed(d).split('.'); return (n < 0 && +Math.abs(n).toFixed(d) !== 0 ? '−' : '') + group(p[0]) + (p[1] ? ',' + p[1] : ''); }
+  function fmtM(m, d) { return (d ? fmtD(m, d) : fmtInt(m)) + ' M€'; }
+  function eur(n) { return fmtInt(n) + ' €'; }
+  function pct(p, d) { return fmtD(p, d == null ? 1 : d) + '%'; }
+  function roundTo(n, s) { return Math.round(n / s) * s; }
+
+  /* ---------- datos (del paquete de datos; fuentes en las pestañas y en la 6) ---------- */
+  var SRC = [
+    { key: 'ss',   label: 'Cotizaciones a la Seguridad Social', value: 176918, color: 'c-ss' },
+    { key: 'irpf', label: 'IRPF (impuesto sobre la renta)',      value: 142466, color: 'c-irpf' },
+    { key: 'iva',  label: 'IVA',                                 value: 99532,  color: 'c-iva' },
+    { key: 'is',   label: 'Impuesto sobre Sociedades',           value: 42266,  color: 'c-is' },
+    { key: 'ied',  label: 'Impuestos Especiales',                value: 23083,  color: 'c-ied' },
+    { key: 'oth',  label: 'Otros impuestos y tasas',             value: 18009,  color: 'c-oth' }
+  ];
+  var AEAT_TOTAL = 325356, COMBINED = 502274;
+
+  var BR_LABELS = ['Negativa o cero', '0–1.500 €', '1.500–6.000 €', '6.000–12.000 €', '12.000–21.000 €', '21.000–30.000 €', '30.000–60.000 €', '60.000–150.000 €', '150.000–601.000 €', 'Más de 601.000 €'];
+  var BR_FILERS = [1531620, 1689995, 3194543, 2226016, 4040146, 4566506, 5796268, 1369675, 194681, 18829];
+  var BR_FPCT = [6.22, 6.86, 12.97, 9.04, 16.40, 18.54, 23.54, 5.56, 0.79, 0.08];
+  var BR_BASE_EUR = [-584067734, 340934861, 10572136405, 17731654833, 66324001210, 109744014414, 223384600037, 100743046546, 33077781456, 13016775624];
+  var BR_BPCT = [-0.10, 0.06, 1.84, 3.09, 11.55, 19.11, 38.89, 17.54, 5.76, 2.27];
+  var IRPF_FILERS = 24628279, IRPF_BASE_EUR = 574350877653, IRPF_CUOTA_EUR = 133444424540;
+
+  var MAD = [
+    { key: 'm0', label: 'Menos de 6.000 €',  color: 's2', f: 19.45, t: null },
+    { key: 'm1', label: '6.000–12.000 €',    color: 's3', f: 7.37,  t: 0.26 },
+    { key: 'm2', label: '12.000–21.000 €',   color: 's4', f: 14.40, t: 3.08 },
+    { key: 'm3', label: '21.000–30.000 €',   color: 's5', f: 18.48, t: 8.43 },
+    { key: 'm4', label: '30.000–60.000 €',   color: 's6', f: 28.84, t: 29.80 },
+    { key: 'm5', label: '60.000–150.000 €',  color: 's7', f: 9.55,  t: 27.77 },
+    { key: 'm6', label: '150.000–601.000 €', color: 's8', f: 1.70,  t: 16.97 },
+    { key: 'm7', label: 'Más de 601.000 €',  color: 's9', f: 0.20,  t: null }
+  ];
+  var IEF_TOP = 53.96;
+
+  var REG = [
+    ['mad', 'Madrid', 33594, 7113886, 'c-irpf'],
+    ['cat', 'Cataluña', 31374, 8124126, 'c-ss'],
+    ['and', 'Andalucía', 23420, 8676713, 'c-iva'],
+    ['val', 'Comunitat Valenciana', 16622, 5425182, 'c-is'],
+    ['gal', 'Galicia', 8274, 2714741, 'g1'],
+    ['cyl', 'Castilla y León', 7874, 2401221, 'g2'],
+    ['clm', 'Castilla-La Mancha', 5687, 2126378, 'g3'],
+    ['bal', 'Baleares', 4952, 1249844, 'g1'],
+    ['ara', 'Aragón', 4884, 1364621, 'g2'],
+    ['mur', 'Murcia', 4299, 1586989, 'g3'],
+    ['cnr', 'Canarias', 3462, 2258866, 'g1'],
+    ['ast', 'Asturias', 3295, 1015128, 'g2'],
+    ['ext', 'Extremadura', 2637, 1053345, 'g3'],
+    ['can', 'Cantabria', 2061, 593623, 'g1'],
+    ['rio', 'La Rioja', 1075, 326803, 'g2']
+  ];
+  var REG_TOTAL_SRC = 153509;
+  var AVG15 = REG.reduce(function (s, r) { return s + r[2]; }, 0) * 1e6 / REG.reduce(function (s, r) { return s + r[3]; }, 0);
+
+  /* Territorios forales, cierre 2025 (M€). Las cifras del País Vasco salen al euro de la nota oficial. */
+  var NAV_TOTAL = 5865.7;
+  var NAV_OTH_IND = Math.round((NAV_TOTAL - (2195.9 + 1972.7 + 622.7 + 541.2 + 207.2 + 138.4 + 33.4)) * 10) / 10;   // por diferencia
+  var FORAL = {
+    pv: {
+      name: 'País Vasco', pop: 2242343, popApprox: false, total: 20324.5,
+      growth: '+11% sobre 2024 (2024 lastrado por devoluciones a mutualistas)',
+      pieSub: 'Recaudación de las tres Diputaciones Forales (Álava, Bizkaia y Gipuzkoa), cierre 2025.',
+      items: [
+        { key: 'irpf', label: 'IRPF', value: 7960.502, color: 'c-irpf', type: 'oficial' },
+        { key: 'iva',  label: 'IVA (incluye ajustes con el Estado)', value: 7790.258, color: 'c-iva', type: 'oficial' },
+        { key: 'ied',  label: 'Impuestos Especiales (incluye ajustes)', value: 1590.785, color: 'c-ied', type: 'oficial' },
+        { key: 'is',   label: 'Sociedades', value: 1438.397, color: 'c-is', type: 'oficial' },
+        { key: 'oth',  label: 'Resto: Patrimonio, Sucesiones, ITP-AJD, No Residentes, tasas…', value: 1544.560, color: 'c-oth', type: 'oficial' }
+      ],
+      eq: { irpf: 7960.502, iva: 7790.258, ied: 1590.785, rest: 1544.560 },
+      flow: 1464.7, flowDec: 1,
+      flowStat: 'Cupo al Estado, 2025', flowSmall: 'provisional · 7,2% de lo recaudado',
+      flowLabel: 'Cupo al Estado 2025 (provisional)',
+      keepLabel: 'Se queda en el País Vasco (sanidad, educación, policía, ayuntamientos…)',
+      flowSub: 'El cupo provisional de 2025 frente a lo que se queda en el territorio.',
+      seriesTitle: 'Cupo al Estado, por año (M€)',
+      series: [
+        ['2023', '1.676,0', 'definitivo', 'oficial'],
+        ['2024', '1.735,6', 'definitivo (provisional: 1.562,0)', 'oficial'],
+        ['2025', '1.464,7', 'provisional', 'oficial'],
+        ['2025, liquidación prevista', '≈1.700 o ≈1.407', 'dos previsiones de prensa incompatibles', 'prensa'],
+        ['2026', '1.590', 'provisional, proyecto de presupuestos', 'prensa']
+      ],
+      seriesNote: 'Las Diputaciones transfirieron 13.770,6 M€ al Gobierno Vasco en 2025: es un reparto interno vasco, que no hay que confundir con el cupo. El «líquido a pagar» que difunde Hacienda es neto de compensaciones.'
+    },
+    nav: {
+      name: 'Navarra', pop: 683900, popApprox: true, total: NAV_TOTAL,
+      growth: '+8% sobre 2024 (5.433 M€)',
+      pieSub: 'Recaudación líquida de la Hacienda Foral de Navarra, cierre 2025.',
+      items: [
+        { key: 'irpf', label: 'IRPF', value: 2195.9, color: 'c-irpf', type: 'oficial' },
+        { key: 'iva',  label: 'IVA (gestión directa 655,5 + ajuste con el Estado 1.317,2)', value: 1972.7, color: 'c-iva', type: 'oficial' },
+        { key: 'ied',  label: 'Impuestos Especiales (gestión directa 506,5 + ajustes 116,2)', value: 622.7, color: 'c-ied', type: 'oficial' },
+        { key: 'is',   label: 'Sociedades', value: 541.2, color: 'c-is', type: 'oficial' },
+        { key: 'od',   label: 'Otros directos: Patrimonio, Sucesiones, No Residentes, Grandes Fortunas', value: 207.2, color: 'g1', type: 'inferido' },
+        { key: 'oi',   label: 'Otros indirectos: ITP-AJD, primas de seguros…', value: NAV_OTH_IND, color: 'g2', type: 'inferido' },
+        { key: 'ret',  label: 'Ajuste con el Estado por retenciones', value: 138.4, color: 's6', type: 'oficial' },
+        { key: 'fee',  label: 'Tasas y otros ingresos', value: 33.4, color: 'g3', type: 'oficial' }
+      ],
+      eq: { irpf: 2195.9, iva: 1972.7, ied: 622.7, rest: 207.2 + NAV_OTH_IND },
+      flow: 874, flowDec: 0,
+      flowStat: 'Aportación al Estado, 2025', flowSmall: 'presupuestada · 14,9% de lo recaudado',
+      flowLabel: 'Aportación al Estado 2025 (presupuestada)',
+      keepLabel: 'Se queda en Navarra (sanidad, educación, policía, ayuntamientos…)',
+      flowSub: 'La aportación presupuestada de 2025 frente a lo que se queda en el territorio. Con la previsión de 777,9 M€ sería el 13,3%.',
+      seriesTitle: 'Aportación de Navarra al Estado, por año (M€)',
+      series: [
+        ['2020, año base del quinquenio 2020-24', '510,2 (neta de ajuste por retenciones: 431,3)', 'definitivo', 'oficial'],
+        ['2024', '777,9 (neta: 653,4)', 'provisional', 'oficial'],
+        ['2024, ejecución presupuestaria', '832,2', 'puede incluir regularizaciones', 'prensa'],
+        ['2025', '874 presupuestados (previsión: 777,9)', 'provisional', 'oficial'],
+        ['2026', '932 presupuestados', 'provisional', 'oficial']
+      ],
+      seriesNote: 'El acuerdo del quinquenio 2025-2029 sigue sin cerrarse, según la AIReF (julio de 2026); por eso las aportaciones de 2025 son provisionales.'
+    }
+  };
+
+  /* Capacidad «equivalente a régimen común»: 50% IRPF + 50% IVA + 58% Especiales + r × resto (r entre 0,6 y 0,8). Sin Sociedades. */
+  function eqCap(T, r) { return 0.5 * T.eq.irpf + 0.5 * T.eq.iva + 0.58 * T.eq.ied + r * T.eq.rest; }
+  function eqPc(T, r) { return eqCap(T, r) * 1e6 / T.pop; }
+
+  var CLAIM = 10000;           // cifra del partido, M€
+  var IRPF_AEAT = 142466;      // M€
+
+  /* ---------- utilidades ---------- */
+  var NS = 'http://www.w3.org/2000/svg';
+  function svgEl(tag, attrs) { var e = document.createElementNS(NS, tag); for (var k in attrs) e.setAttribute(k, attrs[k]); return e; }
+  function h(tag, attrs) {
+    var e = document.createElement(tag);
+    if (attrs) for (var k in attrs) {
+      if (k === 'class') e.className = attrs[k];
+      else if (k === 'text') e.textContent = attrs[k];
+      else e.setAttribute(k, attrs[k]);
+    }
+    for (var i = 2; i < arguments.length; i++) {
+      var c = arguments[i];
+      if (c == null) continue;
+      if (Array.isArray(c)) c.forEach(function (x) { if (x != null) e.append(x.nodeType ? x : document.createTextNode(x)); });
+      else e.append(c.nodeType ? c : document.createTextNode(c));
+    }
+    return e;
+  }
+  function $(s) { return document.querySelector(s); }
+  function cssVar(name) { return getComputedStyle(document.documentElement).getPropertyValue('--' + name).trim(); }
+  function textOn(colorName) {
+    var c = cssVar(colorName), m = /^#([0-9a-f]{6})$/i.exec(c);
+    if (!m) return '#fff';
+    var n = parseInt(m[1], 16), r = (n >> 16) & 255, g = (n >> 8) & 255, b = n & 255;
+    var L = (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255;
+    return L > 0.58 ? '#12161c' : '#ffffff';
+  }
+  var TAGS = { oficial: 'oficial', prensa: 'prensa', academica: 'académica', estimado: 'estimado', inferido: 'inferido', partido: 'cifra del partido' };
+  function tag(t) { return h('span', { class: 'tag t-' + t }, TAGS[t] || t); }
+
+  /* selección compartida por los gráficos y tablas de una vista */
+  function makeGroup() {
+    var subs = [], pinned = null;
+    var api = {
+      add: function (fn) { subs.push(fn); fn(pinned); },
+      show: function (k) { subs.forEach(function (fn) { fn(k); }); },
+      enter: function (k) { api.show(k); },
+      leave: function () { api.show(pinned); },
+      click: function (k) { pinned = pinned === k ? null : k; api.show(pinned); },
+      bindRows: function (root) {
+        var rows = root.querySelectorAll('tr[data-key]');
+        rows.forEach(function (tr) {
+          var k = tr.getAttribute('data-key');
+          tr.tabIndex = 0;
+          tr.addEventListener('pointerenter', function () { api.enter(k); });
+          tr.addEventListener('pointerleave', function () { api.leave(); });
+          tr.addEventListener('click', function () { api.click(k); });
+          tr.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); api.click(k); } });
+        });
+        api.add(function (k) { rows.forEach(function (tr) { tr.classList.toggle('on', tr.getAttribute('data-key') === k); }); });
+      }
+    };
+    return api;
+  }
+
+  /* gráfico circular: items = [{key,label,value,color,text}], o = {aria,totalMain,totalSub,grp} */
+  function makePie(host, items, o) {
+    host.textContent = '';
+    var vis = items.filter(function (i) { return i.value > 0; });
+    var sum = vis.reduce(function (s, i) { return s + i.value; }, 0);
+    var wrap = h('div', { class: 'pie' });
+    var readout = h('div', { class: 'readout', 'aria-live': 'polite' });
+    var svg = svgEl('svg', { viewBox: '0 0 320 320', role: 'group', 'aria-label': o.aria });
+    var cx = 160, cy = 160, r = 146, a = -Math.PI / 2, nodes = {};
+    vis.forEach(function (it) {
+      var f = it.value / sum, b = a + f * 2 * Math.PI, mid = (a + b) / 2, d;
+      if (f > 0.9999) d = 'M ' + cx + ' ' + (cy - r) + ' A ' + r + ' ' + r + ' 0 1 1 ' + (cx - 0.01) + ' ' + (cy - r) + ' Z';
+      else {
+        var x1 = cx + r * Math.cos(a), y1 = cy + r * Math.sin(a), x2 = cx + r * Math.cos(b), y2 = cy + r * Math.sin(b);
+        d = 'M ' + cx + ' ' + cy + ' L ' + x1.toFixed(2) + ' ' + y1.toFixed(2) + ' A ' + r + ' ' + r + ' 0 ' + (f > 0.5 ? 1 : 0) + ' 1 ' + x2.toFixed(2) + ' ' + y2.toFixed(2) + ' Z';
+      }
+      var g = svgEl('g', { class: 'sg' });
+      g.style.setProperty('--dx', (Math.cos(mid) * 7).toFixed(1) + 'px');
+      g.style.setProperty('--dy', (Math.sin(mid) * 7).toFixed(1) + 'px');
+      var p = svgEl('path', { d: d, tabindex: '0', role: 'img', 'aria-label': it.label + ': ' + it.text });
+      p.style.fill = 'var(--' + it.color + ')';
+      g.append(p);
+      if (f >= 0.07) {
+        var t = svgEl('text', { x: (cx + 0.64 * r * Math.cos(mid)).toFixed(1), y: (cy + 0.64 * r * Math.sin(mid) + 4).toFixed(1), 'text-anchor': 'middle', 'class': 'slice-label' });
+        t.textContent = pct(f * 100);
+        t.style.fill = textOn(it.color);
+        g.append(t);
+      }
+      p.addEventListener('pointerenter', function () { o.grp.enter(it.key); });
+      p.addEventListener('pointerleave', function () { o.grp.leave(); });
+      p.addEventListener('focus', function () { o.grp.enter(it.key); });
+      p.addEventListener('blur', function () { o.grp.leave(); });
+      p.addEventListener('click', function () { o.grp.click(it.key); });
+      p.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); o.grp.click(it.key); } });
+      svg.append(g);
+      nodes[it.key] = { g: g, it: it };
+      a = b;
+    });
+    wrap.append(svg);
+    host.append(readout, wrap);
+    o.grp.add(function (k) {
+      var n = k != null ? nodes[k] : null;
+      Object.keys(nodes).forEach(function (kk) { nodes[kk].g.classList.toggle('on', n && kk === k); });
+      wrap.classList.toggle('has-active', !!n);
+      readout.textContent = '';
+      if (n) {
+        var sw = h('span', { class: 'r-sw' }); sw.style.background = 'var(--' + n.it.color + ')';
+        readout.append(h('div', { class: 'r-main' }, n.it.text), h('div', { class: 'r-sub' }, sw, n.it.label));
+      } else {
+        readout.append(h('div', { class: 'r-main' }, o.totalMain), h('div', { class: 'r-sub' }, o.totalSub));
+      }
+    });
+  }
+
+  /* leyenda / tabla de datos; cols = [{h, get(item), num}]; get puede devolver texto, un nodo o {na} */
+  function makeTable(items, cols, foot) {
+    var t = h('table', { class: 'legend' });
+    var tr = h('tr');
+    cols.forEach(function (c) { tr.append(h('th', { class: c.num ? 'num' : '', scope: 'col' }, c.h)); });
+    t.append(h('thead', null, tr));
+    var tb = h('tbody');
+    items.forEach(function (it) {
+      var row = h('tr', { 'data-key': it.key });
+      cols.forEach(function (c, ci) {
+        var td = h('td', { class: c.num ? 'num' : '' });
+        if (ci === 0) {
+          var sw = h('span', { class: 'sw' + (it.value > 0 ? '' : ' none') });
+          if (it.value > 0) sw.style.background = 'var(--' + it.color + ')';
+          td.append(sw);
+        }
+        var v = c.get(it);
+        if (v && v.nodeType) td.append(v);
+        else if (v && v.na) td.append(h('span', { class: 'na' }, v.na));
+        else td.append(v == null ? '' : String(v));
+        row.append(td);
+      });
+      tb.append(row);
+    });
+    t.append(tb);
+    if (foot) {
+      var fr = h('tr');
+      foot.forEach(function (c, i) { fr.append(h('td', { class: cols[i].num ? 'num' : '' }, c)); });
+      t.append(h('tfoot', null, fr));
+    }
+    return t;
+  }
+
+  /* tabla simple sin selección: heads = [texto], rows = [[celda…]] */
+  function plainTable(heads, rows) {
+    var t = h('table', { class: 'plain' });
+    var tr = h('tr');
+    heads.forEach(function (x) { tr.append(h('th', { scope: 'col' }, x)); });
+    t.append(h('thead', null, tr));
+    var tb = h('tbody');
+    rows.forEach(function (r) {
+      var row = h('tr');
+      r.forEach(function (c) { row.append(h('td', null, c)); });
+      tb.append(row);
+    });
+    t.append(tb);
+    return h('div', { class: 'tbl-wrap' }, t);
+  }
+
+  function stat(label, value, small) {
+    return h('div', { class: 'stat' }, h('dt', null, label), h('dd', null, value, small ? h('small', null, small) : null));
+  }
+
+  var state = { rev: 'all', br: 'nat', rg: 'off', fo: 'pv', erosion: 0, rule: 'none' };
+
+  /* ---------- pestaña 1 ---------- */
+  function renderRevenue() {
+    var all = state.rev === 'all';
+    var items = SRC.filter(function (s) { return all || s.key !== 'ss'; }).map(function (s) { return Object.assign({}, s); });
+    var total = all ? COMBINED : AEAT_TOTAL;
+    items.forEach(function (i) { i.text = fmtM(i.value) + ' · ' + pct(i.value / total * 100); });
+    $('#rev-finding').textContent = all
+      ? 'La Seguridad Social y el IRPF aportan el 64% de los 502.274 M€ que recauda España.'
+      : 'El IRPF y el IVA suman el 74% de los 325.356 M€ en impuestos.';
+    var host = $('#rev-card'); host.textContent = '';
+    var pieHost = h('div'), tblHost = h('div', { class: 'tbl-wrap' });
+    host.append(pieHost, tblHost);
+    var grp = makeGroup();
+    makePie(pieHost, items, { aria: 'Gráfico circular de los ingresos públicos españoles por fuente, 2025', totalMain: fmtM(total), totalSub: all ? 'Impuestos más Seguridad Social, 2025' : 'Impuestos gestionados por la AEAT, 2025', grp: grp });
+    var tbl = makeTable(items, [
+      { h: 'Fuente', get: function (i) { return i.label; } },
+      { h: 'M€', num: true, get: function (i) { return fmtInt(i.value); } },
+      { h: '% del total', num: true, get: function (i) { return pct(i.value / total * 100); } }
+    ], ['Total', fmtInt(total), '100%']);
+    tblHost.append(tbl);
+    grp.bindRows(tblHost);
+  }
+
+  /* ---------- pestaña 2 ---------- */
+  function renderBrackets() {
+    var nat = state.br === 'nat';
+    var stats = $('#br-stats'); stats.textContent = '';
+    if (nat) {
+      stats.append(
+        stat('Declarantes del IRPF', fmtD(IRPF_FILERS / 1e6, 1) + ' M', 'territorio de régimen común, declaraciones de 2024'),
+        stat('Base liquidable', fmtM(IRPF_BASE_EUR / 1e6), 'base liquidable general'),
+        stat('Cuota líquida incrementada', fmtM(IRPF_CUOTA_EUR / 1e6), 'unos 67.900 M€ para el Estado y 65.500 M€ para las comunidades'),
+        stat('Declarantes con más de 60.000 €', '6,4%', 'acumulan el 25,6% de la base liquidable')
+      );
+    } else {
+      stats.append(
+        stat('Declarantes de Madrid con más de 60.000 €', '11,5%', 'de las declaraciones individuales de Madrid'),
+        stat('Su parte del IRPF de Madrid', '≥ 44,7%', 'sin contar el tramo superior, que no se publica'),
+        stat('Declarantes de Madrid con menos de 30.000 €', '59,7%', 'pagan al menos el 11,8% del IRPF de Madrid (celda de menos de 6.000 € oculta)'),
+        stat('Oculto por secreto estadístico', '13,7%', 'del IRPF de Madrid: menos de 6.000 € y más de 601.000 €')
+      );
+    }
+    var pies = $('#br-pies'); pies.textContent = '';
+    var cardA = h('div', { class: 'card' }), cardB = h('div', { class: 'card' });
+    var hostA = h('div'), hostB = h('div');
+    pies.append(cardA, cardB);
+    var grp = makeGroup(), items, tblCols, foot = null;
+
+    if (nat) {
+      items = BR_LABELS.map(function (lb, i) {
+        return { key: 'b' + i, label: lb, color: 's' + i, value: BR_FILERS[i], filers: BR_FILERS[i], fpct: BR_FPCT[i], base: BR_BASE_EUR[i], bpct: BR_BPCT[i] };
+      });
+      cardA.append(h('h3', null, 'Parte de los declarantes'), h('p', { class: 'sub' }, 'Cada porción es un tramo de renta anual.'), hostA);
+      cardB.append(h('h3', null, 'Parte de la base liquidable'), h('p', { class: 'sub' }, 'Sustituto de la cuota pagada. El tramo negativo no tiene porción.'), hostB);
+      var itA = items.map(function (i) { return Object.assign({}, i, { value: i.filers, text: fmtInt(i.filers) + ' declarantes · ' + pct(i.fpct, 2) }); });
+      var itB = items.map(function (i) { return Object.assign({}, i, { value: i.base, text: fmtM(i.base / 1e6) + ' · ' + pct(i.bpct, 2) + ' de la base' }); });
+      makePie(hostA, itA, { aria: 'Gráfico circular de los declarantes del IRPF por tramo de renta', totalMain: fmtD(IRPF_FILERS / 1e6, 1) + ' M declarantes', totalSub: 'España, régimen común, 2024', grp: grp });
+      makePie(hostB, itB, { aria: 'Gráfico circular de la base liquidable del IRPF por tramo de renta', totalMain: fmtM(IRPF_BASE_EUR / 1e6), totalSub: 'Base liquidable, 2024', grp: grp });
+      tblCols = [
+        { h: 'Tramo (renta)', get: function (i) { return i.label; } },
+        { h: 'Declarantes', num: true, get: function (i) { return fmtInt(i.filers); } },
+        { h: '% de declarantes', num: true, get: function (i) { return pct(i.fpct, 2); } },
+        { h: 'Base liquidable (M€)', num: true, get: function (i) { return fmtInt(i.base / 1e6); } },
+        { h: '% de la base', num: true, get: function (i) { return pct(i.bpct, 2); } }
+      ];
+      foot = ['Total', fmtInt(IRPF_FILERS), '100%', fmtInt(IRPF_BASE_EUR / 1e6), '100%'];
+    } else {
+      var tSum = MAD.reduce(function (s, m) { return s + (m.t || 0); }, 0);
+      var rest = +(100 - tSum).toFixed(2);
+      items = MAD.map(function (m) { return { key: m.key, label: m.label, color: m.color, value: m.f, f: m.f, t: m.t }; });
+      cardA.append(h('h3', null, 'Madrid: parte de los declarantes'), h('p', { class: 'sub' }, 'Declaraciones individuales por renta anual.'), hostA);
+      cardB.append(h('h3', null, 'Madrid: parte de la cuota pagada'), h('p', { class: 'sub' }, 'Cuota líquida incrementada total. En gris, el resto no publicado.'), hostB);
+      var mA = items.map(function (i) { return Object.assign({}, i, { value: i.f, text: pct(i.f, 2) + ' de los declarantes' }); });
+      var mB = items.filter(function (i) { return i.t != null; }).map(function (i) { return Object.assign({}, i, { value: i.t, text: pct(i.t, 2) + ' del IRPF' }); });
+      mB.push({ key: 'mx', label: 'Menos de 6.000 € y más de 601.000 € (no publicado)', color: 'c-oth', value: rest, text: pct(rest, 2) + ' del IRPF, oculto' });
+      makePie(hostA, mA, { aria: 'Gráfico circular de los declarantes del IRPF de Madrid por tramo de renta', totalMain: '100%', totalSub: 'Declaraciones individuales de Madrid, 2024', grp: grp });
+      makePie(hostB, mB, { aria: 'Gráfico circular del IRPF pagado en Madrid por tramo de renta', totalMain: '100%', totalSub: 'IRPF pagado en Madrid, 2024', grp: grp });
+      tblCols = [
+        { h: 'Tramo (renta)', get: function (i) { return i.label; } },
+        { h: '% de declarantes de Madrid', num: true, get: function (i) { return i.f != null ? pct(i.f, 2) : { na: 'n/d' }; } },
+        { h: '% del IRPF de Madrid', num: true, get: function (i) { return i.key === 'mx' ? pct(rest, 2) + ' juntos' : (i.t != null ? pct(i.t, 2) : { na: 'no publicado' }); } }
+      ];
+      items.push({ key: 'mx', label: 'Resto no publicado (menos de 6.000 € y más de 601.000 €)', color: 'c-oth', value: rest, f: null, t: null });
+    }
+    var tHost = $('#br-table'); tHost.textContent = '';
+    tHost.append(makeTable(items, tblCols, foot));
+    grp.bindRows(tHost);
+
+    // decil superior (IEF)
+    var ief = $('#ief-card'); ief.textContent = '';
+    var pH = h('div'), tH = h('div'), g2 = makeGroup();
+    ief.append(pH, tH);
+    var iItems = [
+      { key: 'top', label: 'El 10% de contribuyentes con más renta', color: 'c-irpf', value: IEF_TOP, text: pct(IEF_TOP, 2) + ' del IRPF' },
+      { key: 'rest', label: 'El otro 90%', color: 'c-ss', value: +(100 - IEF_TOP).toFixed(2), text: pct(100 - IEF_TOP, 2) + ' del IRPF' }
+    ];
+    makePie(pH, iItems, { aria: 'Gráfico circular: parte de la cuota del IRPF que paga el decil superior', totalMain: 'Todo el país', totalSub: 'Parte de la cuota real del IRPF, por decil de renta', grp: g2 });
+    tH.append(h('h3', null, 'Todo el país, por deciles'), h('p', { class: 'sub' }, 'El Instituto de Estudios Fiscales calcula que el decil de mayor renta soporta el 53,96% de la cuota real del IRPF. El otro 90% es el resto (100 menos 53,96).'));
+    var tb = makeTable(iItems, [
+      { h: 'Grupo', get: function (i) { return i.label; } },
+      { h: 'Parte del IRPF', num: true, get: function (i) { return pct(i.value, 2); } }
+    ]);
+    var w = h('div', { class: 'tbl-wrap', style: 'margin-top:12px' }, tb);
+    tH.append(w);
+    g2.bindRows(w);
+  }
+
+  /* ---------- pestaña 3 ---------- */
+  function renderRegions() {
+    var est = state.rg === 'est';
+    var list = REG.map(function (r) { return { key: r[0], label: r[1], cap: r[2], pop: r[3], color: r[4], est: false }; });
+    if (est) {
+      ['pv', 'nav'].forEach(function (k) {
+        var T = FORAL[k];
+        list.push({ key: k, label: T.name + ' (estimado)', cap: roundTo(eqCap(T, 0.7), 100), pop: T.pop, color: k === 'pv' ? 'c-pv' : 'c-nav', est: true });
+      });
+    }
+    var capTot = REG_TOTAL_SRC + list.filter(function (i) { return i.est; }).reduce(function (s, i) { return s + i.cap; }, 0);
+    var popTot = list.reduce(function (s, i) { return s + i.pop; }, 0);
+    var items = list.map(function (i) {
+      var pc = i.est ? roundTo(i.cap * 1e6 / i.pop, 50) : i.cap * 1e6 / i.pop;
+      return Object.assign({}, i, { pc: pc, idx: pc / AVG15 * 100, capPct: i.cap / capTot * 100, popPct: i.pop / popTot * 100 });
+    });
+    var mad = items.filter(function (i) { return i.key === 'mad'; })[0];
+    $('#rg-finding').textContent = est
+      ? 'Con una estimación propia, País Vasco y Navarra quedarían por encima de la media por habitante.'
+      : 'Madrid recauda un ' + Math.round(mad.idx - 100) + '% más de impuestos cedidos por habitante que la media autonómica.';
+
+    var pies = $('#rg-pies'); pies.textContent = '';
+    var cA = h('div', { class: 'card' }), cB = h('div', { class: 'card' }), hA = h('div'), hB = h('div');
+    cA.append(h('h3', null, 'Parte del impuesto recaudado'), h('p', { class: 'sub' }, est ? 'Capacidad tributaria por comunidad: 15 de régimen común (oficial) más País Vasco y Navarra (estimado).' : 'Capacidad tributaria por comunidad, 15 comunidades de régimen común.'), hA);
+    cB.append(h('h3', null, 'Euros por habitante'), h('p', { class: 'sub' }, 'El tamaño de la porción son euros por persona; el conjunto no tiene significado.'), hB);
+    pies.append(cA, cB);
+    var grp = makeGroup();
+    var approx = function (i) { return i.est ? '≈' : ''; };
+    var itA = items.slice().sort(function (a, b) { return b.cap - a.cap; }).map(function (i) { return Object.assign({}, i, { value: i.cap, text: approx(i) + fmtM(i.cap) + ' · ' + pct(i.capPct) + ' de la capacidad' }); });
+    var itB = items.slice().sort(function (a, b) { return b.pc - a.pc; }).map(function (i) { return Object.assign({}, i, { value: i.pc, text: approx(i) + eur(i.pc) + ' por habitante · ' + Math.round(i.idx) + '% de la media' }); });
+    makePie(hA, itA, { aria: 'Gráfico circular de la capacidad tributaria por comunidad', totalMain: fmtM(capTot), totalSub: est ? 'Capacidad tributaria, 17 territorios, 2024' : 'Capacidad tributaria, 15 comunidades, 2024', grp: grp });
+    makePie(hB, itB, { aria: 'Gráfico circular de la capacidad tributaria por habitante y comunidad', totalMain: eur(AVG15), totalSub: 'Media de las 15 comunidades de régimen común', grp: grp });
+    var cols = [
+      { h: 'Comunidad', get: function (i) { return i.label; } },
+      { h: 'Capacidad (M€)', num: true, get: function (i) { return approx(i) + fmtInt(i.cap); } },
+      { h: '% de la capacidad', num: true, get: function (i) { return pct(i.capPct); } },
+      { h: 'Habitantes', num: true, get: function (i) { return approx(i) + fmtInt(i.pop); } },
+      { h: '% de habitantes', num: true, get: function (i) { return pct(i.popPct); } },
+      { h: '€ por habitante', num: true, get: function (i) { return approx(i) + fmtInt(i.pc); } },
+      { h: 'Índice (media = 100)', num: true, get: function (i) { return approx(i) + Math.round(i.idx); } }
+    ];
+    if (est) cols.push({ h: 'Tipo', get: function (i) { return tag(i.est ? 'estimado' : 'oficial'); } });
+    var tHost = $('#rg-table'); tHost.textContent = '';
+    var foot = [est ? '17 territorios' : '15 comunidades', fmtInt(capTot), '100%', fmtInt(popTot), '100%', est ? '' : fmtInt(AVG15), est ? '' : '100'];
+    if (est) foot.push('');
+    tHost.append(makeTable(itA, cols, foot));
+    grp.bindRows(tHost);
+  }
+
+  /* ---------- pestaña 4 ---------- */
+  function renderForal() {
+    var T = FORAL[state.fo], total = T.total;
+    var eqC = eqCap(T, 0.7), eqP = eqPc(T, 0.7);
+    var pcLabel = (T.popApprox ? '≈' : '') + eur(total * 1e6 / T.pop);
+
+    var stats = $('#fo-stats'); stats.textContent = '';
+    stats.append(
+      stat('Recaudación foral, 2025', fmtM(total, 1), T.growth),
+      stat('Por habitante', pcLabel, 'bruta: incluye lo que en régimen común es del Estado; no comparable con 3.335 €'),
+      stat(T.flowStat, fmtM(T.flow, T.flowDec), T.flowSmall + ' · ≈' + eur(T.flow * 1e6 / T.pop) + ' por habitante'),
+      stat('Capacidad equivalente por habitante', '≈' + eur(roundTo(eqP, 50)), 'estimado, ±10% · media de régimen común: ' + eur(AVG15))
+    );
+
+    var pies = $('#fo-pies'); pies.textContent = '';
+    var cA = h('div', { class: 'card' }), cB = h('div', { class: 'card' }), hA = h('div'), hB = h('div');
+    cA.append(h('h3', null, T.name + ': qué se recauda'), h('p', { class: 'sub' }, T.pieSub), hA);
+    cB.append(h('h3', null, T.name + ': cuánto va al Estado'), h('p', { class: 'sub' }, T.flowSub), hB);
+    pies.append(cA, cB);
+    var gA = makeGroup(), gB = makeGroup();
+
+    var itA = T.items.map(function (i) { return Object.assign({}, i, { text: fmtM(i.value, 1) + ' · ' + pct(i.value / total * 100) }); });
+    makePie(hA, itA, { aria: 'Gráfico circular de la recaudación foral de ' + T.name + ' por impuesto, 2025', totalMain: fmtM(total, 1), totalSub: 'Recaudación foral bruta, 2025', grp: gA });
+    var lgA = h('div', { class: 'tbl-wrap', style: 'margin-top:12px' }, makeTable(itA, [
+      { h: 'Impuesto', get: function (i) { return i.label; } },
+      { h: 'M€', num: true, get: function (i) { return fmtD(i.value, 1); } },
+      { h: '%', num: true, get: function (i) { return pct(i.value / total * 100); } },
+      { h: '€/hab.', num: true, get: function (i) { return (T.popApprox ? '≈' : '') + fmtInt(i.value * 1e6 / T.pop); } },
+      { h: 'Tipo', get: function (i) { return tag(i.type); } }
+    ], ['Total', fmtD(total, 1), '100%', (T.popApprox ? '≈' : '') + fmtInt(total * 1e6 / T.pop), tag('oficial')]));
+    cA.append(lgA); gA.bindRows(lgA);
+
+    var keep = +(total - T.flow).toFixed(1);
+    var itB = [
+      { key: 'flow', label: T.flowLabel, color: 's8', value: T.flow, text: fmtM(T.flow, T.flowDec ? 1 : 0) + ' · ' + pct(T.flow / total * 100), type: 'oficial' },
+      { key: 'keep', label: T.keepLabel, color: 's3', value: keep, text: fmtM(keep, 1) + ' · ' + pct(keep / total * 100), type: 'inferido' }
+    ];
+    makePie(hB, itB, { aria: 'Gráfico circular: parte de la recaudación foral de ' + T.name + ' que va al Estado', totalMain: pct(T.flow / total * 100) + ' al Estado', totalSub: 'Sobre la recaudación foral bruta de 2025', grp: gB });
+    var lgB = h('div', { class: 'tbl-wrap', style: 'margin-top:12px' }, makeTable(itB, [
+      { h: 'Destino', get: function (i) { return i.label; } },
+      { h: 'M€', num: true, get: function (i) { return fmtD(i.value, 1); } },
+      { h: '%', num: true, get: function (i) { return pct(i.value / total * 100); } },
+      { h: 'Tipo', get: function (i) { return tag(i.type); } }
+    ], ['Total', fmtD(total, 1), '100%', '']));
+    cB.append(lgB); gB.bindRows(lgB);
+
+    var ser = $('#fo-series'); ser.textContent = '';
+    ser.append(h('h3', null, T.seriesTitle), plainTable(['Año', 'Importe (M€)', 'Estado', 'Tipo'], T.series.map(function (r) { return [r[0], r[1], r[2], tag(r[3])]; })), h('p', { class: 'sub', style: 'margin-top:10px' }, T.seriesNote));
+
+    renderForalBrackets();
+    renderForalCompare();
+  }
+
+  function renderForalBrackets() {
+    var host = $('#fo-brackets'); host.textContent = '';
+    if (state.fo === 'pv') {
+      host.append(h('div', { class: 'card' }, h('h3', null, 'País Vasco: IRPF por tramos'), h('div', { class: 'empty', style: 'margin-top:10px;min-height:120px' }, 'No hay una tabla consolidada del IRPF por tramos para toda la comunidad. Bizkaia publica la suya en Open Data Bizkaia, pero no se pudo descargar; Álava y Gipuzkoa no se han verificado. Es una laguna, no un cero.')));
+      return;
+    }
+    var rows = [
+      { key: 'a', label: 'Más de 60.000 € de base', color: 'c-irpf', value: 8.6, f: 8.6, t: 46, tf: 'prensa', tt: 'prensa' },
+      { key: 'b', label: '24.000–60.000 € («clases medias»)', color: 'c-ss', value: 37, f: 37, t: 45, tf: 'prensa', tt: 'prensa' },
+      { key: 'c', label: 'Menos de 24.000 € (resto)', color: 'c-oth', value: 54.4, f: 54.4, t: 9, tf: 'inferido', tt: 'inferido' }
+    ];
+    var grp = makeGroup();
+    var cA = h('div', { class: 'card' }), cB = h('div', { class: 'card' }), hA = h('div'), hB = h('div');
+    cA.append(h('h3', null, 'Navarra: parte de los declarantes'), h('p', { class: 'sub' }, 'IRPF, tramos de base, 2019.'), hA);
+    cB.append(h('h3', null, 'Navarra: parte de la cuota'), h('p', { class: 'sub' }, 'Cuota del IRPF por los mismos tramos, 2019.'), hB);
+    var itA = rows.map(function (r) { return Object.assign({}, r, { value: r.f, text: (r.key === 'c' ? '≈' : '') + pct(r.f) + ' de los declarantes' }); });
+    var itB = rows.map(function (r) { return Object.assign({}, r, { value: r.t, text: '≈' + pct(r.t, 0) + ' de la cuota' }); });
+    makePie(hA, itA, { aria: 'Gráfico circular de los declarantes del IRPF de Navarra por tramo de base, 2019', totalMain: '100%', totalSub: 'Declarantes, Navarra, 2019', grp: grp });
+    makePie(hB, itB, { aria: 'Gráfico circular de la cuota del IRPF de Navarra por tramo de base, 2019', totalMain: '100%', totalSub: 'Cuota del IRPF, Navarra, 2019', grp: grp });
+    var lg = h('div', { class: 'tbl-wrap', style: 'margin-top:12px' }, makeTable(rows, [
+      { h: 'Tramo de base', get: function (i) { return i.label; } },
+      { h: '% de declarantes', num: true, get: function (i) { return (i.key === 'c' ? '≈' : '') + pct(i.f); } },
+      { h: '% de la cuota', num: true, get: function (i) { return '≈' + pct(i.t, 0); } },
+      { h: 'Tipo', get: function (i) { return tag(i.tf); } }
+    ]));
+    cB.append(lg); grp.bindRows(lg);
+    host.append(
+      h('h3', { style: 'margin:0 0 10px;font:700 20px/1.2 var(--font-display)' }, 'Navarra: IRPF por tramos'),
+      h('div', { class: 'pair' }, cA, cB),
+      h('ul', { class: 'notes' },
+        h('li', null, 'Estadística de la Hacienda Foral recogida por la prensa. El tramo «resto» se deduce por diferencia (100 menos las dos cifras publicadas). Se parte de declarantes y cuota del mismo año (2019).'),
+        h('li', null, 'Dentro del tramo de más de 60.000 €: los de más de 120.000 € (1,1–1,2% de los declarantes) pagan el 17–17,7% de la cuota (2019-2020); los de 90.000–120.000 € (1,5%) pagan el 9,3% (2020). En 2026 la prensa sitúa en unas 52.000 las declaraciones de más de 60.000 € y dice que aportan la mayoría del impuesto; en la campaña de 2023 hubo 502.522 contribuyentes.'),
+        h('li', null, 'Referencia de régimen común (AEAT, 2023): los 14.738 declarantes de más de 601.000 € (0,06%) aportan el 6,84% de la cuota íntegra estatal.')
+      )
+    );
+  }
+
+  function renderForalCompare() {
+    var pv = FORAL.pv, nv = FORAL.nav;
+    var rows = [
+      ['Recaudación foral bruta, 2025', '20.324,5 M€ (9.064 €/hab.)', '5.865,7 M€ (8.577 €/hab.)', [tag('oficial')]],
+      ['Cupo o aportación al Estado, 2025', '1.464,7 M€ provisional (7,2% de lo recaudado; ≈653 €/hab.)', '874 M€ presupuestados (14,9%; ≈1.278 €/hab.)', [tag('oficial')]],
+      ['Índice de imputación frente al peso de la población', '6,24% frente a ≈4,6%', '1,60% frente a ≈1,4%', [tag('oficial'), ' (peso de población: cálculo propio)']],
+      ['Capacidad tributaria equivalente a régimen común (media: ' + eur(AVG15) + '/hab.)',
+        '≈' + eur(roundTo(eqPc(pv, 0.7), 50)) + '/hab. (≈' + Math.round(eqPc(pv, 0.7) / AVG15 * 100) + '% de la media)',
+        '≈' + eur(roundTo(eqPc(nv, 0.7), 50)) + '/hab. (≈' + Math.round(eqPc(nv, 0.7) / AVG15 * 100) + '% de la media)',
+        [tag('estimado'), ' ±10%']],
+      ['Renta relativa, 2022 (España = 100)', '127', '120', [tag('academica'), ' Fedea, 2024']],
+      ['Financiación por habitante ajustado (régimen común = 100)', 'cerca del doble de la media', 'más de 1,5 veces la media', [tag('academica'), ' García Díaz, Fedea 2024']],
+      ['Exceso de recursos por habitante que no explican las competencias', '29,8%', '28,2%', [tag('academica'), ' Ivie, 2014']],
+      ['Balanza fiscal 2014 (positivo = recibe más de lo que aporta; Madrid: −2.979 €/hab., Cataluña: −1.317 €/hab.)', '+1.547 €/hab.', '+179 €/hab.', [tag('oficial'), ' Ministerio de Hacienda, 2014']],
+      ['Saldo contributivo de la Seguridad Social, 2022', '−4.269,5 M€ (−1.930 €/hab.)', '−475,0 M€ (−708 €/hab.)', [tag('academica'), ' García Díaz, Fedea 2024']],
+      ['Cupo adicional implícito si la base estuviera infravalorada (≈30% en el País Vasco; 15–25% supuesto en Navarra)', '≈2.000 M€ al año', '≈170–285 M€ al año', [tag('estimado')]],
+      ['<strong>«Contribución que faltaría»</strong> (cupo adicional más nivelación entre comunidades)', '≈2.700–3.700 M€ al año (≈1.200–1.650 €/hab.)', '≈375–700 M€ al año (≈550–1.000 €/hab.)', [tag('estimado'), ' incertidumbre alta']]
+    ];
+    rows[rows.length - 1][0] = h('span', null, h('strong', null, '«Contribución que faltaría»'), ' (cupo adicional más nivelación entre comunidades)');
+    var host = $('#fo-compare'); host.textContent = '';
+    host.append(plainTable(['Indicador', 'País Vasco', 'Navarra', 'Tipo y fuente'], rows));
+
+    var lo = function (T) { return roundTo(eqCap(T, 0.6), 10); }, hi = function (T) { return roundTo(eqCap(T, 0.8), 10); };
+    var m = $('#fo-method'); m.textContent = '';
+    m.append(
+      h('li', null, h('strong', null, 'Capacidad equivalente (estimado, ±10%). '), 'Se aplica a la recaudación foral el reparto del sistema común: 50% del IRPF, 50% del IVA, 58% de los Impuestos Especiales y entre el 60% y el 80% del resto (Patrimonio, Sucesiones, ITP-AJD…); se usa el 70%. No entra Sociedades, que en régimen común no se cede. Sale ≈' + fmtInt(roundTo(eqCap(pv, 0.7), 100)) + ' M€ en el País Vasco (' + fmtInt(lo(pv)) + '–' + fmtInt(hi(pv)) + ' con el 60–80%) y ≈' + fmtInt(roundTo(eqCap(nv, 0.7), 100)) + ' M€ en Navarra (' + fmtInt(lo(nv)) + '–' + fmtInt(hi(nv)) + '). No se incluye el ajuste por retenciones de Navarra (138,4 M€); añadiría unos 70 M€, dentro del margen. Las cifras forales se calculan con normativa foral, no común, y por eso el margen es amplio.'),
+      h('li', null, h('strong', null, '«Contribución que faltaría» (estimado, incertidumbre alta). '), 'País Vasco: 32.000 M€ de infravaloración de la base del cupo (De la Fuente, año 2017) × 6,24% ≈ 2.000 M€, más una contribución a la nivelación entre comunidades de 300–750 € por habitante (el rango de lo que aportaron en 2017 Cataluña, Baleares y Madrid) × 2,24 M de habitantes = 0,7–1,7 mil M€. Navarra: infravaloración supuesta del 15–25% sobre una base corregida de 70.757 M€ (2015) × 1,60% = 170–285 M€, más nivelación de 300–600 € por habitante × 0,684 M de habitantes = 205–410 M€. No se suma el déficit de la Seguridad Social, para no duplicar. Los datos de partida son de 2015-2017 y las cifras de De la Fuente no son oficiales.'),
+      h('li', null, 'Un artículo de opinión (El Liberal, no académico) cifra el déficit en 3.673 M€ para el País Vasco y 793 M€ para Navarra: el mismo orden de magnitud, con un método menos riguroso. ', tag('prensa'))
+    );
+  }
+
+  /* ---------- pestaña 5 ---------- */
+  function renderScenario() {
+    var e = state.erosion / 100, rule = state.rule;
+    var collected = CLAIM * (1 - e), shortfall = CLAIM * e;
+    var refill = rule === 'none' ? 0 : shortfall;
+    var irpfAfter = IRPF_AEAT + refill;
+    var surcharge = refill / IRPF_AEAT * 100;
+    var perFiler = refill * 1e6 / IRPF_FILERS;
+    var topShare = rule === 'prop' ? IEF_TOP : (rule === 'flat' ? 10 : null);
+
+    var sum = $('#scn-summary');
+    var parts = [];
+    parts.push('Con una erosión del ' + state.erosion + '%, la propuesta recauda ' + fmtM(collected) + ' de los ' + fmtM(CLAIM) + ' que calcula el partido.');
+    if (rule === 'none') parts.push(shortfall > 0 ? 'Los ' + fmtM(shortfall) + ' que faltan simplemente no se recaudan.' : 'No falta nada.');
+    else if (shortfall > 0) parts.push('Si esos ' + fmtM(shortfall) + ' se cubren con el IRPF ' + (rule === 'prop' ? 'en proporción a lo que cada uno paga hoy' : 'con los mismos euros por declarante') + ', la recaudación del IRPF sube un ' + pct(surcharge) + ', unos ' + eur(perFiler) + ' por declarante de media. El decil de mayor renta asumiría el ' + pct(topShare, 2) + ' de ese importe.');
+    else parts.push('No hay hueco que cubrir.');
+    sum.textContent = parts.join(' ');
+
+    var st = $('#scn-stats'); st.textContent = '';
+    st.append(
+      stat('Recaudado con el impuesto al patrimonio', fmtM(collected), pct(collected / COMBINED * 100) + ' sobre los 502.274 M€ actuales'),
+      stat('Diferencia respecto a la cifra del partido', fmtM(shortfall), pct(state.erosion, 0) + ' de lo calculado'),
+      stat('Variación de la recaudación del IRPF', refill > 0 ? '+' + pct(surcharge) : 'ninguna', refill > 0 ? eur(perFiler) + ' por declarante de media' : 'no se eligió ninguna compensación'),
+      stat('Parte del decil superior en la compensación', topShare == null ? 'n/d' : pct(topShare, 1), topShare == null ? 'no se eligió ninguna compensación' : (rule === 'prop' ? 'proporcional al IRPF pagado' : 'cargo igual por declarante'))
+    );
+
+    var pies = $('#scn-pies'); pies.textContent = '';
+    var cA = h('div', { class: 'card' }), cB = h('div', { class: 'card' }), hA = h('div'), hB = h('div');
+    cA.append(h('h3', null, 'Hoy'), h('p', { class: 'sub' }, 'Impuestos más Seguridad Social, 2025.'), hA);
+    cB.append(h('h3', null, 'Con la propuesta'), h('p', { class: 'sub' }, 'El impuesto al patrimonio aparece como porción propia.'), hB);
+    pies.append(cA, cB);
+    var grp = makeGroup();
+    var before = SRC.map(function (s) { return Object.assign({}, s, { text: fmtM(s.value) + ' · ' + pct(s.value / COMBINED * 100) }); });
+    var afterTotal = COMBINED + collected + refill;
+    var after = SRC.map(function (s) {
+      var v = s.key === 'irpf' ? irpfAfter : s.value;
+      return Object.assign({}, s, { value: v, label: s.key === 'irpf' && refill > 0 ? s.label + ' con compensación' : s.label, text: fmtM(v) + ' · ' + pct(v / afterTotal * 100) });
+    });
+    after.push({ key: 'wt', label: 'Impuesto al patrimonio (propuesta)', color: 'c-prop', value: collected, text: fmtM(collected) + ' · ' + pct(collected / afterTotal * 100) });
+    makePie(hA, before, { aria: 'Gráfico circular de los ingresos de hoy', totalMain: fmtM(COMBINED), totalSub: 'Hoy', grp: grp });
+    makePie(hB, after, { aria: 'Gráfico circular de los ingresos con la propuesta de impuesto al patrimonio', totalMain: fmtM(afterTotal), totalSub: 'Con la propuesta', grp: grp });
+    var lgA = h('div', { class: 'tbl-wrap', style: 'margin-top:12px' }, makeTable(before, [
+      { h: 'Fuente', get: function (i) { return i.label; } },
+      { h: 'M€', num: true, get: function (i) { return fmtInt(i.value); } },
+      { h: '% del total', num: true, get: function (i) { return pct(i.value / COMBINED * 100); } }
+    ], ['Total', fmtInt(COMBINED), '100%']));
+    var lgB = h('div', { class: 'tbl-wrap', style: 'margin-top:12px' }, makeTable(after, [
+      { h: 'Fuente', get: function (i) { return i.label; } },
+      { h: 'M€', num: true, get: function (i) { return fmtInt(i.value); } },
+      { h: '% del total', num: true, get: function (i) { return pct(i.value / afterTotal * 100); } }
+    ], ['Total', fmtInt(afterTotal), '100%']));
+    cA.append(lgA); cB.append(lgB);
+    grp.bindRows(lgA); grp.bindRows(lgB);
+
+    var bear = $('#scn-bear'); bear.textContent = '';
+    var pH = h('div'), tH = h('div');
+    bear.append(pH, tH);
+    if (topShare == null) {
+      pH.append(h('div', { class: 'empty' }, 'No se eligió ninguna compensación, así que no se modela ningún efecto distributivo.'));
+      tH.append(h('h3', null, 'Quién carga con la compensación'), h('p', { class: 'sub' }, 'Elige arriba una regla de compensación por IRPF para ver cómo se reparte el hueco entre el decil superior y el resto.'));
+    } else {
+      var g3 = makeGroup();
+      var bi = [
+        { key: 'top', label: 'El 10% de contribuyentes con más renta', color: 'c-irpf', value: topShare, text: pct(topShare, 2) + ' de la compensación' },
+        { key: 'rest', label: 'El otro 90%', color: 'c-ss', value: 100 - topShare, text: pct(100 - topShare, 2) + ' de la compensación' }
+      ];
+      makePie(pH, bi, { aria: 'Gráfico circular: quién carga con la compensación', totalMain: fmtM(refill), totalSub: 'Hueco cubierto con el IRPF', grp: g3 });
+      tH.append(h('h3', null, 'Quién carga con la compensación'),
+        h('p', { class: 'sub' }, rule === 'prop'
+          ? 'La factura de IRPF de todos sube el mismo porcentaje, así que el reparto sigue la distribución actual del IRPF: el decil superior paga el 53,96% (IEF).'
+          : 'Todos los declarantes pagan los mismos euros, así que cada décima parte de los declarantes carga con una décima parte.'),
+        h('p', { class: 'sub' }, 'El resultado depende de la regla que elijas, no de los datos. Ninguna fuente de aquí mide cómo recaerían el IVA o la Seguridad Social, así que esas reglas no se ofrecen.'));
+    }
+  }
+
+  function renderWealth() {
+    var host = $('#wealth-card'); host.textContent = '';
+    var pH = h('div'), tH = h('div', { class: 'tbl-wrap' }), grp = makeGroup();
+    host.append(pH, tH);
+    var items = [
+      { key: 'w10', label: 'El 10% de hogares más ricos', color: 'c-prop', value: 53, q: '53%', e: '52,7%', text: '53% de la riqueza neta' },
+      { key: 'w40', label: 'El 40% intermedio', color: 'c-oth', value: 38, q: '38%', e: '39,9%', text: '38% de la riqueza neta (el resto)' },
+      { key: 'w50', label: 'El 50% de hogares con menos', color: 'c-ss', value: 9, q: '9%', e: '7,4%', text: '9% de la riqueza neta' }
+    ];
+    makePie(pH, items, { aria: 'Gráfico circular de la riqueza neta de los hogares por grupo', totalMain: '100%', totalSub: 'Riqueza neta de los hogares españoles, 3T 2025', grp: grp });
+    tH.append(h('h3', null, 'Quién tiene la riqueza'), h('p', { class: 'sub' }, 'Banco de España. Las cuotas del 3T 2025 figuran en su página de distribución de la riqueza; la columna de 2022 procede de la Encuesta Financiera de las Familias. La página no nombra la fuente de los datos de 2025. El 40% intermedio es 100 menos las otras dos cuotas publicadas. El 1% superior tenía el 19,4% en 2022.'));
+    var t = makeTable(items, [
+      { h: 'Grupo', get: function (i) { return i.label; } },
+      { h: '3T 2025', num: true, get: function (i) { return i.q; } },
+      { h: 'EFF 2022', num: true, get: function (i) { return i.e; } }
+    ]);
+    var w = h('div', { class: 'tbl-wrap', style: 'margin-top:12px' }, t);
+    tH.append(w);
+    grp.bindRows(w);
+  }
+
+  function renderAll() { renderRevenue(); renderBrackets(); renderRegions(); renderForal(); renderScenario(); renderWealth(); }
+
+  /* ---------- controles ---------- */
+  function setSeg(ids, activeId) { ids.forEach(function (id) { $('#' + id).setAttribute('aria-pressed', id === activeId ? 'true' : 'false'); }); }
+  function seg(a, b, key, va, vb, fn) {
+    $('#' + a).addEventListener('click', function () { state[key] = va; setSeg([a, b], a); fn(); });
+    $('#' + b).addEventListener('click', function () { state[key] = vb; setSeg([a, b], b); fn(); });
+  }
+  seg('rev-all', 'rev-tax', 'rev', 'all', 'tax', renderRevenue);
+  seg('br-nat', 'br-mad', 'br', 'nat', 'mad', renderBrackets);
+  seg('rg-off', 'rg-est', 'rg', 'off', 'est', renderRegions);
+  seg('fo-pv', 'fo-nav', 'fo', 'pv', 'nav', renderForal);
+
+  var slider = $('#erosion'), out = $('#erosion-out'), presets = $('#presets');
+  function syncPresets() {
+    presets.querySelectorAll('button').forEach(function (b) { b.setAttribute('aria-pressed', Number(b.getAttribute('data-e')) === state.erosion ? 'true' : 'false'); });
+  }
+  slider.addEventListener('input', function () { state.erosion = Number(slider.value); out.textContent = state.erosion + '%'; syncPresets(); renderScenario(); });
+  presets.addEventListener('click', function (ev) {
+    var b = ev.target.closest('button'); if (!b) return;
+    state.erosion = Number(b.getAttribute('data-e')); slider.value = String(state.erosion); out.textContent = state.erosion + '%'; syncPresets(); renderScenario();
+  });
+  document.querySelectorAll('input[name="rule"]').forEach(function (r) {
+    r.addEventListener('change', function () { if (r.checked) { state.rule = r.value; renderScenario(); } });
+  });
+
+  /* ---------- pestañas, con ruta en el #hash ---------- */
+  var TABS = ['ingresos', 'tramos', 'comunidades', 'forales', 'patrimonio', 'ricos', 'evidencia'];
+  function showTab(name, focus) {
+    if (TABS.indexOf(name) < 0) name = 'ingresos';
+    TABS.forEach(function (t) {
+      var on = t === name;
+      $('#tab-' + t).hidden = !on;
+      var b = $('#t-' + t);
+      b.setAttribute('aria-selected', on ? 'true' : 'false');
+      b.tabIndex = on ? 0 : -1;
+    });
+    var cur = $('#t-' + name);
+    if (cur && cur.scrollIntoView) { try { cur.scrollIntoView({ block: 'nearest', inline: 'center' }); } catch (e) {} }
+    if (focus) cur.focus();
+  }
+  function fromHash() { showTab((location.hash || '').replace('#', '')); }
+  document.querySelectorAll('.tab').forEach(function (b, i, all) {
+    b.addEventListener('click', function () { var n = b.getAttribute('data-tab'); if (location.hash === '#' + n) showTab(n); else location.hash = n; window.scrollTo(0, 0); });
+    b.addEventListener('keydown', function (e) {
+      var d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+      if (!d) return;
+      e.preventDefault();
+      var n = all[(i + d + all.length) % all.length].getAttribute('data-tab');
+      location.hash = n; showTab(n, true);
+    });
+  });
+  window.addEventListener('hashchange', fromHash);
+
+  renderAll();
+  fromHash();
+})();
+</script>
+</body>
+</html>
