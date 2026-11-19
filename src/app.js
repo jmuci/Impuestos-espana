@@ -730,7 +730,7 @@
   function fromHash() {
     var n = (location.hash || '').replace('#', '').replace(/^tab-/, '');
     if (TABS.indexOf(n) < 0) return;
-    if (location.hash !== '#tab-' + n) history.replaceState(null, '', '#tab-' + n);
+    if (location.hash !== '#tab-' + n) { try { history.replaceState(null, '', '#tab-' + n); } catch (e) {} }
     secs[n].scrollIntoView({ behavior: 'instant' });
   }
   window.addEventListener('hashchange', function () { moved = true; fromHash(); });
