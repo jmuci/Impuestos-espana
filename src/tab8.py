@@ -1,4 +1,4 @@
-"""Pestaña 7 (aportación del top 25): genera el HTML con las cifras calculadas aquí.
+"""Capítulo 7 (aportación del top 25): genera el HTML con las cifras calculadas aquí.
 
 Todas las cifras derivadas salen de las constantes de abajo, para poder revisarlas.
 build.py sustituye el marcador {{TAB8}} del body.html por el resultado de html().
@@ -159,11 +159,11 @@ def html():
 
     stats_sicav = bars([(nom, v, n(v)) for nom, v in SICAV], "Patrimonio de las diez mayores SICAV de España hasta septiembre de 2026, en millones de euros", hi_last=False)
 
-    return f'''<section class="panel" id="tab-aportacion" role="tabpanel" aria-labelledby="t-aportacion" hidden>
+    return f'''<section class="panel chapter" id="tab-aportacion">
   <div class="tab-head">
-    <p class="eyebrow">7 · Cuánto aportan los 25 mayores patrimonios</p>
+    <p class="eyebrow"><span class="chnum" aria-hidden="true">07</span>Cuánto aportan los 25 mayores patrimonios</p>
     <h2>Su IRPF personal es secreto. Lo que sí se mide es lo que pagan sus empresas y cuánto cambia la factura según cobren.</h2>
-    <p class="sub">Hacienda no publica lo que paga cada contribuyente (artículo 95 de la Ley General Tributaria), así que no hay una cifra pública del IRPF de Ortega, Roig o Del Pino. Esta pestaña hace tres cosas: cuenta lo que pagan las empresas que controlan, calcula con las reglas oficiales cuánto tributaría un dividendo según lo cobre una persona o una holding, y sitúa a los más ricos en las estadísticas agregadas de Hacienda. <strong>Ninguna cifra de aquí es el IRPF real de una persona.</strong></p>
+    <p class="sub">Hacienda no publica lo que paga cada contribuyente (artículo 95 de la Ley General Tributaria), así que no hay una cifra pública del IRPF de Ortega, Roig o Del Pino. Este capítulo hace tres cosas: cuenta lo que pagan las empresas que controlan, calcula con las reglas oficiales cuánto tributaría un dividendo según lo cobre una persona o una holding, y sitúa a los más ricos en las estadísticas agregadas de Hacienda. <strong>Ninguna cifra de aquí es el IRPF real de una persona.</strong></p>
   </div>
 
   <h3 class="lead">1. Lo que pagan las empresas antes de repartir un euro</h3>
@@ -260,7 +260,7 @@ def html():
   </ul>
 
   <h3 class="lead">7. Las mayores SICAV y de quién son</h3>
-  <p class="prose">La SICAV es la vía con impuesto reducido que sigue abierta a los grandes patrimonios (pestaña 6). Patrimonio de las diez mayores hasta septiembre de 2026, en millones de euros {tag('prensa')}:</p>
+  <p class="prose">La SICAV es la vía con impuesto reducido que sigue abierta a los grandes patrimonios (capítulo 6). Patrimonio de las diez mayores hasta septiembre de 2026, en millones de euros {tag('prensa')}:</p>
   {stats_sicav}
   <p class="prose">Tres de las diez son de la familia Del Pino y suman {n(SICAV_DELPINO)} M€, más que la mayor, la de Palatchi (1.797 M€) {tag('prensa')}. Sumando las de Del Pino, Palatchi y Koplowitz, las SICAV que la prensa asocia a gente del top 25 tienen {n(SICAV_TOP25)} M€ de patrimonio {tag('inferido')}.</p>
   <ul class="notes">
@@ -288,14 +288,14 @@ def html():
   </div>
 
   <h3 class="lead">Qué significa para la pregunta de fondo</h3>
-  <p class="prose">Esta pestaña no contrasta si subir impuestos a los ricos lo paga la clase media. Aporta dos hechos: el impuesto específico sobre grandes fortunas recauda hoy poco, y buena parte del beneficio de los mayores grupos ya tributa en la empresa antes de llegar al dueño. También da un ejemplo de que las estructuras se mueven: Rijn Capital pasó de Países Bajos a Luxemburgo en 2024, después de que Hacienda neerlandesa abriera una inspección {tag('prensa')}. Eso no prueba que se mueva por impuestos, y no dice nada de qué pasaría con la clase media.</p>
+  <p class="prose">Este capítulo no contrasta si subir impuestos a los ricos lo paga la clase media. Aporta dos hechos: el impuesto específico sobre grandes fortunas recauda hoy poco, y buena parte del beneficio de los mayores grupos ya tributa en la empresa antes de llegar al dueño. También da un ejemplo de que las estructuras se mueven: Rijn Capital pasó de Países Bajos a Luxemburgo en 2024, después de que Hacienda neerlandesa abriera una inspección {tag('prensa')}. Eso no prueba que se mueva por impuestos, y no dice nada de qué pasaría con la clase media.</p>
 
   <h3 class="lead">Lo que no sé</h3>
   <ul class="list">
     <li>El IRPF real de cualquiera de ellos. Es secreto y no figura en ninguna fuente.</li>
     <li>Cuánto de los dividendos de cada holding llega a la persona. Ortega, Sandra Ortega, Florentino Pérez y los Serra reinvierten o retienen según la prensa, pero no sé cuánto sale en sueldos o préstamos.</li>
     <li>De {25 - len(CON_DIVIDENDO)} de los 25 no encontré un dividendo atribuible a la persona: Olivo, Fluxà, Maté, los March, Abelló, Palatchi, Serra, Leopoldo y Joaquín del Pino, Fernando Roig, Luengo, Koplowitz y Lao. De Abelló, Fernando Roig y Luengo no encontré nada útil.</li>
-    <li>Fuentes que no cuadran: el desglose de impuestos de Mercadona (690 frente a 671 M€) y los resultados del grupo de Ortega, que ya señalé en la pestaña 6.</li>
+    <li>Fuentes que no cuadran: el desglose de impuestos de Mercadona (690 frente a 671 M€) y los resultados del grupo de Ortega, que ya señalé en el capítulo 6.</li>
     <li>Daurella: 177 M€ según ESdiario frente a 160 M€ en un titular de Forbes. No sé si son años o niveles distintos, y el dinero es de toda la familia, no de Sol.</li>
     <li>Mercadona: los 187 M€ de Roig son el 54% de los 346 M€, no el 50,66% de su participación, y no sé por qué. La parte de Hortensia Herrero (29%) está calculada sobre el total, sin ese ajuste, y las fuentes dan entre el 27,7% y el 30%.</li>
     <li>Del Pino: la participación de María (8,52%) es la de junio de 2026, pero la de Leopoldo (4,2%, informe de 2022) y la de Joaquín (2,53%, sin fecha clara) son antiguas, y por eso no las modelo.</li>
@@ -304,7 +304,7 @@ def html():
     <li>Los dividendos de Ferrovial y ACS pueden cobrarse en acciones, lo que aplaza el IRPF. No sé qué eligió cada uno.</li>
   </ul>
 
-  <h3 class="lead">Fuentes de esta pestaña</h3>
+  <h3 class="lead">Fuentes de este capítulo</h3>
   <ul class="src-cols">
     <li><a href="https://sede.agenciatributaria.gob.es/Sede/estadisticas/recaudacion-tributaria/informe-anual/ejercicio-2025/6-otros-impuestos.html">AEAT, informe anual de recaudación 2025: otros impuestos</a> {tag('oficial')}</li>
     <li><a href="https://www.hacienda.gob.es/GabineteMinistro/notas%20prensa/2023/s.e.hacienda/20-09-23-np-impuesto-grandes-fortunas.pdf">Hacienda, nota sobre el ITSGF de 2023</a> {tag('oficial')}</li>

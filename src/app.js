@@ -693,34 +693,64 @@
     r.addEventListener('change', function () { if (r.checked) { state.rule = r.value; renderScenario(); } });
   });
 
-  /* ---------- pestañas, con ruta en el #hash ---------- */
+  /* ---------- capítulos: scroll continuo, menú que sigue la lectura y aparición suave ---------- */
   var TABS = ['ingresos', 'tramos', 'comunidades', 'forales', 'patrimonio', 'ricos', 'aportacion', 'evidencia'];
-  function showTab(name, focus) {
-    if (TABS.indexOf(name) < 0) name = 'ingresos';
+  var links = {}, secs = {};
+  TABS.forEach(function (t) { links[t] = $('#t-' + t); secs[t] = $('#tab-' + t); });
+  var bar = $('.progress i'), rail = $('.rail'), curTab = null;
+
+  function setCurrent(name) {
+    if (name === curTab) return;
+    curTab = name;
     TABS.forEach(function (t) {
       var on = t === name;
-      $('#tab-' + t).hidden = !on;
-      var b = $('#t-' + t);
-      b.setAttribute('aria-selected', on ? 'true' : 'false');
-      b.tabIndex = on ? 0 : -1;
+      links[t].classList.toggle('on', on);
+      if (on) links[t].setAttribute('aria-current', 'location'); else links[t].removeAttribute('aria-current');
     });
-    var cur = $('#t-' + name);
-    if (cur && cur.scrollIntoView) { try { cur.scrollIntoView({ block: 'nearest', inline: 'center' }); } catch (e) {} }
-    if (focus) cur.focus();
+    var l = name && links[name], list = l && l.parentNode;
+    if (list && list.scrollWidth > list.clientWidth) { list.scrollTo({ left: l.offsetLeft - (list.clientWidth - l.offsetWidth) / 2, behavior: 'smooth' }); }
   }
-  function fromHash() { showTab((location.hash || '').replace('#', '')); }
-  document.querySelectorAll('.tab').forEach(function (b, i, all) {
-    b.addEventListener('click', function () { var n = b.getAttribute('data-tab'); if (location.hash === '#' + n) showTab(n); else location.hash = n; window.scrollTo(0, 0); });
-    b.addEventListener('keydown', function (e) {
-      var d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
-      if (!d) return;
-      e.preventDefault();
-      var n = all[(i + d + all.length) % all.length].getAttribute('data-tab');
-      location.hash = n; showTab(n, true);
+
+  var ticking = false;
+  function onScroll() {
+    ticking = false;
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.transform = 'scaleX(' + (max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0) + ')';
+    var line = rail.offsetHeight + window.innerHeight * 0.3, name = null;
+    TABS.forEach(function (t) { if (secs[t].getBoundingClientRect().top <= line) name = t; });
+    setCurrent(name);
+  }
+  window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+  window.addEventListener('resize', onScroll);
+
+  // Los enlaces antiguos (#tramos) siguen funcionando: llevan al capítulo. Si al cargar la página
+  // (tipografías) se desplaza el contenido, se vuelve a anclar, salvo que el lector ya haya empezado a moverse.
+  var moved = false;
+  ['wheel', 'touchstart', 'keydown', 'mousedown'].forEach(function (ev) { window.addEventListener(ev, function () { moved = true; }, { passive: true, once: true }); });
+  function fromHash() {
+    var n = (location.hash || '').replace('#', '').replace(/^tab-/, '');
+    if (TABS.indexOf(n) < 0) return;
+    if (location.hash !== '#tab-' + n) history.replaceState(null, '', '#tab-' + n);
+    secs[n].scrollIntoView({ behavior: 'instant' });
+  }
+  window.addEventListener('hashchange', function () { moved = true; fromHash(); });
+  function reanchor() { if (!moved) fromHash(); }
+  window.addEventListener('load', reanchor);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(reanchor);
+
+  // Aparición al entrar en pantalla. Sin JS o con movimiento reducido todo queda visible.
+  var calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if ('IntersectionObserver' in window && !calm) {
+    document.documentElement.classList.add('js');
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
+    document.querySelectorAll('.tab-head, .chapter .card, .chapter .controls, .chapter .prose, .chapter .profile, .chapter .sb-row, .chapter > ul, .chapter > .src, .chapter > .tbl-wrap').forEach(function (el) {
+      el.classList.add('rv'); io.observe(el);
     });
-  });
-  window.addEventListener('hashchange', fromHash);
+  }
 
   renderAll();
   fromHash();
+  onScroll();
 })();

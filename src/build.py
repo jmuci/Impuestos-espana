@@ -1,4 +1,4 @@
-"""Genera ../index.html a partir de style.css, body.html (con la pestaña 7 de tab8.py) y app.js."""
+"""Genera ../index.html a partir de style.css, body.html (con el capítulo 7 de tab8.py) y app.js."""
 import sys
 from pathlib import Path
 

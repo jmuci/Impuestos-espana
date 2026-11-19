@@ -2,7 +2,7 @@
   <div class="wrap">
     <p class="eyebrow">España · datos oficiales · impuestos 2025, declaraciones 2024</p>
     <h1>¿Quién paga los impuestos en España?</h1>
-    <p class="lede">Ocho vistas de un mismo sistema fiscal, con cada porción rastreada hasta su fuente. La pregunta de fondo: <strong>si España sube los impuestos a los ricos, ¿acaba pagando la factura la clase media?</strong> Los datos permiten contrastar una parte. Donde no llegan, la página lo dice.</p>
+    <p class="lede">Ocho capítulos sobre un mismo sistema fiscal, con cada porción rastreada hasta su fuente. La pregunta de fondo: <strong>si España sube los impuestos a los ricos, ¿acaba pagando la factura la clase media?</strong> Los datos permiten contrastar una parte. Donde no llegan, la página lo dice.</p>
     <p class="taglegend">Cada cifra lleva su origen entre corchetes:
       <span class="tag t-oficial">oficial</span> publicado por una administración,
       <span class="tag t-prensa">prensa</span> publicado por un medio,
@@ -10,28 +10,30 @@
       <span class="tag t-estimado">estimado</span> cálculo propio con supuestos explicados,
       <span class="tag t-inferido">inferido</span> deducido por diferencia.
     </p>
+    <a class="hint" href="#tab-ingresos">Empieza por los ingresos<span aria-hidden="true">↓</span></a>
   </div>
 </header>
 
-<nav class="rail" aria-label="Vistas">
-  <div class="tablist" role="tablist">
-    <button class="tab" role="tab" id="t-ingresos" aria-controls="tab-ingresos" data-tab="ingresos"><span class="n">1</span>Ingresos</button>
-    <button class="tab" role="tab" id="t-tramos" aria-controls="tab-tramos" data-tab="tramos"><span class="n">2</span>Tramos de renta</button>
-    <button class="tab" role="tab" id="t-comunidades" aria-controls="tab-comunidades" data-tab="comunidades"><span class="n">3</span>Comunidades</button>
-    <button class="tab" role="tab" id="t-forales" aria-controls="tab-forales" data-tab="forales"><span class="n">4</span>País Vasco y Navarra</button>
-    <button class="tab" role="tab" id="t-patrimonio" aria-controls="tab-patrimonio" data-tab="patrimonio"><span class="n">5</span>Impuesto al patrimonio</button>
-    <button class="tab" role="tab" id="t-ricos" aria-controls="tab-ricos" data-tab="ricos"><span class="n">6</span>Los más ricos</button>
-    <button class="tab" role="tab" id="t-aportacion" aria-controls="tab-aportacion" data-tab="aportacion"><span class="n">7</span>Top 25: aportación</button>
-    <button class="tab" role="tab" id="t-evidencia" aria-controls="tab-evidencia" data-tab="evidencia"><span class="n">8</span>Evidencia y fuentes</button>
+<nav class="rail" aria-label="Capítulos">
+  <div class="tablist">
+    <a class="tab" id="t-ingresos" href="#tab-ingresos" data-tab="ingresos"><span class="n">1</span>Ingresos</a>
+    <a class="tab" id="t-tramos" href="#tab-tramos" data-tab="tramos"><span class="n">2</span>Tramos de renta</a>
+    <a class="tab" id="t-comunidades" href="#tab-comunidades" data-tab="comunidades"><span class="n">3</span>Comunidades</a>
+    <a class="tab" id="t-forales" href="#tab-forales" data-tab="forales"><span class="n">4</span>País Vasco y Navarra</a>
+    <a class="tab" id="t-patrimonio" href="#tab-patrimonio" data-tab="patrimonio"><span class="n">5</span>Impuesto al patrimonio</a>
+    <a class="tab" id="t-ricos" href="#tab-ricos" data-tab="ricos"><span class="n">6</span>Los más ricos</a>
+    <a class="tab" id="t-aportacion" href="#tab-aportacion" data-tab="aportacion"><span class="n">7</span>Top 25: aportación</a>
+    <a class="tab" id="t-evidencia" href="#tab-evidencia" data-tab="evidencia"><span class="n">8</span>Evidencia y fuentes</a>
   </div>
+  <div class="progress" aria-hidden="true"><i></i></div>
 </nav>
 
 <main class="wrap">
 
 <!-- 1. Ingresos ------------------------------------------------------------ -->
-<section class="panel" id="tab-ingresos" role="tabpanel" aria-labelledby="t-ingresos" hidden>
+<section class="panel chapter" id="tab-ingresos">
   <div class="tab-head">
-    <p class="eyebrow">1 · Ingresos por fuente, 2025</p>
+    <p class="eyebrow"><span class="chnum" aria-hidden="true">01</span>Ingresos por fuente, 2025</p>
     <h2 id="rev-finding"></h2>
   </div>
   <div class="controls">
@@ -44,16 +46,16 @@
   <ul class="notes">
     <li>La AEAT recauda estos impuestos para el Estado, las comunidades y los ayuntamientos a la vez, antes de repartirlos.</li>
     <li>El IRPF más las cotizaciones a la Seguridad Social suman el 63,6% del total conjunto (cálculo propio con las cifras de arriba).</li>
-    <li><strong>Faltan País Vasco y Navarra.</strong> Sus impuestos los recaudan las Haciendas Forales, no la AEAT (que allí solo gestiona aduanas e impuestos a la importación): 20.324,5 M€ y 5.865,7 M€ en 2025. Se explican aparte en la pestaña 4 y no se suman aquí porque ambas cifras incluyen ajustes con el Estado. Las cotizaciones sociales sí se recaudan en toda España.</li>
-    <li>Los derechos de aduana no aparecen como línea propia: no se confirmó ninguna cifra oficial. Ver pestaña 8.</li>
+    <li><strong>Faltan País Vasco y Navarra.</strong> Sus impuestos los recaudan las Haciendas Forales, no la AEAT (que allí solo gestiona aduanas e impuestos a la importación): 20.324,5 M€ y 5.865,7 M€ en 2025. Se explican aparte en el capítulo 4 y no se suman aquí porque ambas cifras incluyen ajustes con el Estado. Las cotizaciones sociales sí se recaudan en toda España.</li>
+    <li>Los derechos de aduana no aparecen como línea propia: no se confirmó ninguna cifra oficial. Ver capítulo 8.</li>
   </ul>
   <p class="src">Fuentes: <a href="https://sede.agenciatributaria.gob.es/Sede/estadisticas/recaudacion-tributaria/informe-anual/ejercicio-2025/resumen.html">AEAT, Informe anual de recaudación tributaria 2025</a> <span class="tag t-oficial">oficial</span> (impuestos, 325.356 M€). <a href="https://www.lamoncloa.gob.es/serviciosdeprensa/notasprensa/inclusion/Paginas/2026/310326-seguridad-social-deficit-pib.aspx">Ministerio de Inclusión, cotizaciones de la Seguridad Social</a> <span class="tag t-oficial">oficial</span> (176.918 M€). Los impuestos especiales (23.083 M€) proceden de prensa que cita el informe de la AEAT <span class="tag t-prensa">prensa</span>.</p>
 </section>
 
 <!-- 2. Tramos -------------------------------------------------------------- -->
-<section class="panel" id="tab-tramos" role="tabpanel" aria-labelledby="t-tramos" hidden>
+<section class="panel chapter" id="tab-tramos">
   <div class="tab-head">
-    <p class="eyebrow">2 · IRPF por tramos de renta</p>
+    <p class="eyebrow"><span class="chnum" aria-hidden="true">02</span>IRPF por tramos de renta</p>
     <h2>El IRPF está concentrado: el 10% de mayor renta paga el 54%.</h2>
     <p class="sub">Los tramos son la renta anual total. No se pudo obtener la tabla nacional de cuota pagada por tramo, así que el segundo gráfico muestra la base liquidable a nivel nacional, o la cuota realmente pagada en Madrid, la mayor comunidad.</p>
   </div>
@@ -68,7 +70,7 @@
   <div class="card"><div class="tbl-wrap" id="br-table"></div></div>
   <div class="card"><div class="split" id="ief-card"></div></div>
   <ul class="notes">
-    <li>«Declarantes» son las personas que presentan declaración del IRPF, no toda la población. La estadística cubre solo el territorio de régimen común; País Vasco y Navarra tienen su propio sistema (para Navarra hay una tabla por tramos en la pestaña 4; para el País Vasco no hay tabla consolidada).</li>
+    <li>«Declarantes» son las personas que presentan declaración del IRPF, no toda la población. La estadística cubre solo el territorio de régimen común; País Vasco y Navarra tienen su propio sistema (para Navarra hay una tabla por tramos en el capítulo 4; para el País Vasco no hay tabla consolidada).</li>
     <li>La tabla de Madrid oculta dos celdas (menos de 6.000 € y más de 601.000 €) por secreto estadístico. La porción gris es lo que falta hasta el 100% tras los tramos publicados, así que contiene ambas.</li>
     <li>Los declarantes de Madrid con más de 60.000 € son el 11,5% del total y pagan al menos el 44,7% de su IRPF, sin contar el tramo superior, que no se publica.</li>
     <li>La cifra del decil superior es el titular de un documento de trabajo del Instituto de Estudios Fiscales (Ministerio de Hacienda). No se revisó la tabla completa por deciles.</li>
@@ -77,9 +79,9 @@
 </section>
 
 <!-- 3. Comunidades --------------------------------------------------------- -->
-<section class="panel" id="tab-comunidades" role="tabpanel" aria-labelledby="t-comunidades" hidden>
+<section class="panel chapter" id="tab-comunidades">
   <div class="tab-head">
-    <p class="eyebrow">3 · Comunidades autónomas, 2024</p>
+    <p class="eyebrow"><span class="chnum" aria-hidden="true">03</span>Comunidades autónomas, 2024</p>
     <h2 id="rg-finding"></h2>
     <p class="sub">Dos gráficos con los mismos datos. Izquierda: qué parte del impuesto recauda cada comunidad. Derecha: los mismos números divididos por habitantes, así que cada porción son euros por persona. Toca una porción o una fila para compararlas.</p>
   </div>
@@ -94,20 +96,20 @@
   <ul class="notes">
     <li>La medida es la «capacidad tributaria» de cada comunidad en la liquidación de 2024 del sistema de financiación: lo que rendiría su parte de los impuestos cedidos con reglas comunes. No es el total de impuestos pagados.</li>
     <li>El gráfico por habitante no tiene un total con sentido, porque suma ratios. Compara porción con porción o lee el índice de la tabla.</li>
-    <li>La vista oficial deja fuera País Vasco y Navarra (sistema fiscal propio, 2,93 M de habitantes), Ceuta y Melilla; en conjunto son el 6,3% de la población de España. La vista con estimación añade País Vasco y Navarra con un cálculo propio, cuyo método está en la pestaña 4, y que lleva un margen de ±10%. El índice usa siempre como base la media de las 15 comunidades oficiales.</li>
+    <li>La vista oficial deja fuera País Vasco y Navarra (sistema fiscal propio, 2,93 M de habitantes), Ceuta y Melilla; en conjunto son el 6,3% de la población de España. La vista con estimación añade País Vasco y Navarra con un cálculo propio, cuyo método está en el capítulo 4, y que lleva un margen de ±10%. El índice usa siempre como base la media de las 15 comunidades oficiales.</li>
     <li>Canarias aparece, pero su impuesto indirecto propio y su régimen especial dificultan la comparación.</li>
     <li>¿Por qué no la recaudación de la AEAT por comunidad? La AEAT atribuye lo recaudado al domicilio fiscal del contribuyente, lo que infla a Madrid, donde tienen sede muchas grandes empresas. La prensa sitúa a Madrid en torno al 44% de lo recaudado por la AEAT (2023: 44,34%): un efecto del domicilio, no una medida de actividad.</li>
     <li>Los ingresos son de 2024 y la población es del 1 de enero de 2025, un año posterior.</li>
   </ul>
-  <p class="src">Fuentes: liquidación de 2024 del Ministerio de Hacienda, tabulada en <a href="https://documentos.fedea.net/pubs/eee/2026/eee2026-24.pdf">Fedea, eee2026-24, tabla 1</a> <span class="tag t-oficial">oficial</span>. Población: <a href="https://www.ine.es/prodyser/espa_cifras/21_ANEXO.pdf">INE, España en cifras</a>. Efecto del domicilio: <a href="https://sede.agenciatributaria.gob.es/static_files/AEAT/Estudios/Estadisticas/Informes_Estadisticos/Informes_mensuales_recaudacion_tributaria/2025/IMR_25_12_va_es.pdf">AEAT, informe mensual de diciembre de 2025</a>. Estimaciones de País Vasco y Navarra: cálculo propio a partir de las cifras de la pestaña 4 <span class="tag t-estimado">estimado</span>.</p>
+  <p class="src">Fuentes: liquidación de 2024 del Ministerio de Hacienda, tabulada en <a href="https://documentos.fedea.net/pubs/eee/2026/eee2026-24.pdf">Fedea, eee2026-24, tabla 1</a> <span class="tag t-oficial">oficial</span>. Población: <a href="https://www.ine.es/prodyser/espa_cifras/21_ANEXO.pdf">INE, España en cifras</a>. Efecto del domicilio: <a href="https://sede.agenciatributaria.gob.es/static_files/AEAT/Estudios/Estadisticas/Informes_Estadisticos/Informes_mensuales_recaudacion_tributaria/2025/IMR_25_12_va_es.pdf">AEAT, informe mensual de diciembre de 2025</a>. Estimaciones de País Vasco y Navarra: cálculo propio a partir de las cifras del capítulo 4 <span class="tag t-estimado">estimado</span>.</p>
 </section>
 
 <!-- 4. Territorios forales ------------------------------------------------- -->
-<section class="panel" id="tab-forales" role="tabpanel" aria-labelledby="t-forales" hidden>
+<section class="panel chapter" id="tab-forales">
   <div class="tab-head">
-    <p class="eyebrow">4 · País Vasco y Navarra, 2025</p>
+    <p class="eyebrow"><span class="chnum" aria-hidden="true">04</span>País Vasco y Navarra, 2025</p>
     <h2>Sí contribuyen, pero por otra vía. Cuánto, es lo que se discute.</h2>
-    <p class="sub">No salen en las pestañas 1 a 3 porque sus impuestos no los recauda la AEAT ni entran en el sistema de financiación de régimen común: los recaudan las tres Diputaciones Forales vascas y la Hacienda Foral de Navarra. Después pagan al Estado un <strong>cupo</strong> (País Vasco) o una <strong>aportación</strong> (Navarra) por las competencias que el Estado conserva, como Defensa, Exteriores o la deuda estatal. La AEAT solo gestiona allí aduanas e impuestos a la importación.</p>
+    <p class="sub">No salen en los capítulos 1 a 3 porque sus impuestos no los recauda la AEAT ni entran en el sistema de financiación de régimen común: los recaudan las tres Diputaciones Forales vascas y la Hacienda Foral de Navarra. Después pagan al Estado un <strong>cupo</strong> (País Vasco) o una <strong>aportación</strong> (Navarra) por las competencias que el Estado conserva, como Defensa, Exteriores o la deuda estatal. La AEAT solo gestiona allí aduanas e impuestos a la importación.</p>
   </div>
   <div class="controls">
     <div class="seg" role="group" aria-label="Territorio foral">
@@ -170,9 +172,9 @@
 </section>
 
 <!-- 5. Impuesto al patrimonio ---------------------------------------------- -->
-<section class="panel" id="tab-patrimonio" role="tabpanel" aria-labelledby="t-patrimonio" hidden>
+<section class="panel chapter" id="tab-patrimonio">
   <div class="tab-head">
-    <p class="eyebrow">5 · Medida redistributiva: un impuesto al patrimonio</p>
+    <p class="eyebrow"><span class="chnum" aria-hidden="true">05</span>Medida redistributiva: un impuesto al patrimonio</p>
     <h2>Qué añade al total un impuesto del 2% al patrimonio, y qué cambia si la base se encoge.</h2>
     <p class="sub">Ada Colau y el Frente Amplio proponen un 2% sobre el patrimonio neto por encima de 1 M€ y un 3% por encima de 50 M€. El partido calcula 10.000 M€ al año de 231.000 contribuyentes. <span class="tag t-partido">cifra del partido</span> No se encontró ninguna valoración de AIReF ni de Hacienda. Todo lo que sigue es aritmética sobre supuestos declarados, no una previsión.</p>
   </div>
@@ -181,7 +183,7 @@
     <div>
       <div class="ctl-row"><label for="erosion">Parte de lo recaudado, según el partido, que nunca llega</label><output id="erosion-out" for="erosion">0%</output></div>
       <input type="range" id="erosion" min="0" max="100" step="5" value="0">
-      <p class="sub">Elusión, cambios de residencia, cambios de valoración. Los estudios de la pestaña 8 muestran que la base reacciona, pero no dan una cifra para esta propuesta: elige tú una.</p>
+      <p class="sub">Elusión, cambios de residencia, cambios de valoración. Los estudios del capítulo 8 muestran que la base reacciona, pero no dan una cifra para esta propuesta: elige tú una.</p>
       <div class="presets" id="presets" role="group" aria-label="Valores predefinidos">
         <button type="button" data-e="0" aria-pressed="true">Cifra del partido (0%)</button>
         <button type="button" data-e="25" aria-pressed="false">25%</button>
@@ -216,17 +218,17 @@
     <li>«Por declarante» divide entre los 24,6 M de declarantes del IRPF de 2024 (régimen común) y el «%» entre los 142.466 M€ de IRPF de la AEAT de 2025. Los años y los territorios difieren: léelo como un orden de magnitud, no como una factura.</li>
     <li>El ITSGF estatal recaudó 623 M€ en 2023, el 89% desde Madrid. En 2024 se hundió cuando Madrid y Andalucía reactivaron el Patrimonio autonómico, que se deduce de aquel. La cuota del Patrimonio subió un 11,8% ese mismo año; las dos cifras vienen de publicaciones distintas, así que compáralas con cautela.</li>
     <li>Reparto de la riqueza de los hogares según el Banco de España, 3T 2025: el 10% superior tiene el 53% y el 50% inferior el 9%. El 40% intermedio es el resto.</li>
-    <li>Esta pestaña no incluye País Vasco ni Navarra, donde el Patrimonio es un impuesto foral. En Navarra (campaña de 2023) hubo 7.180 declarantes y 41,6 M€ <span class="tag t-prensa">prensa</span> que cita a la Hacienda Foral. En el País Vasco, Patrimonio y Sucesiones no se publican por separado: una estimación propia los sitúa en 250–400 M€ (1,2–2,0% de la recaudación foral) <span class="tag t-estimado">estimado</span>, extrapolando que en Gipuzkoa ambos suman menos del 2%.</li>
+    <li>Este capítulo no incluye País Vasco ni Navarra, donde el Patrimonio es un impuesto foral. En Navarra (campaña de 2023) hubo 7.180 declarantes y 41,6 M€ <span class="tag t-prensa">prensa</span> que cita a la Hacienda Foral. En el País Vasco, Patrimonio y Sucesiones no se publican por separado: una estimación propia los sitúa en 250–400 M€ (1,2–2,0% de la recaudación foral) <span class="tag t-estimado">estimado</span>, extrapolando que en Gipuzkoa ambos suman menos del 2%.</li>
   </ul>
   <p class="src">Fuentes: términos y cifras de la propuesta, de prensa (<a href="https://es.ara.cat/politica/nuevo-impuesto-propone-ada-colau-alto-pagan-ricos_1_5903002.html">Ara</a>, <a href="https://www.eldiario.es/1_d0204f">elDiario.es</a>, <a href="https://www.moncloa.com/2026/11/06/tasa-ritz-colau-3462221/">Moncloa.com</a>, un medio digital) <span class="tag t-prensa">prensa</span>. <a href="https://sede.agenciatributaria.gob.es/Sede/estadisticas/sites/patrimonio/2024/jrubik51212750ec835e99533949433231abd3637d68ee.html">AEAT, Estadística del Patrimonio 2024</a>. <a href="https://www.lamoncloa.gob.es/serviciosdeprensa/notasprensa/hacienda/paginas/2023/200923-impuesto-solidaridad-grandes-fortunas.aspx">Hacienda, nota sobre el ITSGF 2023</a>. <a href="https://www.bde.es/wbe/es/noticias-eventos/podcast/como-se-distribuye-la-riqueza-entre-los-hogares.html">Banco de España</a>; <a href="https://repositorio.bde.es/bitstream/123456789/36572/1/do2413.pdf">Documento Ocasional 2413</a> para 2022.</p>
 </section>
 
 <!-- 6. Los más ricos ------------------------------------------------------- -->
-<section class="panel" id="tab-ricos" role="tabpanel" aria-labelledby="t-ricos" hidden>
+<section class="panel chapter" id="tab-ricos">
   <div class="tab-head">
-    <p class="eyebrow">6 · Los más ricos y el IRPF</p>
+    <p class="eyebrow"><span class="chnum" aria-hidden="true">06</span>Los más ricos y el IRPF</p>
     <h2>Los más ricos no pagan «casi nada» de IRPF, pero pagan menos que quienes están justo debajo.</h2>
-    <p class="sub">Tres sospechas habituales: que piden préstamos en vez de vender, que usan sociedades y entidades en el extranjero, que usan SICAV. Aquí van las cifras que he encontrado, rumor por rumor, y a partir de qué cantidad empiezan a servir esas vías. De los más ricos de verdad (el 0,01% superior) hay muy pocos datos publicados en España; donde faltan, la pestaña lo dice.</p>
+    <p class="sub">Tres sospechas habituales: que piden préstamos en vez de vender, que usan sociedades y entidades en el extranjero, que usan SICAV. Aquí van las cifras que he encontrado, rumor por rumor, y a partir de qué cantidad empiezan a servir esas vías. De los más ricos de verdad (el 0,01% superior) hay muy pocos datos publicados en España; donde faltan, el capítulo lo dice.</p>
   </div>
 
   <h3 class="lead">Veredicto</h3>
@@ -412,7 +414,7 @@
   </div>
 
   <h3 class="lead">Qué significa para la pregunta de fondo</h3>
-  <p class="prose">Hay evidencia de que el tipo efectivo del IRPF baja en la cúspide y de que existen vías legales de aplazamiento. Pero la cúspide es pequeña: 18.829 declarantes con más de 601.000 € en 2024, el 0,08% de los declarantes <span class="tag t-oficial">oficial</span>. Ningún estudio de los que he encontrado muestra que lo que se escapa por arriba acabe repuesto por la clase media. Esa cadena sigue «sin contrastar» en la pestaña 8.</p>
+  <p class="prose">Hay evidencia de que el tipo efectivo del IRPF baja en la cúspide y de que existen vías legales de aplazamiento. Pero la cúspide es pequeña: 18.829 declarantes con más de 601.000 € en 2024, el 0,08% de los declarantes <span class="tag t-oficial">oficial</span>. Ningún estudio de los que he encontrado muestra que lo que se escapa por arriba acabe repuesto por la clase media. Esa cadena sigue «sin contrastar» en el capítulo 8.</p>
 
   <h3 class="lead">Lo que no sé</h3>
   <ul class="list">
@@ -425,7 +427,7 @@
     <li>Los plazos y requisitos de cada vía (por ejemplo, el periodo de tenencia del 95%) están resumidos; para aplicarlos a un caso concreto hace falta leer la norma.</li>
   </ul>
 
-  <p class="src-head">Fuentes de esta pestaña</p>
+  <p class="src-head">Fuentes de este capítulo</p>
 <ul class="src-cols">
   <li><a href="https://documentos.fedea.net/pubs/eee/2026/eee2026-13.pdf">Fedea, décimo informe del Observatorio (eee2026-13)</a> <span class="tag t-academica">académica</span></li>
   <li><a href="https://theobjective.com/economia/2025-03-04/pagan-los-ricos-menos-impuestos/">The Objective sobre el noveno informe</a> <span class="tag t-prensa">prensa</span></li>
@@ -477,9 +479,9 @@
 {{TAB8}}
 
 <!-- 8. Evidencia ------------------------------------------------------------ -->
-<section class="panel" id="tab-evidencia" role="tabpanel" aria-labelledby="t-evidencia" hidden>
+<section class="panel chapter" id="tab-evidencia">
   <div class="tab-head">
-    <p class="eyebrow">8 · Evidencia, lagunas y fuentes</p>
+    <p class="eyebrow"><span class="chnum" aria-hidden="true">08</span>Evidencia, lagunas y fuentes</p>
     <h2>Qué respalda la evidencia y qué no.</h2>
     <p class="sub">La hipótesis tiene tres pasos: un impuesto más alto a los ricos encoge la base que puede alcanzar; el hueco se repone con impuestos más amplios; y la clase media acaba pagando. Las fuentes revisadas hablan del paso 1. Ninguna contrasta los pasos 2 y 3.</p>
   </div>
@@ -496,7 +498,7 @@
     <div class="card">
       <h3>Apuntan en contra, o lo limitan</h3>
       <ul class="list">
-        <li>El decil superior ya paga el 53,96% del IRPF (pestaña 2). La incidencia final del IVA y de la Seguridad Social, las vías más probables para cubrir un hueco, no está medida en ninguna fuente usada aquí.</li>
+        <li>El decil superior ya paga el 53,96% del IRPF (capítulo 2). La incidencia final del IVA y de la Seguridad Social, las vías más probables para cubrir un hueco, no está medida en ninguna fuente usada aquí.</li>
         <li>Los declarantes con base superior a 30,05 M€ pasaron de 471 en 2013 a 1.023 en 2024, y la cuota del Patrimonio de 2024 subió un 11,8%. Eso no muestra fuga en agregado, pero tampoco es una prueba causal, porque la subida del valor de los activos empuja a más gente a ese tramo.</li>
         <li>Ambos estudios comparan territorios de un mismo país, con los tipos vigentes. Ninguno estima salidas de España ni la respuesta a un 2% sobre 1 M€ aplicado a todo el país.</li>
         <li>La inspección recupera dinero de las grandes fortunas: 547 M€ regularizados en 1.329 actuaciones en 2025. El control del fraude recuperó en total 22.743 M€, cerca del 7,0% de la recaudación de la AEAT en todos los impuestos, que no es una estimación de la brecha fiscal.</li>
@@ -513,7 +515,7 @@
           <tr><td>La parte alta ya soporta la mayor parte del IRPF</td><td>El decil superior paga el 53,96% de la cuota real del IRPF</td><td>Instituto de Estudios Fiscales (oficial), 2026</td></tr>
           <tr><td>Los impuestos al patrimonio reducen la base declarada</td><td>Cantones suizos y comunidades españolas</td><td>Revisado por pares, dentro de un mismo país, no a los tipos propuestos</td></tr>
           <tr><td>Los ricos se mudan u ocultan activos dentro de España</td><td>Personas ricas en Madrid, +10%; ≈5% de la recaudación perdida por movilidad</td><td>Cifras de un documento de trabajo</td></tr>
-          <tr><td>Los más ricos pagan casi nada de IRPF</td><td>Falso como cifra general: el tipo efectivo del 1% superior ronda el 10%, frente al 16% del tramo anterior. Cierto que cae en la cúspide. Detalle en la pestaña 6</td><td>Fedea (académica) y prensa que la cita; encuesta que no capta bien a los más ricos</td></tr>
+          <tr><td>Los más ricos pagan casi nada de IRPF</td><td>Falso como cifra general: el tipo efectivo del 1% superior ronda el 10%, frente al 16% del tramo anterior. Cierto que cae en la cúspide. Detalle en el capítulo 6</td><td>Fedea (académica) y prensa que la cita; encuesta que no capta bien a los más ricos</td></tr>
           <tr><td>La recaudación perdida la repone la clase media</td><td>No se encontró nada</td><td>Sin contrastar</td></tr>
           <tr><td>País Vasco y Navarra resuelven la cuestión</td><td>Navarra combina tipos máximos altos con una carga notable sobre rentas medias; no se puede establecer causalidad</td><td>Prensa que cita al Consejo General de Economistas; no concluyente</td></tr>
         </tbody>
@@ -524,12 +526,12 @@
   <div class="card">
     <h3>Lagunas</h3>
     <ul class="list" style="margin-top:8px">
-      <li>No se obtuvo el IRPF por tramos de renta a nivel nacional (AEAT, cuadro 587). La pestaña 2 usa la base liquidable, la cuota pagada en Madrid y la parte del decil superior según el IEF.</li>
-      <li>La recaudación de la AEAT por comunidad es una hoja de cálculo que no se pudo leer, así que la pestaña 3 usa la capacidad tributaria cedida.</li>
+      <li>No se obtuvo el IRPF por tramos de renta a nivel nacional (AEAT, cuadro 587). El capítulo 2 usa la base liquidable, la cuota pagada en Madrid y la parte del decil superior según el IEF.</li>
+      <li>La recaudación de la AEAT por comunidad es una hoja de cálculo que no se pudo leer, así que el capítulo 3 usa la capacidad tributaria cedida.</li>
       <li>No se verificó ninguna línea propia de aduanas o aranceles. No se cubren los ingresos no tributarios distintos de la Seguridad Social.</li>
       <li>No se encontró ninguna valoración de AIReF ni de Hacienda de la propuesta. La cifra de 38 M€ del ITSGF de 2024 es prensa que cita contabilidad nacional; el informe de la AEAT dice solo que la recaudación fue escasa.</li>
-      <li>Perfiles de Ortega, Pérez y Botín (pestaña 6): su IRPF personal es secreto y no figura en ninguna fuente. Solo se usan cuentas de sus sociedades, la CNMV y las retribuciones publicadas, casi todo a través de la prensa.</li>
-      <li>Sobre los más ricos (pestaña 6): no se obtuvo el tipo efectivo del IRPF del tramo de más de 601.000 € ni el de los percentiles por encima del 99%, y la cifra de Fedea para 2022 llega por la prensa. No hay datos del uso de préstamos con garantía ni de trusts.</li>
+      <li>Perfiles de Ortega, Pérez y Botín (capítulo 6): su IRPF personal es secreto y no figura en ninguna fuente. Solo se usan cuentas de sus sociedades, la CNMV y las retribuciones publicadas, casi todo a través de la prensa.</li>
+      <li>Sobre los más ricos (capítulo 6): no se obtuvo el tipo efectivo del IRPF del tramo de más de 601.000 € ni el de los percentiles por encima del 99%, y la cifra de Fedea para 2022 llega por la prensa. No hay datos del uso de préstamos con garantía ni de trusts.</li>
       <li>Los años difieren: ingresos de 2025, IRPF y patrimonio declarados de 2024, capacidad regional de 2024, población a 1 de enero de 2025 y datos de riqueza de encuesta de 2022.</li>
       <li>Las tablas de la AEAT se leyeron con una herramienta que resume páginas, no se descargaron. Las sumas se comprobaron (el desglose de 2025 suma exactamente 325.356 M€), pero conviene contrastar las celdas antes de fiarse de ellas.</li>
       <li><strong>País Vasco y Navarra:</strong> no hay tabla consolidada del IRPF por tramos para el País Vasco (Bizkaia la publica en Open Data, pero no se pudo descargar). Patrimonio y Sucesiones vascos no se publican por separado. El cupo definitivo de 2025 y las aportaciones navarras definitivas de 2024 y 2025 están sin publicar, y el acuerdo del quinquenio 2025-2029 sigue pendiente según la AIReF (julio de 2026). Tampoco se publica cuánto recauda la AEAT en estos territorios.</li>
@@ -554,7 +556,7 @@
         <li><a href="https://www.ine.es/prodyser/espa_cifras/21_ANEXO.pdf">INE, España en cifras</a>; <a href="https://ine.es/dyngs/Prensa/ADRH2023.pdf">INE, Atlas de distribución de renta de los hogares 2023</a></li>
         <li><a href="https://www.bde.es/wbe/es/noticias-eventos/podcast/como-se-distribuye-la-riqueza-entre-los-hogares.html">Banco de España, distribución de la riqueza</a> y <a href="https://repositorio.bde.es/bitstream/123456789/36572/1/do2413.pdf">Documento Ocasional 2413</a></li>
         <li><a href="https://www.ief.es/docs/destacados/publicaciones/documentos_trabajo/2026_02.pdf">Instituto de Estudios Fiscales, documento de trabajo 2026/02</a></li>
-        <li>Fuentes de la pestaña 6 (los más ricos): lista al final de esa pestaña.</li>
+        <li>Fuentes del capítulo 6 (los más ricos): lista al final de ese capítulo.</li>
         <li><a href="https://www.irekia.euskadi.eus/es/news/108064-consejo-vasco-finanzas-publicas">Gobierno Vasco, Consejo Vasco de Finanzas Públicas (cierre 2025)</a></li>
         <li><a href="https://www.navarra.es/es/-/nota-prensa/hacienda-finalizo-2025-con-una-recaudacion-de-5-865-millones-de-euros">Gobierno de Navarra, recaudación de 2025</a>; <a href="https://www.navarra.es/en/web/memoria-2024/5.1.-convenio-economico">Memoria 2024, Convenio Económico</a></li>
         <li><a href="https://www.euskadi.eus/contenidos/informacion/comision_mixta/es_14815/adjuntos/Acta_CMCE__01_2024.pdf">Acta de la Comisión Mixta del Concierto Económico 1/2024</a>; <a href="https://www.boe.es/diario_boe/txt.php?id=BOE-A-2023-8456">Ley 10/2023 (BOE)</a></li>
