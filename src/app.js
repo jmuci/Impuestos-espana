@@ -392,7 +392,7 @@
       { key: 'rest', label: 'El otro 90%', color: 'c-ss', value: +(100 - IEF_TOP).toFixed(2), text: pct(100 - IEF_TOP, 2) + ' del IRPF' }
     ];
     makePie(pH, iItems, { aria: 'Gráfico circular: parte de la cuota del IRPF que paga el decil superior', totalMain: 'Todo el país', totalSub: 'Parte de la cuota real del IRPF, por decil de renta', grp: g2 });
-    tH.append(h('h3', null, 'Todo el país, por deciles'), h('p', { class: 'sub' }, 'El Instituto de Estudios Fiscales calcula que el decil de mayor renta soporta el 53,96% de la cuota real del IRPF. El otro 90% es el resto (100 menos 53,96).'));
+    tH.append(h('h3', null, 'Todo el país, por deciles'), h('p', { class: 'sub' }, 'El Instituto de Estudios Fiscales calcula que el 10% de declaraciones con más renta antes de impuestos soporta el 53,96% de la cuota real del IRPF (datos de 2023). Ese mismo 10% reúne el 32,60% de la renta. El otro 90% es el resto (100 menos 53,96).'));
     var tb = makeTable(iItems, [
       { h: 'Grupo', get: function (i) { return i.label; } },
       { h: 'Parte del IRPF', num: true, get: function (i) { return pct(i.value, 2); } }
