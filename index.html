@@ -226,6 +226,8 @@ footer p { margin: 0; max-width: 80ch; }
 .stackbar .s1, .k1 { background: #4a4a46; }
 .stackbar .s2, .k2 { background: var(--accent); }
 .stackbar .s3, .k3 { background: #d8d8d2; }
+.stackbar .s4, .k4 { background: #9a9a94; }
+.sublead { margin: 30px 0 0; font: 600 17px/1.3 var(--sans); }
 .sb-row .vals { display: flex; flex-wrap: wrap; gap: 4px 18px; margin: 7px 0 0; font: 400 14px/1.35 var(--sans); color: var(--muted); }
 .sb-row .vals b { display: inline-block; width: 10px; height: 10px; margin-right: 6px; vertical-align: -1px; }
 .sb-row .tot { margin: 4px 0 0; font: 600 15px/1.35 var(--sans); }
@@ -284,6 +286,87 @@ footer p { margin: 0; max-width: 80ch; }
     <li>Los derechos de aduana no aparecen como línea propia: no se confirmó ninguna cifra oficial. Ver pestaña 8.</li>
   </ul>
   <p class="src">Fuentes: <a href="https://sede.agenciatributaria.gob.es/Sede/estadisticas/recaudacion-tributaria/informe-anual/ejercicio-2025/resumen.html">AEAT, Informe anual de recaudación tributaria 2025</a> <span class="tag t-oficial">oficial</span> (impuestos, 325.356 M€). <a href="https://www.lamoncloa.gob.es/serviciosdeprensa/notasprensa/inclusion/Paginas/2026/310326-seguridad-social-deficit-pib.aspx">Ministerio de Inclusión, cotizaciones de la Seguridad Social</a> <span class="tag t-oficial">oficial</span> (176.918 M€). Los impuestos especiales (23.083 M€) proceden de prensa que cita el informe de la AEAT <span class="tag t-prensa">prensa</span>.</p>
+
+  <div id="cotiz-detalle" style="margin-top:38px">
+  <h3 class="lead">Dentro de las cotizaciones: quién las paga y cuánto aportan los autónomos</h3>
+  <p class="prose">Los 176.918 M€ de cotizaciones de 2025 no salen de un solo bolsillo. Tres cortes: por régimen, por quién las paga según la ley y por lo que aportan los autónomos.</p>
+
+  <h4 class="sublead">1. Por régimen, 2025</h4>
+  <div class="sb-row">
+    <div class="stackbar" role="img" aria-label="Reparto de las cotizaciones de 2025 en millones de euros: Régimen General 136.484, autónomos, Mar y Minería 12.609, otros conceptos 17.949, desempleados 9.876"><i class="s1" style="--w:77.1%"></i><i class="s2" style="--w:7.1%"></i><i class="s4" style="--w:10.1%"></i><i class="s3" style="--w:5.6%"></i></div>
+    <p class="vals"><span><b class="k1"></b>Régimen General 136.484 M€ (77,1%)</span><span><b class="k2"></b>Autónomos, Mar y Minería 12.609 (7,1%)</span><span><b class="k4"></b>Otros conceptos de ocupados 17.949 (10,1%)</span><span><b class="k3"></b>Desempleados 9.876 (5,6%)</span></p>
+    <p class="tot">Total: 176.918 M€ <span class="tag t-oficial">oficial</span></p>
+  </div>
+  <ul class="notes">
+    <li>«Otros conceptos» es una resta mía (167.042 de ocupados menos 136.484 y 12.609) <span class="tag t-inferido">inferido</span>. La nota oficial los agrupa sin cifra: accidentes de trabajo y enfermedades profesionales, MEI, cese de actividad y sistemas especiales.</li>
+    <li>Parte de lo que pagan los autónomos (el cese de actividad, por ejemplo) puede estar en ese «otros», así que 12.609 M€ es un suelo <span class="tag t-inferido">inferido</span>.</li>
+  </ul>
+
+  <h4 class="sublead">2. ¿Quién las paga? Según la ley, sobre todo la empresa</h4>
+  <p class="prose">Tipos de 2026 del Régimen General para un asalariado con contrato indefinido, en % de la base de cotización <span class="tag t-oficial">oficial</span>. En accidentes de trabajo, la prima depende de la actividad y la paga la empresa entera.</p>
+  <div class="tbl-wrap">
+    <table class="legend">
+      <thead><tr><th>Concepto</th><th class="num">Empresa</th><th class="num">Trabajador</th></tr></thead>
+      <tbody>
+        <tr><td>Contingencias comunes</td><td class="num">23,60%</td><td class="num">4,70%</td></tr>
+        <tr><td>Desempleo (contrato indefinido)</td><td class="num">5,50%</td><td class="num">1,55%</td></tr>
+        <tr><td>Fondo de Garantía Salarial</td><td class="num">0,20%</td><td class="num">0%</td></tr>
+        <tr><td>Formación profesional</td><td class="num">0,60%</td><td class="num">0,10%</td></tr>
+        <tr><td>Mecanismo de Equidad Intergeneracional (MEI)</td><td class="num">0,75%</td><td class="num">0,15%</td></tr>
+        <tr><td><strong>Suma</strong> <span class="tag t-inferido">inferido</span></td><td class="num"><strong>30,65%</strong></td><td class="num"><strong>6,50%</strong></td></tr>
+        <tr><td>Accidentes de trabajo y enfermedades profesionales</td><td class="num">variable</td><td class="num">0%</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="sb-row">
+    <p class="cap">De cada 100 € de cotización de un asalariado indefinido (sin contar accidentes de trabajo)</p>
+    <div class="stackbar" role="img" aria-label="De cada 100 euros de cotización de un asalariado indefinido, la empresa paga 82,5 y el trabajador 17,5"><i class="s1" style="--w:82.5%"></i><i class="s2" style="--w:17.5%"></i></div>
+    <p class="vals"><span><b class="k1"></b>Empresa 82,5%</span><span><b class="k2"></b>Trabajador 17,5%</span></p>
+    <p class="tot">La empresa paga el 82,5% <span class="tag t-inferido">inferido</span></p>
+  </div>
+  <p class="prose">El dato nacional va en la misma dirección. Eurostat reparte los ingresos de la protección social por quién los aporta; quitando la parte pública, queda esto:</p>
+  <div class="sb-row">
+    <p class="cap">España, 2023</p>
+    <div class="stackbar" role="img" aria-label="España 2023: los empleadores aportan el 78,9% de las cotizaciones y las personas protegidas el 21,1%"><i class="s1" style="--w:78.9%"></i><i class="s2" style="--w:21.1%"></i></div>
+    <p class="vals"><span><b class="k1"></b>Empleadores 78,9%</span><span><b class="k2"></b>Personas protegidas 21,1%</span></p>
+  </div>
+  <div class="sb-row">
+    <p class="cap">Unión Europea (27), 2023</p>
+    <div class="stackbar" role="img" aria-label="UE-27 2023: los empleadores aportan el 62,6% de las cotizaciones y las personas protegidas el 37,4%"><i class="s1" style="--w:62.6%"></i><i class="s2" style="--w:37.4%"></i></div>
+    <p class="vals"><span><b class="k1"></b>Empleadores 62,6%</span><span><b class="k2"></b>Personas protegidas 37,4%</span></p>
+    <p class="tot">Los empleadores pagan más en España que en la media europea <span class="tag t-inferido">inferido</span></p>
+  </div>
+  <ul class="notes">
+    <li>Las dos barras de Eurostat son mi cálculo a partir de dos porcentajes oficiales de 2023: empleadores (42,9% en España, 35,1% en la UE) y personas protegidas (11,5% y 21,0%) <span class="tag t-oficial">oficial</span> <span class="tag t-inferido">inferido</span>. «Personas protegidas» incluye asalariados, autónomos y pensionistas. Eurostat cuenta también contribuciones imputadas de los empleadores, que no son un pago en efectivo.</li>
+    <li><strong>Pagar según la ley no es soportar el coste.</strong> Si la empresa descuenta la cotización de lo que ofrece de sueldo, en la práctica la soporta el trabajador; si la sube a los precios, el cliente. Ninguna fuente usada aquí mide esa incidencia en España, así que la web solo muestra quién paga según la ley.</li>
+    <li>Contexto: la cuña fiscal de un salario medio (cotizaciones de empresa y trabajador más IRPF) fue el 40,2% del coste laboral bruto en 2023, según la OCDE que cita la prensa <span class="tag t-prensa">prensa</span>.</li>
+    <li>Tope: por encima de la base máxima (5.101,20 € al mes, 61.214 € al año) solo rige una cotización de solidaridad adicional <span class="tag t-oficial">oficial</span>. Los dividendos y las plusvalías no cotizan a la Seguridad Social. Es decir, la carga recae sobre sueldos hasta ese tope, no sobre las rentas del capital <span class="tag t-inferido">inferido</span>.</li>
+  </ul>
+
+  <h4 class="sublead">3. Autónomos: pagan todo ellos, pero aportan menos de lo que pesan</h4>
+  <div class="tbl-wrap">
+    <table class="plain verdict">
+      <thead><tr><th>Dato</th><th>Cifra</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Autónomos afiliados (RETA y SETA), diciembre de 2025</strong></td><td>3.425.767 <span class="tag t-oficial">oficial</span>; ≈15,7% de los 21.844.414 afiliados <span class="tag t-inferido">inferido</span></td></tr>
+        <tr><td><strong>Cotizaciones de Autónomos, Mar y Minería juntos, 2025</strong></td><td>12.609 M€, el 7,1% del total <span class="tag t-oficial">oficial</span></td></tr>
+        <tr><td><strong>Solo el RETA, de enero a agosto de 2025</strong></td><td>8.064 M€ de 117.248 M€, el 6,9% <span class="tag t-prensa">prensa</span></td></tr>
+        <tr><td><strong>Cotización media por afiliado y año</strong></td><td>Autónomo ≈3.700 €; Régimen General ≈7.400 € (empresa más trabajador) <span class="tag t-inferido">inferido</span></td></tr>
+        <tr><td><strong>Autónomos en el tramo más bajo, 31 de marzo de 2026</strong></td><td>818.367 de 3.448.635, el 23,7% <span class="tag t-prensa">prensa</span></td></tr>
+        <tr><td><strong>Cuota 2026</strong></td><td>31,5% de la base, que el autónomo elige según su rendimiento neto en 15 tramos. Con la base mínima (653,59 €): ≈206 € al mes; con la máxima (5.101,20 €): ≈1.607 € al mes <span class="tag t-inferido">inferido</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose">Uno de cada seis afiliados es autónomo y aportan alrededor del 7% de las cotizaciones. En los datos se ve que casi uno de cada cuatro está en el tramo más bajo, y la cotización de un autónomo depende de lo que él declara como rendimiento neto, no de un sueldo bruto.</p>
+  <ul class="notes">
+    <li>El autónomo paga el tipo completo él solo; en un asalariado se reparte con la empresa (apartado 2). Por eso la cotización media por afiliado no es comparable euro a euro: la del Régimen General incluye la parte que paga la empresa.</li>
+    <li>El cociente por afiliado mezcla los afiliados de diciembre con la recaudación de todo el año, y los 12.609 M€ incluyen Mar y Minería del Carbón. Es un orden de magnitud <span class="tag t-inferido">inferido</span>.</li>
+    <li>Las cuotas de 2026 son base por tipo, no una cifra que publique la Seguridad Social tal cual <span class="tag t-inferido">inferido</span>. Quien tiene sociedad o trabaja como autónomo colaborador tiene una base mínima más alta.</li>
+    <li>No encontré cuánto paga de IRPF el colectivo de autónomos. Queda anotado en las lagunas de la pestaña 8.</li>
+  </ul>
+  <p class="src">Fuentes: <a href="https://www.inclusion.gob.es/en/w/el-deficit-de-la-seguridad-social-se-reduce-al-0-4-del-pib-su-nivel-mas-bajo-desde-2011-gracias-al-incremento-de-los-ingresos-por-cotizaciones-sociales">Ministerio de Inclusión, cotizaciones 2025</a> <span class="tag t-oficial">oficial</span>; <a href="https://www.boe.es/boe/dias/2026/03/31/pdfs/BOE-A-2026-7296.pdf">Orden PJC/297/2026 (BOE)</a> <span class="tag t-oficial">oficial</span>; <a href="https://en.eustat.eus/elementos/ele0003500/social-protection-income-indicators-by-country-horizontal-/tbl0003525_i.html">Eustat con datos de Eurostat (ESSPROS)</a> <span class="tag t-oficial">oficial</span>; <a href="https://www.inclusion.gob.es/w/la-seguridad-social-suma-en-2025-medio-mill%C3%B3n-de-afiliados-por-cuarto-a%C3%B1o-consecutivo-y-se-acerca-a-los-21-9-millones-de-ocupados">Ministerio de Inclusión, afiliación de 2025</a> <span class="tag t-oficial">oficial</span>; <a href="https://forbes.es/?p=852671">Forbes España, afiliados</a>, <a href="https://www.eldebate.com/economia/20251015/mei-crece-325-recaudacion-autonomos-baja-01_344273.html">El Debate, RETA</a>, <a href="https://www.holded.com/es/blog/autonomos-cotizan-base-minima">Holded, base mínima</a>, <a href="https://thecorner.eu/news-spain/spain-economy/spain-the-tax-burden-on-employment-continues-to-rise-and-now-stands-at-40-2-5-4-points-above-the-oecd-average/114294/">The Corner, cuña fiscal</a> <span class="tag t-prensa">prensa</span>.</p>
+</div>
+
 </section>
 
 <!-- 2. Tramos -------------------------------------------------------------- -->
@@ -1030,6 +1113,7 @@ footer p { margin: 0; max-width: 80ch; }
       <li>No se encontró ninguna valoración de AIReF ni de Hacienda de la propuesta. La cifra de 38 M€ del ITSGF de 2024 es prensa que cita contabilidad nacional; el informe de la AEAT dice solo que la recaudación fue escasa.</li>
       <li>Perfiles de Ortega, Pérez y Botín (pestaña 6): su IRPF personal es secreto y no figura en ninguna fuente. Solo se usan cuentas de sus sociedades, la CNMV y las retribuciones publicadas, casi todo a través de la prensa.</li>
       <li>Sobre los más ricos (pestaña 6): no se obtuvo el tipo efectivo del IRPF del tramo de más de 601.000 € ni el de los percentiles por encima del 99%, y la cifra de Fedea para 2022 llega por la prensa. No hay datos del uso de préstamos con garantía ni de trusts.</li>
+      <li><strong>Cotizaciones (pestaña 1):</strong> no encontré un desglose oficial de lo que recauda la Seguridad Social por quién paga (empresa, trabajador, autónomo). El reparto por régimen y «otros conceptos» sale de la nota del Ministerio y de una resta mía; el reparto empresa-trabajador es el de los tipos legales y el de Eurostat de 2023, que incluye contribuciones imputadas. No hay fuente propia sobre la incidencia real. Tampoco encontré el IRPF que pagan los autónomos ni la distribución de sus bases más allá del tramo mínimo.</li>
       <li>Los años difieren: ingresos de 2025, IRPF y patrimonio declarados de 2024, capacidad regional de 2024, población a 1 de enero de 2025 y datos de riqueza de encuesta de 2022.</li>
       <li>Las tablas de la AEAT se leyeron con una herramienta que resume páginas, no se descargaron. Las sumas se comprobaron (el desglose de 2025 suma exactamente 325.356 M€), pero conviene contrastar las celdas antes de fiarse de ellas.</li>
       <li><strong>País Vasco y Navarra:</strong> no hay tabla consolidada del IRPF por tramos para el País Vasco (Bizkaia la publica en Open Data, pero no se pudo descargar). Patrimonio y Sucesiones vascos no se publican por separado. El cupo definitivo de 2025 y las aportaciones navarras definitivas de 2024 y 2025 están sin publicar, y el acuerdo del quinquenio 2025-2029 sigue pendiente según la AIReF (julio de 2026). Tampoco se publica cuánto recauda la AEAT en estos territorios.</li>
@@ -1051,6 +1135,7 @@ footer p { margin: 0; max-width: 80ch; }
         <li><a href="https://www.agenciatributaria.es/AEAT.fisterritorial/Inicio/_menu_/Fiscalidad_Autonomica/Regimen_Foral/Presentacion/Presentacion.html">AEAT, régimen foral</a></li>
         <li><a href="https://www.lamoncloa.gob.es/serviciosdeprensa/notasprensa/hacienda/paginas/2023/200923-impuesto-solidaridad-grandes-fortunas.aspx">Hacienda, nota sobre el ITSGF 2023</a></li>
         <li><a href="https://www.lamoncloa.gob.es/serviciosdeprensa/notasprensa/inclusion/Paginas/2026/310326-seguridad-social-deficit-pib.aspx">Ministerio de Inclusión, Seguridad Social</a></li>
+        <li><a href="https://www.boe.es/boe/dias/2026/03/31/pdfs/BOE-A-2026-7296.pdf">Orden PJC/297/2026, cotización de 2026 (BOE)</a>; <a href="https://en.eustat.eus/elementos/ele0003500/social-protection-income-indicators-by-country-horizontal-/tbl0003525_i.html">Eustat con datos de Eurostat, ingresos de protección social 2023</a>; <a href="https://www.inclusion.gob.es/w/la-seguridad-social-suma-en-2025-medio-mill%C3%B3n-de-afiliados-por-cuarto-a%C3%B1o-consecutivo-y-se-acerca-a-los-21-9-millones-de-ocupados">Ministerio de Inclusión, afiliación 2025</a></li>
         <li><a href="https://www.ine.es/prodyser/espa_cifras/21_ANEXO.pdf">INE, España en cifras</a>; <a href="https://ine.es/dyngs/Prensa/ADRH2023.pdf">INE, Atlas de distribución de renta de los hogares 2023</a></li>
         <li><a href="https://www.bde.es/wbe/es/noticias-eventos/podcast/como-se-distribuye-la-riqueza-entre-los-hogares.html">Banco de España, distribución de la riqueza</a> y <a href="https://repositorio.bde.es/bitstream/123456789/36572/1/do2413.pdf">Documento Ocasional 2413</a></li>
         <li><a href="https://www.ief.es/docs/destacados/publicaciones/documentos_trabajo/2026_02.pdf">Instituto de Estudios Fiscales, documento de trabajo 2026/02</a></li>
@@ -1392,6 +1477,7 @@ footer p { margin: 0; max-width: 80ch; }
     $('#rev-finding').textContent = all
       ? 'La Seguridad Social y el IRPF aportan el 64% de los 502.274 M€ que recauda España.'
       : 'El IRPF y el IVA suman el 74% de los 325.356 M€ en impuestos.';
+    var cz = $('#cotiz-detalle'); if (cz) cz.hidden = !all;
     var host = $('#rev-card'); host.textContent = '';
     var pieHost = h('div'), tblHost = h('div', { class: 'tbl-wrap' });
     host.append(pieHost, tblHost);

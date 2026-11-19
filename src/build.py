@@ -5,6 +5,7 @@ from pathlib import Path
 here = Path(__file__).parent
 sys.path.insert(0, str(here))
 import tab8
+import cotiz
 head = '''<!DOCTYPE html>
 <html lang="es">
 <head>
@@ -18,7 +19,7 @@ head = '''<!DOCTYPE html>
 <style>
 '''
 css = (here / 'style.css').read_text(encoding='utf-8')
-body = (here / 'body.html').read_text(encoding='utf-8').replace('{{TAB8}}', tab8.html())
+body = (here / 'body.html').read_text(encoding='utf-8').replace('{{TAB8}}', tab8.html()).replace('{{COTIZ}}', cotiz.html())
 js = (here / 'app.js').read_text(encoding='utf-8')
 out = head + css + '</style>\n</head>\n<body>\n\n' + body + '\n<script>\n' + js + '</script>\n</body>\n</html>\n'
 (here.parent / 'index.html').write_text(out, encoding='utf-8')

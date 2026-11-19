@@ -10,6 +10,7 @@ Es una sola página estática, sin dependencias salvo las fuentes de Google Font
 
 - `index.html`: la página ya generada. Es lo que se publica.
 - `src/style.css`, `src/body.html`, `src/app.js`: las fuentes.
+- `src/cotiz.py`: genera el bloque «Dentro de las cotizaciones» de la pestaña 1 (régimen, quién paga, autónomos), con las cifras y las comprobaciones de suma.
 - `src/tab8.py`: genera la pestaña 7 ("Top 25: aportación"). Las cifras de los escenarios se calculan ahí, a partir de supuestos explícitos.
 - `src/build.py`: regenera `index.html` a partir de las anteriores.
 

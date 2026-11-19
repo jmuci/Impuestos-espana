@@ -303,6 +303,7 @@
     $('#rev-finding').textContent = all
       ? 'La Seguridad Social y el IRPF aportan el 64% de los 502.274 M€ que recauda España.'
       : 'El IRPF y el IVA suman el 74% de los 325.356 M€ en impuestos.';
+    var cz = $('#cotiz-detalle'); if (cz) cz.hidden = !all;
     var host = $('#rev-card'); host.textContent = '';
     var pieHost = h('div'), tblHost = h('div', { class: 'tbl-wrap' });
     host.append(pieHost, tblHost);
